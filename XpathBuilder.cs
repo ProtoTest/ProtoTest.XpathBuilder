@@ -18,7 +18,7 @@ using System.Xml.Linq;
 using System.Xml;
 using Manoli.Utils.CSharpFormat;
 
-namespace ProtoTest.XpathBuilder
+namespace ProtoTest.Specter
 {
     public partial class XpathBuilder : Form
     {
@@ -58,7 +58,7 @@ namespace ProtoTest.XpathBuilder
 
         public void Log(string message)
         {
-            if (LogTextBox.Lines.Length >= 10)
+            if (LogTextBox.Lines.Length >= 100)
             {
                 LogTextBox.Select(0, LogTextBox.GetFirstCharIndexFromLine(1)); 
                 LogTextBox.SelectedText = "";

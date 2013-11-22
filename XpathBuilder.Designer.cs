@@ -1,4 +1,4 @@
-﻿namespace ProtoTest.XpathBuilder
+﻿namespace ProtoTest.Specter
 {
     partial class XpathBuilder
     {
@@ -515,7 +515,7 @@
             this.ClientSize = new System.Drawing.Size(672, 821);
             this.Controls.Add(this.panel1);
             this.Name = "XpathBuilder";
-            this.Text = "ProtoTest.XpathBuilder";
+            this.Text = "ProtoTest.Specter";
             this.Load += new System.EventHandler(this.XpathBuilder_Load);
             this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
