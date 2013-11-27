@@ -31,17 +31,22 @@ namespace ProtoTest.Specter
         public List<string> xpaths;
         public IWebDriver driver;
         public int startindex = 0;
+        public static int minimumXpaths = 3;
+        public static int maximumXpathAttempts = 100;
+        public static int currentXpathAttempts=0;
 
         public XpathBuilder()
         {
             InitializeComponent();
             this.XpathsDropdown.TextChanged += XpathsDropdown_TextChanged;
             WebDriverCommandDropdown.SelectedIndex = 0;
+            BrowserDropdown.SelectedIndex = 0;
         }
 
         void XpathsDropdown_TextChanged(object sender, EventArgs e)
         {
             this.currentXpath = XpathsDropdown.Text;
+            this.SelectedXpathTextBox.Text = this.currentXpath;
         }
 
         public void Error(string message)
@@ -58,12 +63,13 @@ namespace ProtoTest.Specter
 
         public void Log(string message)
         {
-            if (LogTextBox.Lines.Length >= 100)
+            if (LogTextBox.Lines.Length >= 500)
             {
                 LogTextBox.Select(0, LogTextBox.GetFirstCharIndexFromLine(1)); 
                 LogTextBox.SelectedText = "";
             }
             LogTextBox.AppendText(message + "\r\n");
+            LogTextBox.ScrollToCaret();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -141,15 +147,16 @@ namespace ProtoTest.Specter
         {
             try
             {
-                Log("Generating xpaths for element");
+                XpathBuilder.currentXpathAttempts = 0;
+                Log(string.Format("Tryng to Generate {0} xpaths. Max attempts : {1}",XpathBuilder.minimumXpaths,XpathBuilder.maximumXpathAttempts));
                 XpathsDropdown.Items.Clear();
-                int num = int.Parse(MinimumXpathsTextBox.Text);
-                var xpaths = element.GetXpaths(num);
+                var xpaths = element.GetXpaths(minimumXpaths,maximumXpathAttempts);
                 foreach (var xpath in xpaths)
                 {
                     XpathsDropdown.Items.Add(xpath);
                     XpathsDropdown.SelectedIndex = 0;
                 }
+                Log("Xpath Generation Complete, found " + xpaths.Count + " unique xpath expressions");
             }
             catch (Exception err)
             {
@@ -202,7 +209,7 @@ namespace ProtoTest.Specter
         {
 
             this.currentXpath = (string)XpathsDropdown.SelectedItem;
-            //Log("Currently selected xpath : " + this.currentXpath);
+            this.SelectedXpathTextBox.Text = this.currentXpath;
         }
 
         public string FormatHtml(string input)
@@ -286,7 +293,7 @@ namespace ProtoTest.Specter
         {
         try 
 	    {	        
-		if(!urlString.Contains("http://"))
+		if(!urlString.Contains("http"))
                 urlString = "http://" + urlString;
             driver.Navigate().GoToUrl(urlString);
 	    }
@@ -557,6 +564,53 @@ namespace ProtoTest.Specter
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SelectedXpathTextBox_TextChanged(object sender, EventArgs e)
+        {
+            this.currentXpath = this.SelectedXpathTextBox.Text;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                XpathBuilder.currentXpathAttempts = 0;
+                Log("Generating additional xpaths via xpath");
+                XpathsDropdown.Items.Clear();
+                int num = int.Parse(MinimumXpathsTextBox.Text);
+                element = driver.FindElement(By.XPath(this.currentXpath));
+                var xpaths = element.GetXpaths(num);
+                foreach (var xpath in xpaths)
+                {
+                    XpathsDropdown.Items.Add(xpath);
+                    XpathsDropdown.SelectedIndex = 0;
+                }
+            }
+            catch (Exception err)
+            {
+                Error("Could not generate xpath for element " + err.Message);
+            }
+        }
+
+        private void MinimumXpathsTextBox_TextChanged(object sender, EventArgs e)
+        {
+            minimumXpaths = int.Parse(this.MinimumXpathsTextBox.Text);
+        }
+
+        private void XPathGeneratorMaxAttempts_TextChanged(object sender, EventArgs e)
+        {
+            maximumXpathAttempts = int.Parse(this.XPathGeneratorMaxAttempts.Text);
+        }
+
+        private void panel6_Paint_1(object sender, PaintEventArgs e)
         {
 
         }

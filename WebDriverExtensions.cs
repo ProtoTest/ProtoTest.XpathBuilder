@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Golem.Framework.XpathBuilder;
 using OpenQA.Selenium;
 using System.Text.RegularExpressions;
 using OpenQA.Selenium.Internal;
@@ -46,6 +47,10 @@ namespace ProtoTest.Specter
                     break;
                 case "Type":
                     element.SendKeys(text);
+                    break;
+                case "ClickOffSet":
+                    OpenQA.Selenium.Interactions.Actions action = new Actions(((IWrapsDriver)element).WrappedDriver);
+                    action.MoveToElement(element,int.Parse(text),0).Click().Build().Perform();
                     break;
                 default:
                     element.Flash();
@@ -227,8 +232,11 @@ namespace ProtoTest.Specter
                 {
                     string key = Regex.Split(atts[i], "=\"")[0].Replace("\"", "").Trim();
                     string value = Regex.Split(atts[i], "=\"")[1].Replace("\"", "");
-                    if(!key.Contains("style"))
-                        attributes.Add("@" + key, value);
+                    if (!key.Contains("style"))
+                    {
+                        attributes.Add("@" + key,value);
+                    }
+                        
                 }
             }
             var items = from pair in attributes
@@ -320,41 +328,71 @@ namespace ProtoTest.Specter
             }
         }
 
-        public static string GetSimpleXpath(this IWebElement element)
+        public static string GetUniqueXpath(this IWebElement element)
         {
             var atts = element.GetUniqueAttribute();
+            if (atts.Key == "" || atts.Value == "")
+                return string.Format("//{0}", element.TagName);
             return string.Format("//{0}[{1}=\"{2}\"]",element.TagName,atts.Key,atts.Value);
         }
 
         public static void CheckXpath(this IWebDriver driver, string xpath, ref List<string> invalidXpaths, ref List<string> uniqueXpaths, ref List<string> duplicateXpaths)
         {
-            var count = driver.TryGetXpathCount(xpath);
+            XpathBuilder.currentXpathAttempts++;
+            var eles = driver.FindElements(By.XPath(xpath));
+            var count = eles.Count;
             if (count == 0)
             {
-                //Program.builder.Log("Found an invalid xpath : " + xpath);
                 invalidXpaths.Add(xpath);
             }
-            if (count == 1)
+            if ((count == 1)&&(eles[0].Location==Program.builder.element.Location))
             {
-                //Program.builder.Log("Found a unique xpath : " + xpath);
                 uniqueXpaths.Add(xpath);
             }
             if (count > 1)
             {
                 duplicateXpaths.Add(xpath);
             }
-            Program.builder.Log(string.Format("Xpath {0} had {1} xpaths", xpath, count));
+            
+            Program.builder.Log(string.Format("({0}) Xpath {1} had {2} elements", XpathBuilder.currentXpathAttempts,xpath, count));
         }
 
-        public static List<string> GetXpaths(this IWebElement element, int minimum=1)
+        public static List<string> GetNonUniqueXpaths(this IWebElement element)
         {
+            if (element == null)
+            {
+                return new List<string>();
+            }
+            IWebDriver driver = ((IWrapsDriver)element).WrappedDriver;
+            string source = driver.PageSource;
+            var attributes = element.GetAllAttributes();
+            List<string> xPaths = new List<string>();
+            foreach (var att in attributes)
+            {
+                foreach (var val in att.Value.Split(' '))
+                {
+                    if ((val != "")||(val != " "))
+                    {
+                        string xpath = string.Format("//{0}[contains({1},'{2}')]", element.TagName, att.Key, val);
+                        xPaths.Add(xpath);
+                    }
+                    
+                }
+                
+            }
+            return xPaths;
+
+        }
+
+        public static List<string> GetXpaths(this IWebElement element, int minimum=1,int max=10)
+        {
+           
            // Program.Log("Building Xpaths for " + element);
             if (element == null)
             {
                 return new List<string>();
             }
             IWebDriver driver = ((IWrapsDriver)element).WrappedDriver;
-            Program.builder.Log("Trying to find unique xpath for : " + element.GetHtml());
             string source = driver.PageSource;
             var attributes = element.GetAllAttributes();
            // Program.builder.Log("Found " + attributes.Count + " attributes for " + element.TagName);
@@ -365,98 +403,100 @@ namespace ProtoTest.Specter
             //first we try //tagName
             string tagPath = "//"+element.TagName;
            driver.CheckXpath(tagPath,ref invalidXpaths,ref uniqueXpaths,ref duplicateXpaths);
-            if (uniqueXpaths.Count >= minimum)
+            if ((uniqueXpaths.Count >= minimum)||(XpathBuilder.currentXpathAttempts>=XpathBuilder.maximumXpathAttempts))
                 return uniqueXpaths;
+
             //now we try //tagName[@attribute='value']
             foreach (var att in attributes)
             {
-                
-                string xpath = string.Format("//{0}[contains({1},'{2}')]", element.TagName, att.Key, att.Value);
+                string xpath = string.Format("//{0}[{1}='{2}']", element.TagName, att.Key, att.Value);
                 driver.CheckXpath(xpath, ref invalidXpaths, ref uniqueXpaths, ref duplicateXpaths);
             }
             Program.Log("Checked all xpaths for element. Unique : " + uniqueXpaths.Count);
-            if (uniqueXpaths.Count >= minimum)
+            if ((uniqueXpaths.Count >= minimum)||(XpathBuilder.currentXpathAttempts>=XpathBuilder.maximumXpathAttempts))
                 return uniqueXpaths;
-            //ProtoTest.Specter.Program.builder.Log("Could not find unique xpath for : " + element.GetHtml());'
+            
             Program.builder.Log("Did not find enough Xpaths. Getting parent xpaths");
-            List<string> parentXpaths = element.GetParent().GetXpaths(1);
+            List<string> parentXpaths = element.GetParent().GetNonUniqueXpaths();
             Program.builder.Log("Parent xpaths : " + parentXpaths.Count);
             for (var i = 0; i < parentXpaths.Count; i++)
             {
                 for (var j = 0; j < uniqueXpaths.Count; j++)
                 {
                     string newXpath = parentXpaths[i] + uniqueXpaths[j];
-                    Program.builder.Log("Trying parent-based unique xpath : " + newXpath);
+                    //Program.builder.Log("Trying parent-based unique xpath : " + newXpath);
                     driver.CheckXpath(newXpath, ref invalidXpaths, ref uniqueXpaths, ref duplicateXpaths);
+                    if ((uniqueXpaths.Count >= minimum) || (XpathBuilder.currentXpathAttempts >= XpathBuilder.maximumXpathAttempts))
+                        return uniqueXpaths;
                 }
                 for (var j = 0; j < duplicateXpaths.Count; j++)
                 {
                     string newXpath = parentXpaths[i] + duplicateXpaths[j];
-                    Program.builder.Log("Trying parent-based duplicate xpath : " + newXpath);
+                    //Program.builder.Log("Trying parent-based duplicate xpath : " + newXpath);
                     driver.CheckXpath(newXpath, ref invalidXpaths, ref uniqueXpaths, ref duplicateXpaths);
+                    if ((uniqueXpaths.Count >= minimum) || (XpathBuilder.currentXpathAttempts >= XpathBuilder.maximumXpathAttempts))
+                        return uniqueXpaths;
                 }
             }
             Program.Log("Checked the parent, unique xpaths : " + uniqueXpaths.Count);
-            if (uniqueXpaths.Count >= minimum)
+            if ((uniqueXpaths.Count >= minimum)||(XpathBuilder.currentXpathAttempts>=XpathBuilder.maximumXpathAttempts))
                 return uniqueXpaths;
             Program.builder.Log("Still can't find a unique xpath, trying siblings");
             foreach (var sibling in element.GetSiblingElements())
             {
                 Program.Log("Getting the sibling xpaths");
-                List<string> xpaths = sibling.GetXpaths(1);
-                Program.builder.Log("Sibling had " + xpaths.Count + " unique paths");
-
-                for (var i = 0; i < uniqueXpaths.Count; i++)
+                List<string> xpaths = sibling.GetNonUniqueXpaths();
+                //Program.builder.Log("Sibling had " + xpaths.Count + " unique paths");
+                for (var j = 0; j < xpaths.Count; j++)
                 {
-                    string siblingXpath = string.Format("//{0}[.{1}]{2}", element.GetParent().TagName, xpaths[0], uniqueXpaths[i]);
-                    Program.builder.Log("Trying new sibling-based xpath : " + siblingXpath);
-                    driver.CheckXpath(siblingXpath, ref invalidXpaths, ref uniqueXpaths, ref duplicateXpaths);
-                }
-                for (var i = 0; i < duplicateXpaths.Count; i++)
-                {
-                    string siblingXpath = string.Format("//{0}[.{1}]{2}", element.GetParent().TagName, xpaths[0], duplicateXpaths[i]);
-                    Program.builder.Log("Trying new xpath : " + siblingXpath);
-                    driver.CheckXpath(siblingXpath, ref invalidXpaths, ref uniqueXpaths, ref duplicateXpaths);
+                    for (var i = 0; i < uniqueXpaths.Count; i++)
+                    {
+                        string siblingXpath = string.Format("//{0}[.{1}]{2}", element.GetParent().TagName, xpaths[j], uniqueXpaths[i]);
+                        //Program.builder.Log("Trying new sibling-based xpath : " + siblingXpath);
+                        driver.CheckXpath(siblingXpath, ref invalidXpaths, ref uniqueXpaths, ref duplicateXpaths);
+                        if ((uniqueXpaths.Count >= minimum) || (XpathBuilder.currentXpathAttempts >= XpathBuilder.maximumXpathAttempts))
+                            return uniqueXpaths;
+                    }
+                    for (var i = 0; i < duplicateXpaths.Count; i++)
+                    {
+                        string siblingXpath = string.Format("//{0}[.{1}]{2}", element.GetParent().TagName, xpaths[j],
+                            duplicateXpaths[i]);
+                        driver.CheckXpath(siblingXpath, ref invalidXpaths, ref uniqueXpaths, ref duplicateXpaths);
+                        if ((uniqueXpaths.Count >= minimum) || (XpathBuilder.currentXpathAttempts >= XpathBuilder.maximumXpathAttempts))
+                            return uniqueXpaths;
+                    }
                 }
             }
             Program.Log("Checked the siblings, unique xpaths : " + uniqueXpaths.Count);
-            if (uniqueXpaths.Count >= minimum)
+            if ((uniqueXpaths.Count >= minimum)||(XpathBuilder.currentXpathAttempts>=XpathBuilder.maximumXpathAttempts))
                 return uniqueXpaths;
             foreach (var child in element.FindElements(By.XPath("*")))
             {
                 Program.Log("Getting the child xpaths");
-                List<string> xpaths = child.GetXpaths(1);
-                for (var i = 0; i < uniqueXpaths.Count; i++)
+                List<string> xpaths = child.GetNonUniqueXpaths();
+                for (var j = 0; j < xpaths.Count; j++)
                 {
-                    string childXpath = string.Format("{0}[.{1}]", uniqueXpaths[i], xpaths[0]);
-                    Program.builder.Log("Trying new xpath : " + childXpath);
-                    if (driver.FindElements(By.XPath(childXpath)).Count == 1)
+                    for (var i = 0; i < uniqueXpaths.Count; i++)
                     {
-                        Program.builder.Log("Found a unique xpath : " + childXpath);
-                        uniqueXpaths.Add(childXpath);
-                        if (uniqueXpaths.Count >= minimum)
+                        string childXpath = string.Format("{0}[.{1}]", uniqueXpaths[i], xpaths[j]);
+                        driver.CheckXpath(childXpath, ref invalidXpaths, ref uniqueXpaths, ref duplicateXpaths);
+                        if ((uniqueXpaths.Count >= minimum) ||
+                            (XpathBuilder.currentXpathAttempts >= XpathBuilder.maximumXpathAttempts))
                             return uniqueXpaths;
                     }
-                }
-                for (var i = 0; i < duplicateXpaths.Count; i++)
-                {
-                    string childXpath = string.Format("{0}[.{1}]", duplicateXpaths[i], xpaths[0]);
-                    Program.builder.Log("Trying new xpath : " + childXpath);
-                    if (driver.FindElements(By.XPath(childXpath)).Count == 1)
+                    for (var i = 0; i < duplicateXpaths.Count; i++)
                     {
-                        Program.builder.Log("___Found a unique xpath : " + childXpath);
-                        uniqueXpaths.Add(childXpath);
-                        if (uniqueXpaths.Count >= minimum)
+                        string childXpath = string.Format("{0}[.{1}]", duplicateXpaths[i], xpaths[j]);
+                        // Program.builder.Log("Trying new xpath : " + childXpath);
+                        driver.CheckXpath(childXpath, ref invalidXpaths, ref uniqueXpaths, ref duplicateXpaths);
+                        if ((uniqueXpaths.Count >= minimum) || (XpathBuilder.currentXpathAttempts >= XpathBuilder.maximumXpathAttempts))
                             return uniqueXpaths;
                     }
                 }
             }
             Program.Log("Checked the children, unique xpaths : " + uniqueXpaths.Count);
-            if (uniqueXpaths.Count >= minimum)
+            if ((uniqueXpaths.Count >= minimum)||(XpathBuilder.currentXpathAttempts>=XpathBuilder.maximumXpathAttempts))
                 return uniqueXpaths;
-
-            
-
             var ancestor = element.GetParent().GetParent();
                         
             for(var i=0;i<10;i++)
@@ -464,28 +504,20 @@ namespace ProtoTest.Specter
                 if(ancestor.TagName=="html"||ancestor.TagName=="body")
                     return uniqueXpaths;
                 Program.Log("Getting the ancestor xpaths for " + ancestor.TagName);
-                string xpath = ancestor.GetSimpleXpath();
+                string xpath = ancestor.GetUniqueXpath();
                 for (var k = 0; k < uniqueXpaths.Count; k++)
                 {
                         string ancestorXpath = string.Format("{0}{1}", xpath, uniqueXpaths[k]);
-                        int num = driver.FindElements(By.XPath(ancestorXpath)).Count;
-                        if (num == 1)
-                        {
-                            uniqueXpaths.Add(ancestorXpath);
-                            if (uniqueXpaths.Count > minimum)
-                                return uniqueXpaths;
-                        }
+                        driver.CheckXpath(ancestorXpath, ref invalidXpaths, ref uniqueXpaths, ref duplicateXpaths);
+                        if ((uniqueXpaths.Count >= minimum) || (XpathBuilder.currentXpathAttempts >= XpathBuilder.maximumXpathAttempts))
+                            return uniqueXpaths;
                 }
                 for (var k = 0; k < duplicateXpaths.Count; k++)
                 {
                     string ancestorXpath = string.Format("{0}{1}", xpath, duplicateXpaths[k]);
-                        int num = driver.FindElements(By.XPath(ancestorXpath)).Count;
-                        if (num == 1)
-                        {
-                            uniqueXpaths.Add(ancestorXpath);
-                            if (uniqueXpaths.Count > minimum)
-                                return uniqueXpaths;
-                        }
+                    driver.CheckXpath(ancestorXpath, ref invalidXpaths, ref uniqueXpaths, ref duplicateXpaths);
+                    if ((uniqueXpaths.Count >= minimum) || (XpathBuilder.currentXpathAttempts >= XpathBuilder.maximumXpathAttempts))
+                        return uniqueXpaths;
                 }
                 ancestor=ancestor.GetParent();
             }
