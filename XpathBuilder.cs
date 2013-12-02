@@ -243,8 +243,7 @@ namespace ProtoTest.Specter
                             output += "<" + tok;
                             tabs++;
                         }
-
-                        sb.AppendLine(output);
+                            sb.AppendLine(output);
                     }
                     previous = tok;
                 }
@@ -616,5 +615,30 @@ namespace ProtoTest.Specter
         }
 
 
+        public void UpdatePanels()
+        {
+            if (element.IsStale())
+            {
+                ElementPanel.BackColor = Color.Black;
+            }
+            else
+                ElementPanel.BackColor = Color.DimGray;
+            if (driver.IsWebDriverConnected())
+            {
+                CommandPanel.BackColor = Color.DimGray;
+                JavascriptPanel.BackColor = Color.DimGray;
+                RecordingPanel.BackColor = Color.DimGray;
+                XpathPanel.BackColor = Color.DimGray;
+            }
+            else
+            {
+                RecordingPanel.BackColor = Color.Black;
+                CommandPanel.BackColor = Color.Black;
+                JavascriptPanel.BackColor = Color.Black;
+                XpathPanel.BackColor = Color.Black;
+            }
+                
+                
+        }
     }
 }

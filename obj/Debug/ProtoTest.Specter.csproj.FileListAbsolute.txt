@@ -1,0 +1,16 @@
+C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\bin\Debug\ProtoTest.XpathBuilder.exe.config
+C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\bin\Debug\chromedriver.exe
+C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\bin\Debug\IEDriverServer.exe
+C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\bin\Debug\ProtoTest.XpathBuilder.exe
+C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\bin\Debug\ProtoTest.XpathBuilder.pdb
+C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\bin\Debug\CSharpFormat.dll
+C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\bin\Debug\WebDriver.dll
+C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\bin\Debug\WebDriver.Support.dll
+C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\bin\Debug\CSharpFormat.xml
+C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\bin\Debug\WebDriver.xml
+C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\bin\Debug\WebDriver.Support.xml
+C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\obj\Debug\ProtoTest.Specter.XpathBuilder.resources
+C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\obj\Debug\ProtoTest.XpathBuilder.Properties.Resources.resources
+C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\obj\Debug\ProtoTest.Specter.csproj.GenerateResource.Cache
+C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\obj\Debug\ProtoTest.XpathBuilder.exe
+C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\obj\Debug\ProtoTest.XpathBuilder.pdb

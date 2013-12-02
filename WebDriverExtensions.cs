@@ -50,7 +50,8 @@ namespace ProtoTest.Specter
                     break;
                 case "ClickOffSet":
                     OpenQA.Selenium.Interactions.Actions action = new Actions(((IWrapsDriver)element).WrappedDriver);
-                    action.MoveToElement(element,int.Parse(text),0).Click().Build().Perform();
+                    var coords = text.Split(',');
+                    action.MoveToElement(element,int.Parse(coords[0]),int.Parse(coords[1])).Click().Build().Perform();
                     break;
                 default:
                     element.Flash();
@@ -373,7 +374,7 @@ namespace ProtoTest.Specter
                 {
                     if ((val != "")||(val != " "))
                     {
-                        string xpath = string.Format("//{0}[contains({1},'{2}')]", element.TagName, att.Key, val);
+                        string xpath = string.Format("//{0}[contains({1},\"{2}\")]", element.TagName, att.Key, val);
                         xPaths.Add(xpath);
                     }
                     
@@ -409,7 +410,7 @@ namespace ProtoTest.Specter
             //now we try //tagName[@attribute='value']
             foreach (var att in attributes)
             {
-                string xpath = string.Format("//{0}[{1}='{2}']", element.TagName, att.Key, att.Value);
+                string xpath = string.Format("//{0}[{1}=\"{2}\"]", element.TagName, att.Key, att.Value);
                 driver.CheckXpath(xpath, ref invalidXpaths, ref uniqueXpaths, ref duplicateXpaths);
             }
             Program.Log("Checked all xpaths for element. Unique : " + uniqueXpaths.Count);
@@ -525,5 +526,30 @@ namespace ProtoTest.Specter
             Program.Log("Checked the ancestors, unique xpaths : " + uniqueXpaths.Count);
         return uniqueXpaths;
         }
+        public static bool IsWebDriverConnected(this IWebDriver driver)
+        {
+            try
+            {
+               string source = driver.PageSource;
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;   
+            }
+        }
+
+        public static bool IsStale(this IWebElement element)
+        {
+            try
+            {
+                return !element.Enabled;
+            }
+            catch (Exception)
+            {
+                return true;
+            }
+        }
     }
+ 
 }

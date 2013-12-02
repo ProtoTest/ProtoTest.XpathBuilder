@@ -30,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.RegisterRightClickButton = new System.Windows.Forms.Button();
             this.RegisterClickEventButton = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
@@ -78,6 +79,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.RecordingPanel = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.ElementPanel.SuspendLayout();
             this.XpathPanel.SuspendLayout();
             this.CommandPanel.SuspendLayout();
@@ -194,13 +196,13 @@
             this.XpathsDropdown.FormattingEnabled = true;
             this.XpathsDropdown.Location = new System.Drawing.Point(9, 41);
             this.XpathsDropdown.Name = "XpathsDropdown";
-            this.XpathsDropdown.Size = new System.Drawing.Size(663, 24);
+            this.XpathsDropdown.Size = new System.Drawing.Size(704, 24);
             this.XpathsDropdown.TabIndex = 0;
             this.XpathsDropdown.SelectedIndexChanged += new System.EventHandler(this.XpathsDropdown_SelectedIndexChanged);
             // 
             // ElementPanel
             // 
-            this.ElementPanel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.ElementPanel.BackColor = System.Drawing.Color.DimGray;
             this.ElementPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ElementPanel.Controls.Add(this.WebText);
             this.ElementPanel.Controls.Add(this.label1);
@@ -300,7 +302,7 @@
             // 
             // SelectedXpathTextBox
             // 
-            this.SelectedXpathTextBox.Location = new System.Drawing.Point(7, 37);
+            this.SelectedXpathTextBox.Location = new System.Drawing.Point(5, 43);
             this.SelectedXpathTextBox.Name = "SelectedXpathTextBox";
             this.SelectedXpathTextBox.Size = new System.Drawing.Size(710, 22);
             this.SelectedXpathTextBox.TabIndex = 28;
@@ -308,7 +310,7 @@
             // 
             // XpathPanel
             // 
-            this.XpathPanel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.XpathPanel.BackColor = System.Drawing.Color.DimGray;
             this.XpathPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.XpathPanel.Controls.Add(this.button1);
             this.XpathPanel.Controls.Add(this.button3);
@@ -335,7 +337,7 @@
             // 
             // CommandPanel
             // 
-            this.CommandPanel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.CommandPanel.BackColor = System.Drawing.Color.DimGray;
             this.CommandPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CommandPanel.Controls.Add(this.SelectedXpathTextBox);
             this.CommandPanel.Controls.Add(this.label14);
@@ -378,7 +380,7 @@
             // BrowserPanel
             // 
             this.BrowserPanel.AutoSize = true;
-            this.BrowserPanel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.BrowserPanel.BackColor = System.Drawing.Color.DimGray;
             this.BrowserPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.BrowserPanel.Controls.Add(this.GoToUrlButton);
             this.BrowserPanel.Controls.Add(this.LaunchBrowserButton);
@@ -449,7 +451,7 @@
             // JavascriptPanel
             // 
             this.JavascriptPanel.AutoSize = true;
-            this.JavascriptPanel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.JavascriptPanel.BackColor = System.Drawing.Color.DimGray;
             this.JavascriptPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.JavascriptPanel.Controls.Add(this.label11);
             this.JavascriptPanel.Controls.Add(this.DisableOnClickButton);
@@ -531,7 +533,7 @@
             // 
             // LogPanel
             // 
-            this.LogPanel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.LogPanel.BackColor = System.Drawing.Color.DimGray;
             this.LogPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.LogPanel.Controls.Add(this.ClearLogButton);
             this.LogPanel.Controls.Add(this.LogTextBox);
@@ -572,7 +574,7 @@
             // 
             // RecordingPanel
             // 
-            this.RecordingPanel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.RecordingPanel.BackColor = System.Drawing.Color.DimGray;
             this.RecordingPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.RecordingPanel.Controls.Add(this.label10);
             this.RecordingPanel.Controls.Add(this.RegisterClickEventButton);
@@ -590,6 +592,11 @@
             this.label10.Size = new System.Drawing.Size(107, 17);
             this.label10.TabIndex = 17;
             this.label10.Text = "Start Recording";
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
             // 
             // XpathBuilder
             // 
@@ -680,6 +687,7 @@
         private System.Windows.Forms.Panel RecordingPanel;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
 
