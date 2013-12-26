@@ -41,12 +41,13 @@ namespace ProtoTest.Specter
             this.XpathsDropdown.TextChanged += XpathsDropdown_TextChanged;
             WebDriverCommandDropdown.SelectedIndex = 0;
             BrowserDropdown.SelectedIndex = 0;
+            LaunchBrowserButton_Click(null, null);
         }
 
         void XpathsDropdown_TextChanged(object sender, EventArgs e)
         {
             this.currentXpath = XpathsDropdown.Text;
-            this.SelectedXpathTextBox.Text = this.currentXpath;
+          //  this.SelectedXpathTextBox.Text = this.currentXpath;
         }
 
         public void Error(string message)
@@ -209,7 +210,7 @@ namespace ProtoTest.Specter
         {
 
             this.currentXpath = (string)XpathsDropdown.SelectedItem;
-            this.SelectedXpathTextBox.Text = this.currentXpath;
+           // this.SelectedXpathTextBox.Text = this.currentXpath;
         }
 
         public string FormatHtml(string input)
@@ -574,7 +575,7 @@ namespace ProtoTest.Specter
 
         private void SelectedXpathTextBox_TextChanged(object sender, EventArgs e)
         {
-            this.currentXpath = this.SelectedXpathTextBox.Text;
+        //    this.currentXpath = this.SelectedXpathTextBox.Text;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -614,6 +615,33 @@ namespace ProtoTest.Specter
 
         }
 
+        public void UpdateElement()
+        {
+            try
+            {
+                element = driver.GetElementClicked();
+
+                if (element == null)
+                {
+                    WebText.DocumentText = "";
+                } 
+                else if (element.IsStale())
+                {
+                    WebText.DocumentText = "";
+                }
+                else
+                {
+                    element.UnHighlight();
+                    string html = element.GetHtml();
+                    WebText.DocumentText = FormatHtml(html);
+                    element.Flash();
+                }
+            }
+            catch (Exception err)
+            {
+                Error("Exception caught looking for element, : " + err.Message);
+            }
+        }
 
         public void UpdatePanels()
         {
@@ -625,15 +653,13 @@ namespace ProtoTest.Specter
                 ElementPanel.BackColor = Color.DimGray;
             if (driver.IsWebDriverConnected())
             {
-                CommandPanel.BackColor = Color.DimGray;
+               // CommandPanel.BackColor = Color.DimGray;
                 JavascriptPanel.BackColor = Color.DimGray;
-                RecordingPanel.BackColor = Color.DimGray;
                 XpathPanel.BackColor = Color.DimGray;
             }
             else
             {
-                RecordingPanel.BackColor = Color.Black;
-                CommandPanel.BackColor = Color.Black;
+                //CommandPanel.BackColor = Color.Black;
                 JavascriptPanel.BackColor = Color.Black;
                 XpathPanel.BackColor = Color.Black;
             }

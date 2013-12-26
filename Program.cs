@@ -16,10 +16,10 @@ namespace ProtoTest.Specter
             Timer t = new Timer();
             t.Tick += delegate
             {
-                builder.UpdatePanels();
+                builder.UpdateElement();
 
             };
-            t.Interval = 5000;
+            t.Interval = 2000;
             t.Start();
 
         }
@@ -34,7 +34,7 @@ namespace ProtoTest.Specter
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             builder = new XpathBuilder();
-           // StartTimer();
+            StartTimer();
             Application.Run(builder);
         }
 
