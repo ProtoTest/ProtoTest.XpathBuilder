@@ -2,24 +2,25 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Timer = System.Windows.Forms.Timer;
 
 namespace ProtoTest.Specter
 {
     public static class Program
     {
-        public static XpathBuilder builder;
-
+        public static Specter builder;
+        private static BackgroundWorker worker;
         public static void StartTimer()
         {
             Timer t = new Timer();
             t.Tick += delegate
             {
                 builder.UpdateElement();
-
+                t.Interval = Specter.refreshMs;
             };
-            t.Interval = 2000;
             t.Start();
 
         }
@@ -30,12 +31,29 @@ namespace ProtoTest.Specter
         [STAThread]
         static void Main()
         {
-            
+            worker = new BackgroundWorker();
+            worker.DoWork += worker_DoWork;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            builder = new XpathBuilder();
+            builder = new Specter();
+            builder.FormClosed += builder_FormClosed;
             StartTimer();
             Application.Run(builder);
+            worker.RunWorkerAsync();
+        }
+
+        static void builder_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            builder.driver.Close();
+        }
+
+        static void worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            while (true)
+            {
+                builder.UpdateElement();
+                Thread.Sleep(2000);
+            }
         }
 
         public static void Error(string message)

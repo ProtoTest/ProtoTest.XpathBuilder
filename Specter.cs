@@ -5,8 +5,10 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Golem.Framework.Specter;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Chrome;
@@ -20,7 +22,7 @@ using Manoli.Utils.CSharpFormat;
 
 namespace ProtoTest.Specter
 {
-    public partial class XpathBuilder : Form
+    public partial class Specter : Form
     {
         public IWebElement element;
         public string urlString;
@@ -29,13 +31,17 @@ namespace ProtoTest.Specter
         public string elementLocator;
         public string currentXpath;
         public List<string> xpaths;
+        private BackgroundWorker bw;
         public IWebDriver driver;
-        public int startindex = 0;
         public static int minimumXpaths = 3;
         public static int maximumXpathAttempts = 100;
-        public static int currentXpathAttempts=0;
-
-        public XpathBuilder()
+        public static bool splitAttributes = true;
+        public static bool useContains = true;
+        public static string skipAttributeString = " ";
+        public static int refreshMs = 2000;
+        public static int maxAttLength = 50;
+ 
+        public Specter()
         {
             InitializeComponent();
             this.XpathsDropdown.TextChanged += XpathsDropdown_TextChanged;
@@ -44,6 +50,7 @@ namespace ProtoTest.Specter
             LaunchBrowserButton_Click(null, null);
         }
 
+ 
         void XpathsDropdown_TextChanged(object sender, EventArgs e)
         {
             this.currentXpath = XpathsDropdown.Text;
@@ -62,15 +69,25 @@ namespace ProtoTest.Specter
             LogTextBox.SelectionLength = 0;
         }
 
-        public void Log(string message)
+        private void UpdateLog(string message)
         {
             if (LogTextBox.Lines.Length >= 500)
             {
-                LogTextBox.Select(0, LogTextBox.GetFirstCharIndexFromLine(1)); 
+                LogTextBox.Select(0, LogTextBox.GetFirstCharIndexFromLine(1));
                 LogTextBox.SelectedText = "";
             }
             LogTextBox.AppendText(message + "\r\n");
             LogTextBox.ScrollToCaret();
+        }
+
+        public void Log(string message)
+        {
+            if (LogTextBox.InvokeRequired)
+            {
+            LogTextBox.Invoke(new Action<string>(UpdateLog), message);
+            return;
+            }    
+            UpdateLog(message);
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -148,16 +165,19 @@ namespace ProtoTest.Specter
         {
             try
             {
-                XpathBuilder.currentXpathAttempts = 0;
-                Log(string.Format("Tryng to Generate {0} xpaths. Max attempts : {1}",XpathBuilder.minimumXpaths,XpathBuilder.maximumXpathAttempts));
+                
+                Log(string.Format("Tryng to Generate {0} xpaths. Max attempts : {1}",minimumXpaths,maximumXpathAttempts));
                 XpathsDropdown.Items.Clear();
-                var xpaths = element.GetXpaths(minimumXpaths,maximumXpathAttempts);
+                var creater = new XpathCreater(element);
+                var xpaths = creater.uniqueXpaths;
                 foreach (var xpath in xpaths)
                 {
                     XpathsDropdown.Items.Add(xpath);
-                    XpathsDropdown.SelectedIndex = 0;
                 }
                 Log("Xpath Generation Complete, found " + xpaths.Count + " unique xpath expressions");
+                if(XpathsDropdown.Items.Count>0)
+                    XpathsDropdown.SelectedIndex = 0;
+                
             }
             catch (Exception err)
             {
@@ -170,34 +190,49 @@ namespace ProtoTest.Specter
 
         }
 
+        private void ExecuteAndLogCommand(string xpath)
+        {
+
+            try
+            {
+                Log(WebDriverCommandDropdown.Text + " : " + xpath);
+                driver.FindElement(By.XPath(currentXpath)).ExecuteCommandByString(WebDriverCommandDropdown.Text, WebDriverCommandText.Text);
+            }
+            catch (Exception)
+            {
+                Error("Could not execute command : " + WebDriverCommandDropdown.Text + " : " + xpath);
+            }
+        }
+
+    
+        void ExecuteCommand(object sender, DoWorkEventArgs e)
+        {
+            if (WebDriverCommandDropdown.InvokeRequired)
+            {
+                WebDriverCommandDropdown.Invoke(new Action<string>(ExecuteAndLogCommand),currentXpath);
+                return;
+            }
+            ExecuteAndLogCommand(currentXpath);
+
+           
+            
+        }
        
 
         private void ClickXpathButton_Click(object sender, EventArgs e)
         {
             try
             {
-                driver.FindElement(By.XPath(currentXpath)).ExecuteCommandByString(WebDriverCommandDropdown.Text, WebDriverCommandText.Text);
-                Log(WebDriverCommandDropdown.Text + " : " + currentXpath);
+                BackgroundWorker worker = new BackgroundWorker();
+                worker.DoWork += ExecuteCommand;
+                worker.RunWorkerAsync();
+                
             }
             catch (Exception err)
             {
-                Error("Could not click element : " + currentXpath + " : " + err.Message);
+                Error("Could not execute command on element element : " + currentXpath + " : " + err.Message);
             }
            
-        }
-
-        private void HighlightXpathButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Log("Highlighting element : " + currentXpath);
-                driver.FindElement(By.XPath(currentXpath)).Flash();
-            }
-            catch (Exception err)
-            {
-                Error("Could not highlight element : " + currentXpath + err.Message);
-            }
-            
         }
 
         private void HostTextBox_TextChanged(object sender, EventArgs e)
@@ -269,7 +304,7 @@ namespace ProtoTest.Specter
 
         }
 
-        private void XpathBuilder_Load(object sender, EventArgs e)
+        private void Specter_Load(object sender, EventArgs e)
         {
 
         }
@@ -405,10 +440,12 @@ namespace ProtoTest.Specter
 
         public void SelectElement(IWebElement newElement)
         {
+            driver.SetClickedElement(newElement);
             element.UnHighlight();
             element = newElement;
             element.Flash();
-            
+            string text = element.GetHtml();
+            WebText.DocumentText = FormatHtml(text);
         }
 
         private void RegisterRightClickButton_Click(object sender, EventArgs e)
@@ -490,72 +527,72 @@ namespace ProtoTest.Specter
 
         }
 
-        public IWebElement GetUniqueRelative(IWebElement element)
-        {
-            Log("GetUniqueRelative : " + element.TagName);
-            var attributes = element.GetUniqueAttributes();
-            if (attributes.Count > 0)
-            {
-               Log("GetUniqueRelative : I was unique");
-              // this.xpaths.Add(relativeXpath);
-               XpathsDropdown.Items.Add(relativeXpath);
-               currentXpath = relativeXpath;
-               XpathsDropdown.SelectedValue = relativeXpath;
-                return element;
-            }
-            Log("GetUniqueRelative Getting next element");
-            element = GetNextElementInTree(element);
+        //public IWebElement GetUniqueRelative(IWebElement element)
+        //{
+        //    Log("GetUniqueRelative : " + element.TagName);
+        //    var attributes = element.GetUniqueAttributes();
+        //    if (attributes.Count > 0)
+        //    {
+        //       Log("GetUniqueRelative : I was unique");
+        //      // this.xpaths.Add(relativeXpath);
+        //       XpathsDropdown.Items.Add(relativeXpath);
+        //       currentXpath = relativeXpath;
+        //       XpathsDropdown.SelectedValue = relativeXpath;
+        //        return element;
+        //    }
+        //    Log("GetUniqueRelative Getting next element");
+        //    element = GetNextElementInTree(element);
             
-            return GetUniqueRelative(element);
-        }
+        //    return GetUniqueRelative(element);
+        //}
 
         public static string relativeXpath;
 
-        public IWebElement GetNextElementInTree(IWebElement currElement)
-        {
-            var attributes = new KeyValuePair<string, string>();
-            Log("GetNextElementInTree : " + currElement.TagName);
-            if(currElement.FindElements(By.XPath("following-sibling::*")).Count>0)
-            {
-                currElement = currElement.FindElement(By.XPath("following-sibling::*"));
-                if(currElement.FindElements(By.XPath("child::*")).Count>0)
-                {
-                    Log("GetNextElementInTree Found a nephew");
-                    currElement = currElement.FindElement(By.XPath("child::*"));
-                    attributes = currElement.GetUniqueAttribute();
-                    relativeXpath = string.Format("//{0}[.//{1}[{2}=\"{3}\"]]//{4}", this.element.GetAncestor(currElement).TagName, currElement.TagName, attributes.Key, attributes.Value, this.element.TagName);
-                    return currElement;
-                }
-                Log("GetNextElementInTree Found a sibling ");
-                attributes = currElement.GetUniqueAttribute();
-                relativeXpath = string.Format("//{0}[.//{1}[{2}=\"{3}\"]]//{4}",this.element.GetAncestor(currElement).TagName,currElement.TagName,attributes.Key,attributes.Value,this.element.TagName);
-                return currElement;
-            }
-            Log("GetNextElementInTree Found a parent");
-            currElement = currElement.GetParent();
-            attributes = currElement.GetUniqueAttribute();
-            relativeXpath = string.Format("//{0}[{1}=\"{2}\"]//{3}", this.element.GetAncestor(currElement).TagName, attributes.Key, attributes.Value, this.element.TagName);
-            return currElement.GetParent();
-        }
+        //public IWebElement GetNextElementInTree(IWebElement currElement)
+        //{
+        //    var attributes = new Attribute();
+        //    Log("GetNextElementInTree : " + currElement.TagName);
+        //    if(currElement.FindElements(By.XPath("following-sibling::*")).Count>0)
+        //    {
+        //        currElement = currElement.FindElement(By.XPath("following-sibling::*"));
+        //        if(currElement.FindElements(By.XPath("child::*")).Count>0)
+        //        {
+        //            Log("GetNextElementInTree Found a nephew");
+        //            currElement = currElement.FindElement(By.XPath("child::*"));
+        //            attributes = currElement.GetUniqueAttribute();
+        //            relativeXpath = string.Format("//{0}[.//{1}[{2}=\"{3}\"]]//{4}", this.element.GetAncestor(currElement).TagName, currElement.TagName, attributes.name, attributes.value, this.element.TagName);
+        //            return currElement;
+        //        }
+        //        Log("GetNextElementInTree Found a sibling ");
+        //        attributes = currElement.GetUniqueAttribute();
+        //        relativeXpath = string.Format("//{0}[.//{1}[{2}=\"{3}\"]]//{4}",this.element.GetAncestor(currElement).TagName,currElement.TagName,attributes.name,attributes.value,this.element.TagName);
+        //        return currElement;
+        //    }
+        //    Log("GetNextElementInTree Found a parent");
+        //    currElement = currElement.GetParent();
+        //    attributes = currElement.GetUniqueAttribute();
+        //    relativeXpath = string.Format("//{0}[{1}=\"{2}\"]//{3}", this.element.GetAncestor(currElement).TagName, attributes.name, attributes.value, this.element.TagName);
+        //    return currElement.GetParent();
+        //}
 
-        private void GetUniqueElementButton_Click(object sender, EventArgs e)
-        {
-            relativeXpath = element.GetXpaths()[0];
-            element = GetUniqueRelative(element);
+        //private void GetUniqueElementButton_Click(object sender, EventArgs e)
+        //{
+        //    relativeXpath = element.GetXpaths()[0];
+        //    element = GetUniqueRelative(element);
             
-            if (element != null)
-            {
-                element.UnHighlight();
-                string html = element.GetHtml();
-                WebText.DocumentText = FormatHtml(html);
-                element.Flash();
-            }
-            else
-            {
-                Error("Element is null, has the page changed?");
+        //    if (element != null)
+        //    {
+        //        element.UnHighlight();
+        //        string html = element.GetHtml();
+        //        WebText.DocumentText = FormatHtml(html);
+        //        element.Flash();
+        //    }
+        //    else
+        //    {
+        //        Error("Element is null, has the page changed?");
 
-            }
-        }
+        //    }
+        //}
 
         private void WebDriverCommandDropdown_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -578,27 +615,27 @@ namespace ProtoTest.Specter
         //    this.currentXpath = this.SelectedXpathTextBox.Text;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                XpathBuilder.currentXpathAttempts = 0;
-                Log("Generating additional xpaths via xpath");
-                XpathsDropdown.Items.Clear();
-                int num = int.Parse(MinimumXpathsTextBox.Text);
-                element = driver.FindElement(By.XPath(this.currentXpath));
-                var xpaths = element.GetXpaths(num);
-                foreach (var xpath in xpaths)
-                {
-                    XpathsDropdown.Items.Add(xpath);
-                    XpathsDropdown.SelectedIndex = 0;
-                }
-            }
-            catch (Exception err)
-            {
-                Error("Could not generate xpath for element " + err.Message);
-            }
-        }
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        Specter.currentXpathAttempts = 0;
+        //        Log("Generating additional xpaths via xpath");
+        //        XpathsDropdown.Items.Clear();
+        //        int num = int.Parse(MinimumXpathsTextBox.Text);
+        //        element = driver.FindElement(By.XPath(this.currentXpath));
+        //        var xpaths = element.GetXpaths(num);
+        //        foreach (var xpath in xpaths)
+        //        {
+        //            XpathsDropdown.Items.Add(xpath);
+        //            XpathsDropdown.SelectedIndex = 0;
+        //        }
+        //    }
+        //    catch (Exception err)
+        //    {
+        //        Error("Could not generate xpath for element " + err.Message);
+        //    }
+        //}
 
         private void MinimumXpathsTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -665,6 +702,48 @@ namespace ProtoTest.Specter
             }
                 
                 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //find child
+            SelectElement(element.GetChild());
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //find sibling
+            SelectElement(element.GetSibling());
+
+        }
+
+        private void SplitAttributesCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            splitAttributes = SplitAttributesCheckbox.Checked;
+            if(SplitAttributesCheckbox.Checked)
+                UseContainsCheckBox.Checked = true;
+        }
+
+        private void RefreshTimeTextBox_TextChanged(object sender, EventArgs e)
+        {
+            refreshMs = int.Parse(RefreshTimeTextBox.Text);
+        }
+
+        private void UseContainsCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            useContains = UseContainsCheckBox.Checked;
+            if (!UseContainsCheckBox.Checked)
+                SplitAttributesCheckbox.Checked = false;
+        }
+
+        private void SkipAttributeTextBox_TextChanged(object sender, EventArgs e)
+        {
+            skipAttributeString = SkipAttributeTextBox.Text;
+        }
+
+        private void MaxAttLength_TextChanged(object sender, EventArgs e)
+        {
+            maxAttLength = int.Parse(MaxAttLength.Text);
         }
     }
 }

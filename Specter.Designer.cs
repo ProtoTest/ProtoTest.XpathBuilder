@@ -1,6 +1,6 @@
 ﻿namespace ProtoTest.Specter
 {
-    partial class XpathBuilder
+    partial class Specter
     {
         /// <summary>
         /// Required designer variable.
@@ -38,10 +38,13 @@
             this.MinimumXpathsTextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.ExecuteCommandButton = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.XpathsDropdown = new System.Windows.Forms.ComboBox();
             this.ElementPanel = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.RefreshTimeTextBox = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.WebText = new System.Windows.Forms.WebBrowser();
             this.label1 = new System.Windows.Forms.Label();
             this.GetParentButton = new System.Windows.Forms.Button();
@@ -49,6 +52,10 @@
             this.XPathGeneratorMaxAttempts = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.XpathPanel = new System.Windows.Forms.Panel();
+            this.UseContainsCheckBox = new System.Windows.Forms.CheckBox();
+            this.SkipAttLabel = new System.Windows.Forms.Label();
+            this.SkipAttributeTextBox = new System.Windows.Forms.TextBox();
+            this.SplitAttributesCheckbox = new System.Windows.Forms.CheckBox();
             this.label15 = new System.Windows.Forms.Label();
             this.GoToUrlButton = new System.Windows.Forms.Button();
             this.UrlTextBox = new System.Windows.Forms.TextBox();
@@ -72,6 +79,8 @@
             this.LogTextBox = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.MaxAttLength = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.ElementPanel.SuspendLayout();
             this.XpathPanel.SuspendLayout();
             this.BrowserPanel.SuspendLayout();
@@ -103,10 +112,10 @@
             // 
             // WebDriverCommandText
             // 
-            this.WebDriverCommandText.Location = new System.Drawing.Point(902, 5);
+            this.WebDriverCommandText.Location = new System.Drawing.Point(896, 67);
             this.WebDriverCommandText.Margin = new System.Windows.Forms.Padding(2);
             this.WebDriverCommandText.Name = "WebDriverCommandText";
-            this.WebDriverCommandText.Size = new System.Drawing.Size(182, 20);
+            this.WebDriverCommandText.Size = new System.Drawing.Size(115, 20);
             this.WebDriverCommandText.TabIndex = 20;
             this.WebDriverCommandText.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -119,8 +128,8 @@
             "Click",
             "MouseOver",
             "Type",
-            "ClickOffSet"});
-            this.WebDriverCommandDropdown.Location = new System.Drawing.Point(613, 6);
+            "Count"});
+            this.WebDriverCommandDropdown.Location = new System.Drawing.Point(729, 66);
             this.WebDriverCommandDropdown.Margin = new System.Windows.Forms.Padding(2);
             this.WebDriverCommandDropdown.Name = "WebDriverCommandDropdown";
             this.WebDriverCommandDropdown.Size = new System.Drawing.Size(163, 21);
@@ -129,7 +138,7 @@
             // 
             // MinimumXpathsTextBox
             // 
-            this.MinimumXpathsTextBox.Location = new System.Drawing.Point(352, 9);
+            this.MinimumXpathsTextBox.Location = new System.Drawing.Point(190, 13);
             this.MinimumXpathsTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumXpathsTextBox.Name = "MinimumXpathsTextBox";
             this.MinimumXpathsTextBox.Size = new System.Drawing.Size(30, 20);
@@ -140,7 +149,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(300, 11);
+            this.label8.Location = new System.Drawing.Point(223, 16);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(48, 13);
@@ -150,7 +159,7 @@
             // 
             // ExecuteCommandButton
             // 
-            this.ExecuteCommandButton.Location = new System.Drawing.Point(791, 8);
+            this.ExecuteCommandButton.Location = new System.Drawing.Point(1022, 67);
             this.ExecuteCommandButton.Margin = new System.Windows.Forms.Padding(2);
             this.ExecuteCommandButton.Name = "ExecuteCommandButton";
             this.ExecuteCommandButton.Size = new System.Drawing.Size(62, 19);
@@ -159,32 +168,21 @@
             this.ExecuteCommandButton.UseVisualStyleBackColor = true;
             this.ExecuteCommandButton.Click += new System.EventHandler(this.ClickXpathButton_Click);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(4, 11);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 13);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "XPath Generator";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
-            // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(95, 8);
+            this.button3.Location = new System.Drawing.Point(55, 14);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(201, 19);
+            this.button3.Size = new System.Drawing.Size(126, 19);
             this.button3.TabIndex = 3;
-            this.button3.Text = "GenerateFromCurrentElement";
+            this.button3.Text = "GenerateXpaths";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.GenerateXpathButton_Click);
             // 
             // XpathsDropdown
             // 
             this.XpathsDropdown.FormattingEnabled = true;
-            this.XpathsDropdown.Location = new System.Drawing.Point(55, 33);
+            this.XpathsDropdown.Location = new System.Drawing.Point(55, 37);
             this.XpathsDropdown.Margin = new System.Windows.Forms.Padding(2);
             this.XpathsDropdown.MaxDropDownItems = 20;
             this.XpathsDropdown.Name = "XpathsDropdown";
@@ -196,6 +194,10 @@
             // 
             this.ElementPanel.BackColor = System.Drawing.Color.DimGray;
             this.ElementPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ElementPanel.Controls.Add(this.label4);
+            this.ElementPanel.Controls.Add(this.RefreshTimeTextBox);
+            this.ElementPanel.Controls.Add(this.button2);
+            this.ElementPanel.Controls.Add(this.button1);
             this.ElementPanel.Controls.Add(this.WebText);
             this.ElementPanel.Controls.Add(this.RegisterClickEventButton);
             this.ElementPanel.Controls.Add(this.label1);
@@ -206,6 +208,46 @@
             this.ElementPanel.Name = "ElementPanel";
             this.ElementPanel.Size = new System.Drawing.Size(1100, 165);
             this.ElementPanel.TabIndex = 5;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(381, 8);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(92, 13);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Refresh Time (ms)";
+            // 
+            // RefreshTimeTextBox
+            // 
+            this.RefreshTimeTextBox.Location = new System.Drawing.Point(334, 5);
+            this.RefreshTimeTextBox.Name = "RefreshTimeTextBox";
+            this.RefreshTimeTextBox.Size = new System.Drawing.Size(41, 20);
+            this.RefreshTimeTextBox.TabIndex = 18;
+            this.RefreshTimeTextBox.Text = "2000";
+            this.RefreshTimeTextBox.TextChanged += new System.EventHandler(this.RefreshTimeTextBox_TextChanged);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(869, 5);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(69, 19);
+            this.button2.TabIndex = 17;
+            this.button2.Text = "FindChild";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(942, 5);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(69, 19);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "FindSibling";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // WebText
             // 
@@ -241,7 +283,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(382, 11);
+            this.label13.Location = new System.Drawing.Point(319, 17);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(71, 13);
@@ -250,7 +292,7 @@
             // 
             // XPathGeneratorMaxAttempts
             // 
-            this.XPathGeneratorMaxAttempts.Location = new System.Drawing.Point(456, 8);
+            this.XPathGeneratorMaxAttempts.Location = new System.Drawing.Point(285, 14);
             this.XPathGeneratorMaxAttempts.Margin = new System.Windows.Forms.Padding(2);
             this.XPathGeneratorMaxAttempts.Name = "XPathGeneratorMaxAttempts";
             this.XPathGeneratorMaxAttempts.Size = new System.Drawing.Size(30, 20);
@@ -261,7 +303,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(510, 12);
+            this.label14.Location = new System.Drawing.Point(629, 70);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(96, 13);
@@ -273,6 +315,12 @@
             this.XpathPanel.AutoSize = true;
             this.XpathPanel.BackColor = System.Drawing.Color.DimGray;
             this.XpathPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.XpathPanel.Controls.Add(this.label9);
+            this.XpathPanel.Controls.Add(this.MaxAttLength);
+            this.XpathPanel.Controls.Add(this.UseContainsCheckBox);
+            this.XpathPanel.Controls.Add(this.SkipAttLabel);
+            this.XpathPanel.Controls.Add(this.SkipAttributeTextBox);
+            this.XpathPanel.Controls.Add(this.SplitAttributesCheckbox);
             this.XpathPanel.Controls.Add(this.label15);
             this.XpathPanel.Controls.Add(this.button3);
             this.XpathPanel.Controls.Add(this.label14);
@@ -281,20 +329,58 @@
             this.XpathPanel.Controls.Add(this.WebDriverCommandDropdown);
             this.XpathPanel.Controls.Add(this.XPathGeneratorMaxAttempts);
             this.XpathPanel.Controls.Add(this.WebDriverCommandText);
-            this.XpathPanel.Controls.Add(this.label4);
             this.XpathPanel.Controls.Add(this.label13);
             this.XpathPanel.Controls.Add(this.label8);
             this.XpathPanel.Controls.Add(this.MinimumXpathsTextBox);
             this.XpathPanel.Location = new System.Drawing.Point(2, 251);
             this.XpathPanel.Margin = new System.Windows.Forms.Padding(2);
             this.XpathPanel.Name = "XpathPanel";
-            this.XpathPanel.Size = new System.Drawing.Size(1100, 69);
+            this.XpathPanel.Size = new System.Drawing.Size(1100, 93);
             this.XpathPanel.TabIndex = 7;
+            // 
+            // UseContainsCheckBox
+            // 
+            this.UseContainsCheckBox.AutoSize = true;
+            this.UseContainsCheckBox.Location = new System.Drawing.Point(494, 16);
+            this.UseContainsCheckBox.Name = "UseContainsCheckBox";
+            this.UseContainsCheckBox.Size = new System.Drawing.Size(95, 17);
+            this.UseContainsCheckBox.TabIndex = 33;
+            this.UseContainsCheckBox.Text = "Use Contains()";
+            this.UseContainsCheckBox.UseVisualStyleBackColor = true;
+            this.UseContainsCheckBox.CheckedChanged += new System.EventHandler(this.UseContainsCheckBox_CheckedChanged);
+            // 
+            // SkipAttLabel
+            // 
+            this.SkipAttLabel.AutoSize = true;
+            this.SkipAttLabel.Location = new System.Drawing.Point(689, 17);
+            this.SkipAttLabel.Name = "SkipAttLabel";
+            this.SkipAttLabel.Size = new System.Drawing.Size(70, 13);
+            this.SkipAttLabel.TabIndex = 32;
+            this.SkipAttLabel.Text = "Skip Attribute";
+            // 
+            // SkipAttributeTextBox
+            // 
+            this.SkipAttributeTextBox.Location = new System.Drawing.Point(593, 14);
+            this.SkipAttributeTextBox.Name = "SkipAttributeTextBox";
+            this.SkipAttributeTextBox.Size = new System.Drawing.Size(90, 20);
+            this.SkipAttributeTextBox.TabIndex = 31;
+            this.SkipAttributeTextBox.TextChanged += new System.EventHandler(this.SkipAttributeTextBox_TextChanged);
+            // 
+            // SplitAttributesCheckbox
+            // 
+            this.SplitAttributesCheckbox.AutoSize = true;
+            this.SplitAttributesCheckbox.Location = new System.Drawing.Point(402, 15);
+            this.SplitAttributesCheckbox.Name = "SplitAttributesCheckbox";
+            this.SplitAttributesCheckbox.Size = new System.Drawing.Size(93, 17);
+            this.SplitAttributesCheckbox.TabIndex = 30;
+            this.SplitAttributesCheckbox.Text = "Split Attributes";
+            this.SplitAttributesCheckbox.UseVisualStyleBackColor = true;
+            this.SplitAttributesCheckbox.CheckedChanged += new System.EventHandler(this.SplitAttributesCheckbox_CheckedChanged);
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(10, 36);
+            this.label15.Location = new System.Drawing.Point(6, 21);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(35, 13);
             this.label15.TabIndex = 28;
@@ -302,7 +388,7 @@
             // 
             // GoToUrlButton
             // 
-            this.GoToUrlButton.Location = new System.Drawing.Point(390, 34);
+            this.GoToUrlButton.Location = new System.Drawing.Point(454, 34);
             this.GoToUrlButton.Margin = new System.Windows.Forms.Padding(2);
             this.GoToUrlButton.Name = "GoToUrlButton";
             this.GoToUrlButton.Size = new System.Drawing.Size(71, 19);
@@ -316,7 +402,7 @@
             this.UrlTextBox.Location = new System.Drawing.Point(56, 34);
             this.UrlTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.UrlTextBox.Name = "UrlTextBox";
-            this.UrlTextBox.Size = new System.Drawing.Size(331, 20);
+            this.UrlTextBox.Size = new System.Drawing.Size(394, 20);
             this.UrlTextBox.TabIndex = 13;
             this.UrlTextBox.TextChanged += new System.EventHandler(this.UrlTextBox_TextChanged);
             // 
@@ -346,12 +432,12 @@
             this.BrowserPanel.Location = new System.Drawing.Point(2, 10);
             this.BrowserPanel.Margin = new System.Windows.Forms.Padding(2);
             this.BrowserPanel.Name = "BrowserPanel";
-            this.BrowserPanel.Size = new System.Drawing.Size(471, 67);
+            this.BrowserPanel.Size = new System.Drawing.Size(531, 67);
             this.BrowserPanel.TabIndex = 4;
             // 
             // LaunchBrowserButton
             // 
-            this.LaunchBrowserButton.Location = new System.Drawing.Point(390, 11);
+            this.LaunchBrowserButton.Location = new System.Drawing.Point(456, 11);
             this.LaunchBrowserButton.Margin = new System.Windows.Forms.Padding(2);
             this.LaunchBrowserButton.Name = "LaunchBrowserButton";
             this.LaunchBrowserButton.Size = new System.Drawing.Size(71, 19);
@@ -375,7 +461,7 @@
             this.HostTextBox.Location = new System.Drawing.Point(256, 11);
             this.HostTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.HostTextBox.Name = "HostTextBox";
-            this.HostTextBox.Size = new System.Drawing.Size(130, 20);
+            this.HostTextBox.Size = new System.Drawing.Size(194, 20);
             this.HostTextBox.TabIndex = 9;
             this.HostTextBox.Text = "localhost";
             this.HostTextBox.TextChanged += new System.EventHandler(this.HostTextBox_TextChanged);
@@ -419,17 +505,17 @@
             this.JavascriptPanel.Controls.Add(this.label7);
             this.JavascriptPanel.Controls.Add(this.JavscriptTextBox);
             this.JavascriptPanel.Controls.Add(this.HidePanelButton);
-            this.JavascriptPanel.Location = new System.Drawing.Point(477, 10);
+            this.JavascriptPanel.Location = new System.Drawing.Point(535, 10);
             this.JavascriptPanel.Margin = new System.Windows.Forms.Padding(2);
             this.JavascriptPanel.Name = "JavascriptPanel";
-            this.JavascriptPanel.Size = new System.Drawing.Size(625, 67);
+            this.JavascriptPanel.Size = new System.Drawing.Size(567, 67);
             this.JavascriptPanel.TabIndex = 8;
             this.JavascriptPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint_1);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(5, 37);
+            this.label11.Location = new System.Drawing.Point(58, 39);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(97, 13);
@@ -438,7 +524,7 @@
             // 
             // DisableOnClickButton
             // 
-            this.DisableOnClickButton.Location = new System.Drawing.Point(107, 35);
+            this.DisableOnClickButton.Location = new System.Drawing.Point(160, 37);
             this.DisableOnClickButton.Margin = new System.Windows.Forms.Padding(2);
             this.DisableOnClickButton.Name = "DisableOnClickButton";
             this.DisableOnClickButton.Size = new System.Drawing.Size(88, 19);
@@ -449,7 +535,7 @@
             // 
             // DisableMouseOverButton
             // 
-            this.DisableMouseOverButton.Location = new System.Drawing.Point(208, 35);
+            this.DisableMouseOverButton.Location = new System.Drawing.Point(261, 37);
             this.DisableMouseOverButton.Margin = new System.Windows.Forms.Padding(2);
             this.DisableMouseOverButton.Name = "DisableMouseOverButton";
             this.DisableMouseOverButton.Size = new System.Drawing.Size(107, 19);
@@ -460,7 +546,7 @@
             // 
             // ExecuteJS
             // 
-            this.ExecuteJS.Location = new System.Drawing.Point(539, 12);
+            this.ExecuteJS.Location = new System.Drawing.Point(493, 10);
             this.ExecuteJS.Margin = new System.Windows.Forms.Padding(2);
             this.ExecuteJS.Name = "ExecuteJS";
             this.ExecuteJS.Size = new System.Drawing.Size(70, 19);
@@ -472,7 +558,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(2, 10);
+            this.label7.Location = new System.Drawing.Point(2, 13);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(55, 13);
@@ -481,15 +567,15 @@
             // 
             // JavscriptTextBox
             // 
-            this.JavscriptTextBox.Location = new System.Drawing.Point(64, 10);
+            this.JavscriptTextBox.Location = new System.Drawing.Point(61, 8);
             this.JavscriptTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.JavscriptTextBox.Name = "JavscriptTextBox";
-            this.JavscriptTextBox.Size = new System.Drawing.Size(471, 20);
+            this.JavscriptTextBox.Size = new System.Drawing.Size(428, 20);
             this.JavscriptTextBox.TabIndex = 1;
             // 
             // HidePanelButton
             // 
-            this.HidePanelButton.Location = new System.Drawing.Point(324, 35);
+            this.HidePanelButton.Location = new System.Drawing.Point(377, 37);
             this.HidePanelButton.Margin = new System.Windows.Forms.Padding(2);
             this.HidePanelButton.Name = "HidePanelButton";
             this.HidePanelButton.Size = new System.Drawing.Size(109, 19);
@@ -505,7 +591,7 @@
             this.LogPanel.Controls.Add(this.ClearLogButton);
             this.LogPanel.Controls.Add(this.LogTextBox);
             this.LogPanel.Controls.Add(this.label5);
-            this.LogPanel.Location = new System.Drawing.Point(2, 324);
+            this.LogPanel.Location = new System.Drawing.Point(2, 348);
             this.LogPanel.Margin = new System.Windows.Forms.Padding(2);
             this.LogPanel.Name = "LogPanel";
             this.LogPanel.Size = new System.Drawing.Size(1100, 207);
@@ -548,23 +634,41 @@
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
             // 
-            // XpathBuilder
+            // MaxAttLength
+            // 
+            this.MaxAttLength.Location = new System.Drawing.Point(765, 13);
+            this.MaxAttLength.Name = "MaxAttLength";
+            this.MaxAttLength.Size = new System.Drawing.Size(33, 20);
+            this.MaxAttLength.TabIndex = 20;
+            this.MaxAttLength.Text = "50";
+            this.MaxAttLength.TextChanged += new System.EventHandler(this.MaxAttLength_TextChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(804, 17);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(87, 13);
+            this.label9.TabIndex = 34;
+            this.label9.Text = "Max string length";
+            // 
+            // Specter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1113, 533);
+            this.ClientSize = new System.Drawing.Size(1113, 604);
             this.Controls.Add(this.JavascriptPanel);
             this.Controls.Add(this.BrowserPanel);
             this.Controls.Add(this.LogPanel);
             this.Controls.Add(this.XpathPanel);
             this.Controls.Add(this.ElementPanel);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "XpathBuilder";
+            this.Name = "Specter";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "ProtoTest.Specter";
-            this.Load += new System.EventHandler(this.XpathBuilder_Load);
+            this.Load += new System.EventHandler(this.Specter_Load);
             this.ElementPanel.ResumeLayout(false);
             this.ElementPanel.PerformLayout();
             this.XpathPanel.ResumeLayout(false);
@@ -588,7 +692,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button ExecuteCommandButton;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox XpathsDropdown;
         private System.Windows.Forms.Button RegisterClickEventButton;
         private System.Windows.Forms.Button GetParentButton;
@@ -625,6 +728,16 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox UseContainsCheckBox;
+        private System.Windows.Forms.Label SkipAttLabel;
+        private System.Windows.Forms.TextBox SkipAttributeTextBox;
+        private System.Windows.Forms.CheckBox SplitAttributesCheckbox;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox RefreshTimeTextBox;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox MaxAttLength;
     }
 }
 
