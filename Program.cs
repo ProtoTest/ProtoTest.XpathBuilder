@@ -11,23 +11,8 @@ namespace ProtoTest.Specter
 {
     public static class Program
     {
-        public static Specter builder;
+        public static Specter specter;
         private static BackgroundWorker worker;
-        public static void StartTimer()
-        {
-            Timer t = new Timer();
-            t.Tick += delegate
-            {
-                builder.UpdateElement();
-                t.Interval = Specter.refreshMs;
-            };
-            t.Start();
-
-        }
-
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
@@ -35,34 +20,40 @@ namespace ProtoTest.Specter
             worker.DoWork += worker_DoWork;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            builder = new Specter();
-            builder.FormClosed += builder_FormClosed;
-            StartTimer();
-            Application.Run(builder);
+            specter = new Specter();
+            specter.FormClosed += SpecterFormClosed;
+            worker.WorkerSupportsCancellation = true;
             worker.RunWorkerAsync();
+            Application.Run(specter);
         }
 
-        static void builder_FormClosed(object sender, FormClosedEventArgs e)
+        static void SpecterFormClosed(object sender, FormClosedEventArgs e)
         {
-            builder.driver.Close();
+            worker.CancelAsync();
+            specter.driver.Close();
         }
 
         static void worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            while (true)
+            var backgroundWorker = sender as BackgroundWorker;
+
+            while (!backgroundWorker.CancellationPending)
             {
-                builder.UpdateElement();
-                Thread.Sleep(2000);
+                if (Specter.updateElement)
+                {
+                    specter.UpdateElement();
+                    Thread.Sleep(Specter.refreshMs);
+                }
             }
         }
 
         public static void Error(string message)
         {
-            builder.Error(message);
+            specter.Error(message);
         }
         public static void Log(string message)
         {
-            builder.Log(message);
+            specter.Log(message);
         }
     }
 }

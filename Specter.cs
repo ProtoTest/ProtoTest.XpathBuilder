@@ -27,7 +27,7 @@ namespace ProtoTest.Specter
         public IWebElement element;
         public string urlString;
         public string browserString;
-        public string hostString;
+        public string hostString = "localhost";
         public string elementLocator;
         public string currentXpath;
         public List<string> xpaths;
@@ -40,8 +40,14 @@ namespace ProtoTest.Specter
         public static string skipAttributeString = "";
         public static int refreshMs = 2000;
         public static int maxAttLength = 50;
-        public static bool useDoubleQuotes = false;
+        public static bool useDoubleQuotes = true;
         public static bool useText = false;
+        public static bool updateElement = false;
+        public static bool checkSelf = true;
+        public static bool checkAncestors = true;
+        public static bool checkChildren = true;
+        public static bool checkCousins = true;
+        public static bool checkSiblings = true;
  
         public Specter()
         {
@@ -92,57 +98,84 @@ namespace ProtoTest.Specter
             UpdateLog(message);
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void BrowserDropdown_SelectedIndexChanged(object sender, EventArgs e)
         {
 
             browserString = (string)BrowserDropdown.SelectedItem;
-            Log("Set browser to " + browserString);
+        }
+
+        private void LaunchRemoteBrowser()
+        {
+            Log("Launching " + browserString + " browser on host : " + hostString);
+            DesiredCapabilities capabilities;
+            string port = "4444";
+            switch (browserString)
+            {
+                case "Firefox":
+                    capabilities = DesiredCapabilities.Firefox();
+                    break;
+                case "IE":
+                    capabilities = DesiredCapabilities.InternetExplorer();
+                    break;
+                case "Chrome":
+                    capabilities = DesiredCapabilities.Chrome();
+                    break;
+                case "Safari":
+                    capabilities = DesiredCapabilities.Safari();
+                    break;
+                case "Android":
+                    capabilities = DesiredCapabilities.Android();
+                    port = "8080";
+                    break;
+                default:
+                    capabilities = DesiredCapabilities.Firefox();
+                    break;
+            }
+            var remoteAddress = new Uri(string.Format("http://{0}:{1}/wd/hub", hostString, port));
+            driver = new RemoteWebDriver(remoteAddress, capabilities);
+        }
+
+        private void LaunchLocalBrowser()
+        {
+            Log("Launching " + browserString);
+            switch (browserString)
+            {
+                case "Firefox":
+                    driver = new FirefoxDriver();
+                    break;
+                case "IE":
+                    driver = new InternetExplorerDriver();
+                    break;
+                case "Chrome":
+                    driver = new ChromeDriver();
+                    break;
+                case "Safari":
+                    driver = new SafariDriver();
+                    break;
+                case "Android":
+                    Error("Cannot launch android on localhost, please set to ip of phone");
+                    break;
+                default:
+                    driver = new FirefoxDriver();
+                    break;
+            }
+        }
+        private void LauncHBrowser(object sender, DoWorkEventArgs e)
+        {
+            if(hostString=="localhost")
+                LaunchLocalBrowser();
+            else
+                LaunchRemoteBrowser();
+            
         }
 
         private void LaunchBrowserButton_Click(object sender, EventArgs e)
         {
             try
             {
-                Log("Launching browser : " + browserString);
-                switch (browserString)
-                {
-                    case "Firefox":
-                        driver = new FirefoxDriver();
-                        break;
-                    case "IE":
-                        driver = new InternetExplorerDriver();
-                        break;
-                    case "Chrome":
-                        driver = new ChromeDriver();
-                        break;
-                    case "Safari":
-                        driver = new SafariDriver();
-                        break;
-                    case "Android":
-                        Log("Launching android browser on host : " + hostString);
-                        DesiredCapabilities capabilities = DesiredCapabilities.Android();
-                        var remoteAddress = new Uri("http://" + hostString + ":8080/wd/hub");
-                        driver = new RemoteWebDriver(remoteAddress, capabilities);
-                        break;
-                    default:
-                        driver = new FirefoxDriver();
-                        break;
-                }
+                BackgroundWorker bw = new BackgroundWorker();
+                bw.DoWork +=LauncHBrowser;
+                bw.RunWorkerAsync();
             }
             catch (Exception err)
             {
@@ -150,6 +183,8 @@ namespace ProtoTest.Specter
             }
        
         }
+
+ 
 
         private void HighlightElementButton_Click(object sender, EventArgs e)
         {
@@ -163,28 +198,47 @@ namespace ProtoTest.Specter
             }
         }
 
+        private void UpdateXpaths(List<string> xpaths)
+        {
+            XpathsDropdown.Items.Clear();
+            foreach (var xpath in xpaths)
+            {
+                XpathsDropdown.Items.Add(xpath);
+            }
+            if (XpathsDropdown.Items.Count > 0)
+                XpathsDropdown.SelectedIndex = 0;
+        }
+
+
         private void GenerateXpathButton_Click(object sender, EventArgs e)
         {
             try
             {
-                
-                Log(string.Format("Tryng to Generate {0} xpaths. Max attempts : {1}",minimumXpaths,maximumXpathAttempts));
+                Log(string.Format("Tryng to Generate {0} xpaths. Max attempts : {1}", minimumXpaths, maximumXpathAttempts));
                 XpathsDropdown.Items.Clear();
-                var creater = new XpathCreater(element);
-                var xpaths = creater.uniqueXpaths;
-                foreach (var xpath in xpaths)
-                {
-                    XpathsDropdown.Items.Add(xpath);
-                }
-                Log("Xpath Generation Complete, found " + xpaths.Count + " unique xpath expressions");
-                if(XpathsDropdown.Items.Count>0)
-                    XpathsDropdown.SelectedIndex = 0;
                 
+                var xpathGetter = new BackgroundWorker();
+                xpathGetter.DoWork += xpathGetter_DoWork;
+                xpathGetter.RunWorkerAsync();
+                
+               
             }
             catch (Exception err)
             {
                 Error("Could not generate xpath for element " + err.Message );
             }
+        }
+
+        void xpathGetter_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var creater = new XpathCreater(element);
+            Log("Xpath Generation Complete, found " + creater.uniqueXpaths.Count + " unique xpath expressions");
+            if (XpathsDropdown.InvokeRequired)
+            {
+                XpathsDropdown.Invoke(new Action<List<string>>(UpdateXpaths), creater.uniqueXpaths);
+                return;
+            }
+            UpdateXpaths(creater.uniqueXpaths);
         }
 
         private void label1_Click_1(object sender, EventArgs e)
@@ -328,17 +382,24 @@ namespace ProtoTest.Specter
 
         private void GoToUrlButton_Click(object sender, EventArgs e)
         {
-        try 
-	    {	        
-		if(!urlString.Contains("http"))
-                urlString = "http://" + urlString;
-            driver.Navigate().GoToUrl(urlString);
+        try
+        {
+            var bw = new BackgroundWorker();
+            bw.DoWork += bw_DoWork;
+	        bw.RunWorkerAsync();
 	    }
 	    catch (Exception err)
 	    {
 		    Error("Could not navigate to url : " + urlString + err.Message);
 	    }
             
+        }
+
+        void bw_DoWork(object sender, DoWorkEventArgs e)
+        {
+            if (!urlString.Contains("http"))
+                urlString = "http://" + urlString;
+            driver.Navigate().GoToUrl(urlString);
         }
 
         //public int FindMyText(string txtToSearch, int searchStart, int searchEnd)
@@ -395,6 +456,7 @@ namespace ProtoTest.Specter
         {
             try
             {
+                Specter.updateElement = true;
                 driver.RegisterClickEvent();
                 driver.RegisterHighlightOnMouseOver();
             }
@@ -454,7 +516,7 @@ namespace ProtoTest.Specter
         {
             try
             {
-
+                Specter.updateElement = true;
                 driver.RegisterRightClickEvent();
                 driver.RegisterHighlightOnMouseOver();
             }
@@ -663,7 +725,7 @@ namespace ProtoTest.Specter
                 if (element == null)
                 {
                     WebText.DocumentText = "";
-                } 
+                }
                 else if (element.IsStale())
                 {
                     WebText.DocumentText = "";
@@ -678,7 +740,7 @@ namespace ProtoTest.Specter
             }
             catch (Exception err)
             {
-                Error("Exception caught looking for element, : " + err.Message);
+                //Error("Exception caught looking for element, : " + err.Message);
             }
         }
 
@@ -708,14 +770,31 @@ namespace ProtoTest.Specter
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //find child
-            SelectElement(element.GetChild());
+            try
+            {
+                var sibling = element.GetChild();
+                SelectElement(sibling);
+            }
+            catch (Exception)
+            {
+                Error("Element did not have a child");
+            }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //find sibling
-            SelectElement(element.GetSibling());
+            try
+            {
+                var sibling = element.GetSibling();
+                SelectElement(sibling);
+            }
+            catch (Exception)
+            {
+                Error("Element did not have a sibling");
+            }
+            
+           
 
         }
 
@@ -756,6 +835,31 @@ namespace ProtoTest.Specter
         private void UseTextCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             useText = UseTextCheckbox.Checked;
+        }
+
+        private void CheckSelfCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            checkSelf = CheckSelfCheckbox.Checked;
+        }
+
+        private void CheckAncestorsCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            checkAncestors = CheckAncestorsCheckbox.Checked;
+        }
+
+        private void CheckSiblingsCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            checkSiblings = CheckSiblingsCheckbox.Checked;
+        }
+
+        private void CheckChildrenCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            checkChildren = CheckSiblingsCheckbox.Checked;
+        }
+
+        private void CheckCousinsCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            checkCousins = CheckCousinsCheckbox.Checked;
         }
     }
 }

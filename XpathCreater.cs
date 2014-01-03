@@ -45,6 +45,7 @@ namespace ProtoTest.Specter
         
         public XpathCreater(IWebElement element)
         {
+            Specter.updateElement = false;
             this.element = element;
             source = driver.PageSource;
             attributes = new AttributeBuilder(element).attributes;
@@ -54,6 +55,7 @@ namespace ProtoTest.Specter
             elementUniqueXpaths= new List<string>();
             elementDuplicateXpaths= new List<string>();
             GetXpaths();
+            Specter.updateElement = true;
         }
 
         public void CheckXpath()
@@ -74,7 +76,7 @@ namespace ProtoTest.Specter
                 duplicateXpaths.Add(xpath);
             }
 
-            Program.builder.Log(string.Format("({0}) Xpath {1} had {2} elements", currentXpathAttempts, xpath, count));
+            Program.specter.Log(string.Format("({0}) Xpath {1} had {2} elements", currentXpathAttempts, xpath, count));
         }
 
         public int TryGetXpathCount()
@@ -263,16 +265,32 @@ namespace ProtoTest.Specter
             {
                 return;
             }
-            Program.builder.Log("Checking Self");
-            if (CheckSelf()) return;
-            Program.builder.Log("Did not find enough Xpaths. trying ancestor xpaths");
-            if (CheckAncestors()) return;
-            Program.builder.Log("Still can't find a unique xpath, trying siblings");
-            if (CheckSiblings()) return;
-            Program.builder.Log("Still can't find a unique xpath, trying children");
-            if (CheckChildren()) return;
-            Program.builder.Log("Still can't find a unique xpath, trying all relatives");
-            if (CheckRelatives()) return;
+            if (Specter.checkSelf)
+            {
+                Program.specter.Log("Checking Self");
+                if (CheckSelf()) return;
+            }
+            if (Specter.checkAncestors)
+            {
+                Program.specter.Log("Checking Ancestors");
+                if (CheckAncestors()) return;
+            }
+            if (Specter.checkSiblings)
+            {
+                Program.specter.Log("Checking Siblings");
+                if (CheckSiblings()) return;
+            }
+            if (Specter.checkChildren)
+            {
+                Program.specter.Log("Checking Children");
+                if (CheckChildren()) return;
+            } if (Specter.checkCousins)
+            {
+                Program.specter.Log("Checking Cousins");
+                if (CheckRelatives()) return;
+            }
+           
+            
 
         }
 

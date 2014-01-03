@@ -52,6 +52,8 @@
             this.XPathGeneratorMaxAttempts = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.XpathPanel = new System.Windows.Forms.Panel();
+            this.UseQuotesCheckbox = new System.Windows.Forms.CheckBox();
+            this.UseTextCheckbox = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
             this.MaxAttLength = new System.Windows.Forms.TextBox();
             this.UseContainsCheckBox = new System.Windows.Forms.CheckBox();
@@ -81,8 +83,11 @@
             this.LogTextBox = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.UseTextCheckbox = new System.Windows.Forms.CheckBox();
-            this.UseQuotesCheckbox = new System.Windows.Forms.CheckBox();
+            this.CheckSelfCheckbox = new System.Windows.Forms.CheckBox();
+            this.CheckAncestorsCheckbox = new System.Windows.Forms.CheckBox();
+            this.CheckSiblingsCheckbox = new System.Windows.Forms.CheckBox();
+            this.CheckChildrenCheckbox = new System.Windows.Forms.CheckBox();
+            this.CheckCousinsCheckbox = new System.Windows.Forms.CheckBox();
             this.ElementPanel.SuspendLayout();
             this.XpathPanel.SuspendLayout();
             this.BrowserPanel.SuspendLayout();
@@ -317,9 +322,14 @@
             this.XpathPanel.AutoSize = true;
             this.XpathPanel.BackColor = System.Drawing.Color.DimGray;
             this.XpathPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.XpathPanel.Controls.Add(this.CheckCousinsCheckbox);
+            this.XpathPanel.Controls.Add(this.CheckChildrenCheckbox);
             this.XpathPanel.Controls.Add(this.UseQuotesCheckbox);
+            this.XpathPanel.Controls.Add(this.CheckSiblingsCheckbox);
             this.XpathPanel.Controls.Add(this.UseTextCheckbox);
+            this.XpathPanel.Controls.Add(this.CheckAncestorsCheckbox);
             this.XpathPanel.Controls.Add(this.label9);
+            this.XpathPanel.Controls.Add(this.CheckSelfCheckbox);
             this.XpathPanel.Controls.Add(this.MaxAttLength);
             this.XpathPanel.Controls.Add(this.UseContainsCheckBox);
             this.XpathPanel.Controls.Add(this.SkipAttLabel);
@@ -341,6 +351,30 @@
             this.XpathPanel.Name = "XpathPanel";
             this.XpathPanel.Size = new System.Drawing.Size(1100, 93);
             this.XpathPanel.TabIndex = 7;
+            // 
+            // UseQuotesCheckbox
+            // 
+            this.UseQuotesCheckbox.AutoSize = true;
+            this.UseQuotesCheckbox.Checked = true;
+            this.UseQuotesCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.UseQuotesCheckbox.Location = new System.Drawing.Point(976, 14);
+            this.UseQuotesCheckbox.Name = "UseQuotesCheckbox";
+            this.UseQuotesCheckbox.Size = new System.Drawing.Size(119, 17);
+            this.UseQuotesCheckbox.TabIndex = 36;
+            this.UseQuotesCheckbox.Text = "Use Double Quotes";
+            this.UseQuotesCheckbox.UseVisualStyleBackColor = true;
+            this.UseQuotesCheckbox.CheckedChanged += new System.EventHandler(this.UseQuotesCheckbox_CheckedChanged);
+            // 
+            // UseTextCheckbox
+            // 
+            this.UseTextCheckbox.AutoSize = true;
+            this.UseTextCheckbox.Location = new System.Drawing.Point(898, 15);
+            this.UseTextCheckbox.Name = "UseTextCheckbox";
+            this.UseTextCheckbox.Size = new System.Drawing.Size(71, 17);
+            this.UseTextCheckbox.TabIndex = 35;
+            this.UseTextCheckbox.Text = "Use text()";
+            this.UseTextCheckbox.UseVisualStyleBackColor = true;
+            this.UseTextCheckbox.CheckedChanged += new System.EventHandler(this.UseTextCheckbox_CheckedChanged);
             // 
             // label9
             // 
@@ -660,27 +694,70 @@
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
             // 
-            // UseTextCheckbox
+            // CheckSelfCheckbox
             // 
-            this.UseTextCheckbox.AutoSize = true;
-            this.UseTextCheckbox.Location = new System.Drawing.Point(898, 15);
-            this.UseTextCheckbox.Name = "UseTextCheckbox";
-            this.UseTextCheckbox.Size = new System.Drawing.Size(71, 17);
-            this.UseTextCheckbox.TabIndex = 35;
-            this.UseTextCheckbox.Text = "Use text()";
-            this.UseTextCheckbox.UseVisualStyleBackColor = true;
-            this.UseTextCheckbox.CheckedChanged += new System.EventHandler(this.UseTextCheckbox_CheckedChanged);
+            this.CheckSelfCheckbox.AutoSize = true;
+            this.CheckSelfCheckbox.Checked = true;
+            this.CheckSelfCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckSelfCheckbox.Location = new System.Drawing.Point(56, 67);
+            this.CheckSelfCheckbox.Name = "CheckSelfCheckbox";
+            this.CheckSelfCheckbox.Size = new System.Drawing.Size(44, 17);
+            this.CheckSelfCheckbox.TabIndex = 20;
+            this.CheckSelfCheckbox.Text = "Self";
+            this.CheckSelfCheckbox.UseVisualStyleBackColor = true;
+            this.CheckSelfCheckbox.CheckedChanged += new System.EventHandler(this.CheckSelfCheckbox_CheckedChanged);
             // 
-            // UseQuotesCheckbox
+            // CheckAncestorsCheckbox
             // 
-            this.UseQuotesCheckbox.AutoSize = true;
-            this.UseQuotesCheckbox.Location = new System.Drawing.Point(976, 14);
-            this.UseQuotesCheckbox.Name = "UseQuotesCheckbox";
-            this.UseQuotesCheckbox.Size = new System.Drawing.Size(119, 17);
-            this.UseQuotesCheckbox.TabIndex = 36;
-            this.UseQuotesCheckbox.Text = "Use Double Quotes";
-            this.UseQuotesCheckbox.UseVisualStyleBackColor = true;
-            this.UseQuotesCheckbox.CheckedChanged += new System.EventHandler(this.UseQuotesCheckbox_CheckedChanged);
+            this.CheckAncestorsCheckbox.AutoSize = true;
+            this.CheckAncestorsCheckbox.Checked = true;
+            this.CheckAncestorsCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckAncestorsCheckbox.Location = new System.Drawing.Point(106, 67);
+            this.CheckAncestorsCheckbox.Name = "CheckAncestorsCheckbox";
+            this.CheckAncestorsCheckbox.Size = new System.Drawing.Size(73, 17);
+            this.CheckAncestorsCheckbox.TabIndex = 21;
+            this.CheckAncestorsCheckbox.Text = "Ancestors";
+            this.CheckAncestorsCheckbox.UseVisualStyleBackColor = true;
+            this.CheckAncestorsCheckbox.CheckedChanged += new System.EventHandler(this.CheckAncestorsCheckbox_CheckedChanged);
+            // 
+            // CheckSiblingsCheckbox
+            // 
+            this.CheckSiblingsCheckbox.AutoSize = true;
+            this.CheckSiblingsCheckbox.Checked = true;
+            this.CheckSiblingsCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckSiblingsCheckbox.Location = new System.Drawing.Point(183, 67);
+            this.CheckSiblingsCheckbox.Name = "CheckSiblingsCheckbox";
+            this.CheckSiblingsCheckbox.Size = new System.Drawing.Size(62, 17);
+            this.CheckSiblingsCheckbox.TabIndex = 22;
+            this.CheckSiblingsCheckbox.Text = "Siblings";
+            this.CheckSiblingsCheckbox.UseVisualStyleBackColor = true;
+            this.CheckSiblingsCheckbox.CheckedChanged += new System.EventHandler(this.CheckSiblingsCheckbox_CheckedChanged);
+            // 
+            // CheckChildrenCheckbox
+            // 
+            this.CheckChildrenCheckbox.AutoSize = true;
+            this.CheckChildrenCheckbox.Checked = true;
+            this.CheckChildrenCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckChildrenCheckbox.Location = new System.Drawing.Point(251, 67);
+            this.CheckChildrenCheckbox.Name = "CheckChildrenCheckbox";
+            this.CheckChildrenCheckbox.Size = new System.Drawing.Size(64, 17);
+            this.CheckChildrenCheckbox.TabIndex = 23;
+            this.CheckChildrenCheckbox.Text = "Children";
+            this.CheckChildrenCheckbox.UseVisualStyleBackColor = true;
+            this.CheckChildrenCheckbox.CheckedChanged += new System.EventHandler(this.CheckChildrenCheckbox_CheckedChanged);
+            // 
+            // CheckCousinsCheckbox
+            // 
+            this.CheckCousinsCheckbox.AutoSize = true;
+            this.CheckCousinsCheckbox.Checked = true;
+            this.CheckCousinsCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckCousinsCheckbox.Location = new System.Drawing.Point(321, 67);
+            this.CheckCousinsCheckbox.Name = "CheckCousinsCheckbox";
+            this.CheckCousinsCheckbox.Size = new System.Drawing.Size(63, 17);
+            this.CheckCousinsCheckbox.TabIndex = 37;
+            this.CheckCousinsCheckbox.Text = "Cousins";
+            this.CheckCousinsCheckbox.UseVisualStyleBackColor = true;
+            this.CheckCousinsCheckbox.CheckedChanged += new System.EventHandler(this.CheckCousinsCheckbox_CheckedChanged);
             // 
             // Specter
             // 
@@ -770,6 +847,11 @@
         private System.Windows.Forms.TextBox MaxAttLength;
         private System.Windows.Forms.CheckBox UseQuotesCheckbox;
         private System.Windows.Forms.CheckBox UseTextCheckbox;
+        private System.Windows.Forms.CheckBox CheckCousinsCheckbox;
+        private System.Windows.Forms.CheckBox CheckChildrenCheckbox;
+        private System.Windows.Forms.CheckBox CheckSiblingsCheckbox;
+        private System.Windows.Forms.CheckBox CheckAncestorsCheckbox;
+        private System.Windows.Forms.CheckBox CheckSelfCheckbox;
     }
 }
 

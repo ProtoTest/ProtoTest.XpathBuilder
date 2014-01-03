@@ -69,8 +69,8 @@ namespace ProtoTest.Specter
                     break;
                 case "Count":
                     IWebDriver driver = ((IWrapsDriver)element).WrappedDriver;
-                    var elements = driver.FindElements(By.XPath(Program.builder.currentXpath));
-                    Program.Log(string.Format("Found {0} elements with xpath {1}", elements.Count, Program.builder.currentXpath));
+                    var elements = driver.FindElements(By.XPath(Program.specter.currentXpath));
+                    Program.Log(string.Format("Found {0} elements with xpath {1}", elements.Count, Program.specter.currentXpath));
                     break;
                 default:
                     element.Flash();
