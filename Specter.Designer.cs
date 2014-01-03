@@ -52,6 +52,8 @@
             this.XPathGeneratorMaxAttempts = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.XpathPanel = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.MaxAttLength = new System.Windows.Forms.TextBox();
             this.UseContainsCheckBox = new System.Windows.Forms.CheckBox();
             this.SkipAttLabel = new System.Windows.Forms.Label();
             this.SkipAttributeTextBox = new System.Windows.Forms.TextBox();
@@ -79,8 +81,8 @@
             this.LogTextBox = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.MaxAttLength = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.UseTextCheckbox = new System.Windows.Forms.CheckBox();
+            this.UseQuotesCheckbox = new System.Windows.Forms.CheckBox();
             this.ElementPanel.SuspendLayout();
             this.XpathPanel.SuspendLayout();
             this.BrowserPanel.SuspendLayout();
@@ -315,6 +317,8 @@
             this.XpathPanel.AutoSize = true;
             this.XpathPanel.BackColor = System.Drawing.Color.DimGray;
             this.XpathPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.XpathPanel.Controls.Add(this.UseQuotesCheckbox);
+            this.XpathPanel.Controls.Add(this.UseTextCheckbox);
             this.XpathPanel.Controls.Add(this.label9);
             this.XpathPanel.Controls.Add(this.MaxAttLength);
             this.XpathPanel.Controls.Add(this.UseContainsCheckBox);
@@ -338,9 +342,29 @@
             this.XpathPanel.Size = new System.Drawing.Size(1100, 93);
             this.XpathPanel.TabIndex = 7;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(804, 17);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(87, 13);
+            this.label9.TabIndex = 34;
+            this.label9.Text = "Max string length";
+            // 
+            // MaxAttLength
+            // 
+            this.MaxAttLength.Location = new System.Drawing.Point(765, 13);
+            this.MaxAttLength.Name = "MaxAttLength";
+            this.MaxAttLength.Size = new System.Drawing.Size(33, 20);
+            this.MaxAttLength.TabIndex = 20;
+            this.MaxAttLength.Text = "50";
+            this.MaxAttLength.TextChanged += new System.EventHandler(this.MaxAttLength_TextChanged);
+            // 
             // UseContainsCheckBox
             // 
             this.UseContainsCheckBox.AutoSize = true;
+            this.UseContainsCheckBox.Checked = true;
+            this.UseContainsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.UseContainsCheckBox.Location = new System.Drawing.Point(494, 16);
             this.UseContainsCheckBox.Name = "UseContainsCheckBox";
             this.UseContainsCheckBox.Size = new System.Drawing.Size(95, 17);
@@ -369,6 +393,8 @@
             // SplitAttributesCheckbox
             // 
             this.SplitAttributesCheckbox.AutoSize = true;
+            this.SplitAttributesCheckbox.Checked = true;
+            this.SplitAttributesCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.SplitAttributesCheckbox.Location = new System.Drawing.Point(402, 15);
             this.SplitAttributesCheckbox.Name = "SplitAttributesCheckbox";
             this.SplitAttributesCheckbox.Size = new System.Drawing.Size(93, 17);
@@ -634,23 +660,27 @@
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
             // 
-            // MaxAttLength
+            // UseTextCheckbox
             // 
-            this.MaxAttLength.Location = new System.Drawing.Point(765, 13);
-            this.MaxAttLength.Name = "MaxAttLength";
-            this.MaxAttLength.Size = new System.Drawing.Size(33, 20);
-            this.MaxAttLength.TabIndex = 20;
-            this.MaxAttLength.Text = "50";
-            this.MaxAttLength.TextChanged += new System.EventHandler(this.MaxAttLength_TextChanged);
+            this.UseTextCheckbox.AutoSize = true;
+            this.UseTextCheckbox.Location = new System.Drawing.Point(898, 15);
+            this.UseTextCheckbox.Name = "UseTextCheckbox";
+            this.UseTextCheckbox.Size = new System.Drawing.Size(71, 17);
+            this.UseTextCheckbox.TabIndex = 35;
+            this.UseTextCheckbox.Text = "Use text()";
+            this.UseTextCheckbox.UseVisualStyleBackColor = true;
+            this.UseTextCheckbox.CheckedChanged += new System.EventHandler(this.UseTextCheckbox_CheckedChanged);
             // 
-            // label9
+            // UseQuotesCheckbox
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(804, 17);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(87, 13);
-            this.label9.TabIndex = 34;
-            this.label9.Text = "Max string length";
+            this.UseQuotesCheckbox.AutoSize = true;
+            this.UseQuotesCheckbox.Location = new System.Drawing.Point(976, 14);
+            this.UseQuotesCheckbox.Name = "UseQuotesCheckbox";
+            this.UseQuotesCheckbox.Size = new System.Drawing.Size(119, 17);
+            this.UseQuotesCheckbox.TabIndex = 36;
+            this.UseQuotesCheckbox.Text = "Use Double Quotes";
+            this.UseQuotesCheckbox.UseVisualStyleBackColor = true;
+            this.UseQuotesCheckbox.CheckedChanged += new System.EventHandler(this.UseQuotesCheckbox_CheckedChanged);
             // 
             // Specter
             // 
@@ -738,6 +768,8 @@
         private System.Windows.Forms.TextBox RefreshTimeTextBox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox MaxAttLength;
+        private System.Windows.Forms.CheckBox UseQuotesCheckbox;
+        private System.Windows.Forms.CheckBox UseTextCheckbox;
     }
 }
 

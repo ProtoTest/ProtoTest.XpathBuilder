@@ -37,9 +37,11 @@ namespace ProtoTest.Specter
         public static int maximumXpathAttempts = 100;
         public static bool splitAttributes = true;
         public static bool useContains = true;
-        public static string skipAttributeString = " ";
+        public static string skipAttributeString = "";
         public static int refreshMs = 2000;
         public static int maxAttLength = 50;
+        public static bool useDoubleQuotes = false;
+        public static bool useText = false;
  
         public Specter()
         {
@@ -744,6 +746,16 @@ namespace ProtoTest.Specter
         private void MaxAttLength_TextChanged(object sender, EventArgs e)
         {
             maxAttLength = int.Parse(MaxAttLength.Text);
+        }
+
+        private void UseQuotesCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            useDoubleQuotes = UseQuotesCheckbox.Checked;
+        }
+
+        private void UseTextCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            useText = UseTextCheckbox.Checked;
         }
     }
 }

@@ -17,10 +17,19 @@ namespace ProtoTest.Specter
         {
             get
             {
-                return Specter.useContains ? "//{0}[contains({1},\"{2}\")]" : "//{0}[{1}=\"{2}\"]";
+                return Specter.useContains ? "//{0}[contains({1}," + quotesString + "{2}" + quotesString + ")]" : "//{0}[{1}=" + quotesString + "{2}" + quotesString + "]";
                 
             }
         }
+        public string quotesString
+        {
+            get
+            {
+                return Specter.useDoubleQuotes ? "\"" : "'";
+
+            }
+        }
+        public static int searchDepth = 20;
         public string source;
         public List<Attribute> attributes;
         public List<string> invalidXpaths;
@@ -110,31 +119,30 @@ namespace ProtoTest.Specter
             return false;
         }
 
-        public bool CheckParent()
-        {
-            var parent = element.GetParent();
-            List<string> parentXpaths = GetNonUniqueXpaths(parent);
-            for (var i = 0; i < parentXpaths.Count; i++)
-            {
-                for (var j = 0; j < elementDuplicateXpaths.Count; j++)
-                {
-                    xpath = parentXpaths[i] + elementDuplicateXpaths[j];
-                    CheckXpath();
-                    if (HaveEnough()) return true;
-                }
-            }
-            Program.Log("Checked the parent, unique xpaths : " + uniqueXpaths.Count);
-            return false;
+        //public bool CheckParent()
+        //{
+        //    var parent = element.GetParent();
+        //    List<string> parentXpaths = GetNonUniqueXpaths(parent);
+        //    for (var i = 0; i < parentXpaths.Count; i++)
+        //    {
+        //        for (var j = 0; j < elementDuplicateXpaths.Count; j++)
+        //        {
+        //            xpath = parentXpaths[i] + elementDuplicateXpaths[j];
+        //            CheckXpath();
+        //            if (HaveEnough()) return true;
+        //        }
+        //    }
+        //    Program.Log("Checked the parent, unique xpaths : " + uniqueXpaths.Count);
+        //    return false;
 
-        }
+        //}
 
         public bool CheckAncestors()
         {
              var ancestor = element.GetParent();
 
-            for (var i = 0; i < 20; i++)
+            for (var i = 0; i < searchDepth; i++)
             {
-                ancestor = ancestor.GetParent();//start with the grandparent
                 if (ancestor.TagName == "html" || ancestor.TagName == "body")
                 {
                     break;
@@ -150,7 +158,7 @@ namespace ProtoTest.Specter
                         if (HaveEnough()) return true;
                     }
                 }
-                
+                ancestor = ancestor.GetParent();
             }
 
             Program.Log("Checked the ancestors, unique xpaths : " + uniqueXpaths.Count);
@@ -161,24 +169,19 @@ namespace ProtoTest.Specter
 
         public bool CheckSiblings()
         {
-            var parentXpaths = GetNonUniqueXpaths(element.GetParent());
             foreach (var sibling in element.GetSiblingElements())
             {
                 Program.Log("Getting the sibling xpaths");
                 List<string> xpaths = GetNonUniqueXpaths(sibling);
-                for (var k = 0; k < parentXpaths.Count; k++)
-                {
                     for (var j = 0; j < xpaths.Count; j++)
                     {
                         for (var i = 0; i < elementDuplicateXpaths.Count; i++)
                         {
-                            xpath = string.Format("{0}[.{1}]{2}",parentXpaths[k], xpaths[j],elementDuplicateXpaths[i]);
+                            xpath = string.Format("//{0}[.{1}]{2}",element.GetParent().TagName, xpaths[j],elementDuplicateXpaths[i]);
                             CheckXpath();
                             if (HaveEnough()) return true;
                         }
-                    }    
-                }
-                
+                    }                   
             }
             Program.Log("Checked the siblings, unique xpaths : " + uniqueXpaths.Count);
             return false;
@@ -226,26 +229,21 @@ namespace ProtoTest.Specter
 
         public bool CheckRelatives()
         {
-            var relative = element.GetParent().GetChild();
+            var relative = element.GetParent().GetParent().GetChild();
             var ancestor = relative.GetAncestor(element);
-            List<string> ancestorXpaths = GetNonUniqueXpaths(ancestor);
-
             while (relative != null&&relative.TagName!="html"&&relative.TagName!="body")
             {
                 List<string> relativeXpaths = GetNonUniqueXpaths(relative);
-                for (var k = 0; k < ancestorXpaths.Count; k++)
-                {
                     for (var j = 0; j < relativeXpaths.Count; j++)
                     {
                         for (var i = 0; i < elementDuplicateXpaths.Count; i++)
                         {
-                            xpath = string.Format("{0}[.{1}]{2}", ancestorXpaths[k], relativeXpaths[j], elementDuplicateXpaths[i]);
+                            xpath = string.Format("//{0}[.{1}]{2}", ancestor.TagName, relativeXpaths[j], elementDuplicateXpaths[i]);
                             CheckXpath();
                             if (HaveEnough()) return true;
                         }
                     }
-                }
-                
+
                 relative = GetNextElement(relative);
                 ancestor = relative.GetAncestor(element);
             }
@@ -265,10 +263,9 @@ namespace ProtoTest.Specter
             {
                 return;
             }
+            Program.builder.Log("Checking Self");
             if (CheckSelf()) return;
-            Program.builder.Log("Did not find enough Xpaths. Getting parent xpaths");
-            if (CheckParent()) return;
-            Program.builder.Log("Did not find enough Xpaths. Getting ancestor xpaths");
+            Program.builder.Log("Did not find enough Xpaths. trying ancestor xpaths");
             if (CheckAncestors()) return;
             Program.builder.Log("Still can't find a unique xpath, trying siblings");
             if (CheckSiblings()) return;

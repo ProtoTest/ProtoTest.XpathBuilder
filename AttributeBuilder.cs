@@ -13,7 +13,16 @@ namespace ProtoTest.Specter
 {
     class AttributeBuilder
     {
-        
+ 
+        public string textString
+        {
+            get
+            {
+                return Specter.useText ? "text()" : ".";
+
+            }
+        }
+
         public IWebElement element;
         public List<Attribute> attributes;
         public WebDriverExecutor executor;
@@ -56,14 +65,14 @@ namespace ProtoTest.Specter
 
         public string TrimText(string text)
         {
-            if (element.Text != "")
+            if (text != "")
             {
                 string finalText = text.Replace("\r\n", " ");
-                if (element.Text.Length > Specter.maxAttLength)
+                if (finalText.Length > Specter.maxAttLength)
                 {
-                    text = element.Text.Substring(0, Specter.maxAttLength);
+                    finalText = finalText.Substring(0, Specter.maxAttLength);
                 }
-                return text;
+                return finalText;
             }
             return "";
         }
@@ -73,8 +82,12 @@ namespace ProtoTest.Specter
             attributes = new List<Attribute>();
             if (!Specter.skipAttributeString.Contains("text"))
             {
-                string text = TrimText(element.Text);
-                attributes.Add(new Attribute("text()", text));
+               
+                    string text = TrimText(element.Text);
+                    if (text != ""&&text!=" ")
+                    {
+                        attributes.Add(new Attribute(textString, text));
+                    }
             }
             
             string html = element.GetHtml();
@@ -87,37 +100,34 @@ namespace ProtoTest.Specter
             {
                 for (var i = 0; i < atts.Length; i++)
                 {
-                    string key = "@" + Regex.Split(atts[i], "=\"")[0].Replace("\"", "").Trim();
+                    string key = Regex.Split(atts[i], "=\"")[0].Replace("\"", "").Trim();
                     string value = Regex.Split(atts[i], "=\"")[1].Replace("\"", "");
  
-                    if (!key.Contains("style")&&!key.Contains(Specter.skipAttributeString))
+                    if (!key.Contains("style")&&!Specter.skipAttributeString.Contains(key))
                     {
-                        if (Specter.splitAttributes)
+                        if(key!=""&&value!="")
                         {
-                            var splitatts = SplitAttribute(new Attribute(key, value));
-                            attributes.AddRange(splitatts);
+                             if (Specter.splitAttributes)
+                            {
+                                var splitatts = SplitAttribute(new Attribute("@" + key, TrimText(value)));
+                                attributes.AddRange(splitatts);
+                            }
+                            else
+                            {
+                                attributes.Add(new Attribute("@" + key, TrimText(value)));
+                            }   
                         }
-                        else
-                        {
-                            attributes.Add(new Attribute(key, value));
-                        }
+                        
                         
                     }
 
                 }
             }
-            var items = from pair in attributes
-                        orderby pair.name.Length ascending
-                        select pair;
+            var items = from att in attributes 
+                        orderby att.name.Length ascending
+                        select att;
 
-            var sortedAttributes = new List<Attribute>();
-            foreach (Attribute pair in items)
-            {
-                if ((pair.name != "") && (pair.value != ""))
-                    sortedAttributes.Add(new Attribute(pair.name, pair.value));
-            }
-
-            return sortedAttributes;
+            return items.ToList();
         }
 
         public List<Attribute> GetUniqueAttributes()

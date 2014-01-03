@@ -250,12 +250,26 @@ namespace ProtoTest.Specter
             return element.GetParent().FindElement(by);
         }
 
+        public static void BG_Get(this IWebDriver driver, string urlString)
+        {
+            try
+            {
+                if (!urlString.Contains("http"))
+                    urlString = "http://" + urlString;
+                driver.Navigate().GoToUrl(urlString);
+            }
+            catch (Exception err)
+            {
+                Program.Log("Could not navigate to url : " + urlString + err.Message);
+            }
+           
+        }
  
         public static IWebElement GetAncestor(this IWebElement element, IWebElement relative)
         {
             var elementAncestor = element;
             
-            while (elementAncestor.TagName != "html")
+            while (elementAncestor.TagName != "html"&&elementAncestor.TagName !="")
             {
                 var relativeAncestor = relative;
                 while (relativeAncestor.TagName != "html")
