@@ -15,3 +15,4 @@ C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\bin\Release\WebDriver.Sup
 C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\bin\Release\chromedriver.exe
 C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\bin\Release\IEDriverServer.exe
 C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\obj\Release\ProtoTest.Specter.Specter.resources
+C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\obj\Release\ProtoTest.XpathBuilder.SpecterSplash.resources

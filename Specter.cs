@@ -19,6 +19,8 @@ using OpenQA.Selenium.Remote;
 using System.Xml.Linq;
 using System.Xml;
 using Manoli.Utils.CSharpFormat;
+using System.Threading;
+using ProtoTest.XpathBuilder;
 
 namespace ProtoTest.Specter
 {
@@ -51,14 +53,25 @@ namespace ProtoTest.Specter
  
         public Specter()
         {
-            InitializeComponent();
+            //Start Splash Screen
+            Thread time = new Thread(new ThreadStart(SpecterSplash));
+            time.Start();
+            Thread.Sleep(7000);  //Time length for Splash Screen to display
+            InitializeComponent(); //Initialize Specter
+            time.Abort();
+            //End Splash Screen
+
             this.XpathsDropdown.TextChanged += XpathsDropdown_TextChanged;
             WebDriverCommandDropdown.SelectedIndex = 0;
-            BrowserDropdown.SelectedIndex = 0;
-            LaunchBrowserButton_Click(null, null);
+            BrowserDropdown.SelectedIndex = 0; //Set default browser for startup
+            //LaunchBrowserButton_Click(null, null); //Launch browser at startup
         }
 
- 
+        public void SpecterSplash()
+        {
+            Application.Run(new SpecterSplash());
+        }
+
         void XpathsDropdown_TextChanged(object sender, EventArgs e)
         {
             this.currentXpath = XpathsDropdown.Text;
@@ -160,6 +173,7 @@ namespace ProtoTest.Specter
                     break;
             }
         }
+
         private void LauncHBrowser(object sender, DoWorkEventArgs e)
         {
             if(hostString=="localhost")
@@ -183,9 +197,7 @@ namespace ProtoTest.Specter
             }
        
         }
-
- 
-
+        
         private void HighlightElementButton_Click(object sender, EventArgs e)
         {
             try
@@ -208,8 +220,7 @@ namespace ProtoTest.Specter
             if (XpathsDropdown.Items.Count > 0)
                 XpathsDropdown.SelectedIndex = 0;
         }
-
-
+        
         private void GenerateXpathButton_Click(object sender, EventArgs e)
         {
             try
@@ -259,8 +270,7 @@ namespace ProtoTest.Specter
                 Error("Could not execute command : " + WebDriverCommandDropdown.Text + " : " + xpath);
             }
         }
-
-    
+        
         void ExecuteCommand(object sender, DoWorkEventArgs e)
         {
             if (WebDriverCommandDropdown.InvokeRequired)
@@ -274,7 +284,6 @@ namespace ProtoTest.Specter
             
         }
        
-
         private void ClickXpathButton_Click(object sender, EventArgs e)
         {
             try
@@ -500,8 +509,7 @@ namespace ProtoTest.Specter
             string text = element.GetHtml();
             WebText.DocumentText = FormatHtml(text);
         }
-
-
+        
         public void SelectElement(IWebElement newElement)
         {
             driver.SetClickedElement(newElement);
@@ -860,6 +868,11 @@ namespace ProtoTest.Specter
         private void CheckCousinsCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             checkCousins = CheckCousinsCheckbox.Checked;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

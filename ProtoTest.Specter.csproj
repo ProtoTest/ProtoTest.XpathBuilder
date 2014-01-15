@@ -59,6 +59,12 @@
   <ItemGroup>
     <Compile Include="Attribute.cs" />
     <Compile Include="AttributeBuilder.cs" />
+    <Compile Include="SpecterSplash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpecterSplash.Designer.cs">
+      <DependentUpon>SpecterSplash.cs</DependentUpon>
+    </Compile>
     <Compile Include="WebDriverExecutor.cs" />
     <Compile Include="WebDriverExtensions.cs" />
     <Compile Include="Specter.cs">
@@ -83,6 +89,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SpecterSplash.resx">
+      <DependentUpon>SpecterSplash.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -106,6 +115,9 @@
     </Content>
     <Content Include="packages\Selenium.WebDriver.ChromeDriver.2.3.0.0\content\chromedriver.exe" />
     <Content Include="packages\Selenium.WebDriver.IEDriver.2.35.3.3\content\IEDriverServer.exe" />
+    <SplashScreen Include="SpecterLogo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </SplashScreen>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup Label="DownloadChromeDriverBuildTask">

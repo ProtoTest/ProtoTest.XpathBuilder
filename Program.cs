@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProtoTest.Specter;
 using Timer = System.Windows.Forms.Timer;
 
 namespace ProtoTest.Specter
