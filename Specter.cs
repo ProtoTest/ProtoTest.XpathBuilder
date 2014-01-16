@@ -50,13 +50,15 @@ namespace ProtoTest.Specter
         public static bool checkChildren = true;
         public static bool checkCousins = true;
         public static bool checkSiblings = true;
+        public static string relativeXpath;
  
         public Specter()
         {
             //Start Splash Screen
-            Thread time = new Thread(new ThreadStart(SpecterSplash));
+            Thread time = new Thread(new ThreadStart(RunSpecterSplash));
             time.Start();
-            Thread.Sleep(7000);  //Time length for Splash Screen to display
+            while(!SpecterSplash.done)
+                Thread.Sleep(10);  //Time length for Splash Screen to display
             InitializeComponent(); //Initialize Specter
             time.Abort();
             //End Splash Screen
@@ -67,56 +69,249 @@ namespace ProtoTest.Specter
             //LaunchBrowserButton_Click(null, null); //Launch browser at startup
         }
 
-        public void SpecterSplash()
+        public void RunSpecterSplash()
         {
             Application.Run(new SpecterSplash());
         }
 
-        void XpathsDropdown_TextChanged(object sender, EventArgs e)
-        {
-            this.currentXpath = XpathsDropdown.Text;
-          //  this.SelectedXpathTextBox.Text = this.currentXpath;
-        }
 
-        public void Error(string message)
+        //SCREEN ELEMENTS
+
+        //General Settings
+        private void DisableOnClickButton_Click(object sender, EventArgs e)
         {
-            int start = LogTextBox.TextLength;
-            LogTextBox.AppendText(message + "\r\n");
-            int end = LogTextBox.TextLength;
-            LogTextBox.Select(start, end - start);
+            try
             {
-                LogTextBox.SelectionColor = Color.Red;
+                driver.DisableClicks();
             }
-            LogTextBox.SelectionLength = 0;
-        }
-
-        private void UpdateLog(string message)
-        {
-            if (LogTextBox.Lines.Length >= 500)
+            catch (Exception err)
             {
-                LogTextBox.Select(0, LogTextBox.GetFirstCharIndexFromLine(1));
-                LogTextBox.SelectedText = "";
+                Error("Error caught trying to disable clicks : " + err.Message);
             }
-            LogTextBox.AppendText(message + "\r\n");
-            LogTextBox.ScrollToCaret();
         }
-
-        public void Log(string message)
+        private void DisableMouseOverButton_Click(object sender, EventArgs e)
         {
-            if (LogTextBox.InvokeRequired)
+            try
             {
-            LogTextBox.Invoke(new Action<string>(UpdateLog), message);
-            return;
-            }    
-            UpdateLog(message);
+                driver.DisableMouseOver();
+            }
+            catch (Exception err)
+            {
+                Error("Error trying to disable mouse over : " + err.Message);
+            }
         }
+        private void HidePanelButton_Click(object sender, EventArgs e)
+        {
+            driver.DisableDTVEPanel();
+        }
+        
+        //XPath Locator Building
+        private void RegisterRightClickButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Specter.updateElement = true;
+                driver.RegisterRightClickEvent();
+                driver.RegisterHighlightOnMouseOver();
+            }
+            catch (Exception err)
+            {
+                Error("Could not register rick click : " + err.Message);
+            }
 
+        }
+        private void RegisterClickEventButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Specter.updateElement = true;
+                driver.RegisterClickEvent();
+                driver.RegisterHighlightOnMouseOver();
+            }
+            catch (Exception err)
+            {
+                Error("Could not register click events : " + err.Message);
+            }
+
+        }
+        private void RefreshTimeTextBox_TextChanged(object sender, EventArgs e)
+        {
+            refreshMs = int.Parse(RefreshTimeTextBox.Text);
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var sibling = element.GetChild();
+                SelectElement(sibling);
+            }
+            catch (Exception)
+            {
+                Error("Element did not have a child");
+            }
+
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var sibling = element.GetSibling();
+                SelectElement(sibling);
+            }
+            catch (Exception)
+            {
+                Error("Element did not have a sibling");
+            }
+
+
+
+        }
+        private void GenerateXpathButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Log(string.Format("Tryng to Generate {0} xpaths. Max attempts : {1}", minimumXpaths, maximumXpathAttempts));
+                XpathsDropdown.Items.Clear();
+
+                var xpathGetter = new BackgroundWorker();
+                xpathGetter.DoWork += xpathGetter_DoWork;
+                xpathGetter.RunWorkerAsync();
+
+
+            }
+            catch (Exception err)
+            {
+                Error("Could not generate xpath for element " + err.Message);
+            }
+        }
+        private void MinimumXpathsTextBox_TextChanged(object sender, EventArgs e)
+        {
+            minimumXpaths = int.Parse(this.MinimumXpathsTextBox.Text);
+        }
+        private void XPathGeneratorMaxAttempts_TextChanged(object sender, EventArgs e)
+        {
+            maximumXpathAttempts = int.Parse(this.XPathGeneratorMaxAttempts.Text);
+        }
+        private void SplitAttributesCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            splitAttributes = SplitAttributesCheckbox.Checked;
+            if (SplitAttributesCheckbox.Checked)
+                UseContainsCheckBox.Checked = true;
+        }
+        private void UseContainsCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            useContains = UseContainsCheckBox.Checked;
+            if (!UseContainsCheckBox.Checked)
+                SplitAttributesCheckbox.Checked = false;
+        }
+        private void SkipAttributeTextBox_TextChanged(object sender, EventArgs e)
+        {
+            skipAttributeString = SkipAttributeTextBox.Text;
+        }
+        private void MaxAttLength_TextChanged(object sender, EventArgs e)
+        {
+            maxAttLength = int.Parse(MaxAttLength.Text);
+        }
+        private void UseQuotesCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            useDoubleQuotes = UseQuotesCheckbox.Checked;
+        }
+        private void UseTextCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            useText = UseTextCheckbox.Checked;
+        }
+        private void CheckSelfCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            checkSelf = CheckSelfCheckbox.Checked;
+        }
+        private void CheckAncestorsCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            checkAncestors = CheckAncestorsCheckbox.Checked;
+        }
+        private void CheckSiblingsCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            checkSiblings = CheckSiblingsCheckbox.Checked;
+        }
+        private void CheckChildrenCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            checkChildren = CheckSiblingsCheckbox.Checked;
+        }
+        private void CheckCousinsCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            checkCousins = CheckCousinsCheckbox.Checked;
+        }
+        
+        //Launch Browser Options
         private void BrowserDropdown_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             browserString = (string)BrowserDropdown.SelectedItem;
         }
+        private void HostTextBox_TextChanged(object sender, EventArgs e)
+        {
 
+            this.hostString = HostTextBox.Text;
+        }
+        private void UrlTextBox_TextChanged(object sender, EventArgs e)
+        {
+            this.urlString = UrlTextBox.Text;
+        }
+        private void LaunchBrowserButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Program.worker.RunWorkerAsync();
+                BackgroundWorker bw = new BackgroundWorker();
+                bw.DoWork += LauncHBrowser;
+                bw.RunWorkerAsync();
+            }
+            catch (Exception err)
+            {
+                Error("Could not launch browser : " + browserString + err.Message);
+            }
+
+        }
+        private void GoToUrlButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var bw = new BackgroundWorker();
+                bw.DoWork += bw_DoWork;
+                bw.RunWorkerAsync();
+            }
+            catch (Exception err)
+            {
+                Error("Could not navigate to url : " + urlString + err.Message);
+            }
+
+        }
+
+        //Execute Javascript Options
+        private void JavscriptTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        //Execute Webdriver Command Options
+        private void WebDriverCommandDropdown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+
+        }
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        //Logging Options
+        private void ClearLogButton_Click(object sender, EventArgs e)
+        {
+            LogTextBox.Text = "";
+        }
+
+
+        //RUNTIME OPERATIONS
+        
+        //Launch Browser Processes
         private void LaunchRemoteBrowser()
         {
             Log("Launching " + browserString + " browser on host : " + hostString);
@@ -147,7 +342,6 @@ namespace ProtoTest.Specter
             var remoteAddress = new Uri(string.Format("http://{0}:{1}/wd/hub", hostString, port));
             driver = new RemoteWebDriver(remoteAddress, capabilities);
         }
-
         private void LaunchLocalBrowser()
         {
             Log("Launching " + browserString);
@@ -173,31 +367,60 @@ namespace ProtoTest.Specter
                     break;
             }
         }
-
         private void LauncHBrowser(object sender, DoWorkEventArgs e)
         {
-            if(hostString=="localhost")
+            if (hostString == "localhost")
                 LaunchLocalBrowser();
             else
                 LaunchRemoteBrowser();
-            
+
         }
 
-        private void LaunchBrowserButton_Click(object sender, EventArgs e)
+        //XPath Locator Generation Processes
+        void XpathsDropdown_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                BackgroundWorker bw = new BackgroundWorker();
-                bw.DoWork +=LauncHBrowser;
-                bw.RunWorkerAsync();
-            }
-            catch (Exception err)
-            {
-                Error("Could not launch browser : " + browserString + err.Message);
-            }
-       
+            this.currentXpath = XpathsDropdown.Text;
+            //  this.SelectedXpathTextBox.Text = this.currentXpath;
         }
-        
+     
+        //Logging Processes
+        public void Log(string message)
+        {
+            if (LogTextBox.InvokeRequired)
+            {
+                LogTextBox.Invoke(new Action<string>(UpdateLog), message);
+                return;
+            }
+            UpdateLog(message);
+        }
+        private void LogTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        public void Error(string message)
+        {
+            int start = LogTextBox.TextLength;
+            LogTextBox.AppendText(message + "\r\n");
+            int end = LogTextBox.TextLength;
+            LogTextBox.Select(start, end - start);
+            {
+                LogTextBox.SelectionColor = Color.Red;
+            }
+            LogTextBox.SelectionLength = 0;
+        }
+        private void UpdateLog(string message)
+        {
+            if (LogTextBox.Lines.Length >= 500)
+            {
+                LogTextBox.Select(0, LogTextBox.GetFirstCharIndexFromLine(1));
+                LogTextBox.SelectedText = "";
+            }
+            LogTextBox.AppendText(message + "\r\n");
+            LogTextBox.ScrollToCaret();
+        }
+
+
+
         private void HighlightElementButton_Click(object sender, EventArgs e)
         {
             try
@@ -220,26 +443,7 @@ namespace ProtoTest.Specter
             if (XpathsDropdown.Items.Count > 0)
                 XpathsDropdown.SelectedIndex = 0;
         }
-        
-        private void GenerateXpathButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Log(string.Format("Tryng to Generate {0} xpaths. Max attempts : {1}", minimumXpaths, maximumXpathAttempts));
-                XpathsDropdown.Items.Clear();
-                
-                var xpathGetter = new BackgroundWorker();
-                xpathGetter.DoWork += xpathGetter_DoWork;
-                xpathGetter.RunWorkerAsync();
-                
-               
-            }
-            catch (Exception err)
-            {
-                Error("Could not generate xpath for element " + err.Message );
-            }
-        }
-
+      
         void xpathGetter_DoWork(object sender, DoWorkEventArgs e)
         {
             var creater = new XpathCreater(element);
@@ -250,11 +454,6 @@ namespace ProtoTest.Specter
                 return;
             }
             UpdateXpaths(creater.uniqueXpaths);
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
         }
 
         private void ExecuteAndLogCommand(string xpath)
@@ -298,12 +497,6 @@ namespace ProtoTest.Specter
                 Error("Could not execute command on element element : " + currentXpath + " : " + err.Message);
             }
            
-        }
-
-        private void HostTextBox_TextChanged(object sender, EventArgs e)
-        {
-            
-            this.hostString = HostTextBox.Text;
         }
 
         private void XpathsDropdown_SelectedIndexChanged(object sender, EventArgs e)
@@ -359,11 +552,6 @@ namespace ProtoTest.Specter
 
         }
 
-        private void LogTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void panel6_Paint(object sender, PaintEventArgs e)
         {
 
@@ -374,34 +562,9 @@ namespace ProtoTest.Specter
 
         }
 
-        private void ClearLogButton_Click(object sender, EventArgs e)
-        {
-            LogTextBox.Text = "";
-        }
-
         private void panel5_Paint(object sender, PaintEventArgs e)
         {
 
-        }
-
-        private void UrlTextBox_TextChanged(object sender, EventArgs e)
-        {
-            this.urlString = UrlTextBox.Text;
-        }
-
-        private void GoToUrlButton_Click(object sender, EventArgs e)
-        {
-        try
-        {
-            var bw = new BackgroundWorker();
-            bw.DoWork += bw_DoWork;
-	        bw.RunWorkerAsync();
-	    }
-	    catch (Exception err)
-	    {
-		    Error("Could not navigate to url : " + urlString + err.Message);
-	    }
-            
         }
 
         void bw_DoWork(object sender, DoWorkEventArgs e)
@@ -461,21 +624,6 @@ namespace ProtoTest.Specter
         //    }
         //}
 
-        private void RegisterClickEventButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Specter.updateElement = true;
-                driver.RegisterClickEvent();
-                driver.RegisterHighlightOnMouseOver();
-            }
-            catch (Exception err)
-            {
-                Error("Could not register click events : " + err.Message);
-            }
-
-        }
-
         private void GetClickedElementButton_Click(object sender, EventArgs e)
         {
             try
@@ -520,26 +668,6 @@ namespace ProtoTest.Specter
             WebText.DocumentText = FormatHtml(text);
         }
 
-        private void RegisterRightClickButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Specter.updateElement = true;
-                driver.RegisterRightClickEvent();
-                driver.RegisterHighlightOnMouseOver();
-            }
-            catch (Exception err)
-            {
-                Error("Could not register rick click : " + err.Message);
-            }
-
-        }
-
-        private void HidePanelButton_Click(object sender, EventArgs e)
-        {
-            driver.DisableDTVEPanel();
-        }
-
         private void ExecuteJS_Click(object sender, EventArgs e)
         {
             try
@@ -570,118 +698,6 @@ namespace ProtoTest.Specter
            
         }
 
-        private void DisableMouseOverButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                driver.DisableMouseOver();
-            }
-            catch (Exception err)
-            {
-                Error("Error trying to disable mouse over : " + err.Message);
-            }
-        }
-
-        private void DisableOnClickButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                driver.DisableClicks();
-            }
-            catch (Exception err)
-            {
-                Error("Error caught trying to disable clicks : " + err.Message);
-            }
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        //public IWebElement GetUniqueRelative(IWebElement element)
-        //{
-        //    Log("GetUniqueRelative : " + element.TagName);
-        //    var attributes = element.GetUniqueAttributes();
-        //    if (attributes.Count > 0)
-        //    {
-        //       Log("GetUniqueRelative : I was unique");
-        //      // this.xpaths.Add(relativeXpath);
-        //       XpathsDropdown.Items.Add(relativeXpath);
-        //       currentXpath = relativeXpath;
-        //       XpathsDropdown.SelectedValue = relativeXpath;
-        //        return element;
-        //    }
-        //    Log("GetUniqueRelative Getting next element");
-        //    element = GetNextElementInTree(element);
-            
-        //    return GetUniqueRelative(element);
-        //}
-
-        public static string relativeXpath;
-
-        //public IWebElement GetNextElementInTree(IWebElement currElement)
-        //{
-        //    var attributes = new Attribute();
-        //    Log("GetNextElementInTree : " + currElement.TagName);
-        //    if(currElement.FindElements(By.XPath("following-sibling::*")).Count>0)
-        //    {
-        //        currElement = currElement.FindElement(By.XPath("following-sibling::*"));
-        //        if(currElement.FindElements(By.XPath("child::*")).Count>0)
-        //        {
-        //            Log("GetNextElementInTree Found a nephew");
-        //            currElement = currElement.FindElement(By.XPath("child::*"));
-        //            attributes = currElement.GetUniqueAttribute();
-        //            relativeXpath = string.Format("//{0}[.//{1}[{2}=\"{3}\"]]//{4}", this.element.GetAncestor(currElement).TagName, currElement.TagName, attributes.name, attributes.value, this.element.TagName);
-        //            return currElement;
-        //        }
-        //        Log("GetNextElementInTree Found a sibling ");
-        //        attributes = currElement.GetUniqueAttribute();
-        //        relativeXpath = string.Format("//{0}[.//{1}[{2}=\"{3}\"]]//{4}",this.element.GetAncestor(currElement).TagName,currElement.TagName,attributes.name,attributes.value,this.element.TagName);
-        //        return currElement;
-        //    }
-        //    Log("GetNextElementInTree Found a parent");
-        //    currElement = currElement.GetParent();
-        //    attributes = currElement.GetUniqueAttribute();
-        //    relativeXpath = string.Format("//{0}[{1}=\"{2}\"]//{3}", this.element.GetAncestor(currElement).TagName, attributes.name, attributes.value, this.element.TagName);
-        //    return currElement.GetParent();
-        //}
-
-        //private void GetUniqueElementButton_Click(object sender, EventArgs e)
-        //{
-        //    relativeXpath = element.GetXpaths()[0];
-        //    element = GetUniqueRelative(element);
-            
-        //    if (element != null)
-        //    {
-        //        element.UnHighlight();
-        //        string html = element.GetHtml();
-        //        WebText.DocumentText = FormatHtml(html);
-        //        element.Flash();
-        //    }
-        //    else
-        //    {
-        //        Error("Element is null, has the page changed?");
-
-        //    }
-        //}
-
-        private void WebDriverCommandDropdown_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void SelectedXpathTextBox_TextChanged(object sender, EventArgs e)
         {
         //    this.currentXpath = this.SelectedXpathTextBox.Text;
@@ -708,16 +724,6 @@ namespace ProtoTest.Specter
         //        Error("Could not generate xpath for element " + err.Message);
         //    }
         //}
-
-        private void MinimumXpathsTextBox_TextChanged(object sender, EventArgs e)
-        {
-            minimumXpaths = int.Parse(this.MinimumXpathsTextBox.Text);
-        }
-
-        private void XPathGeneratorMaxAttempts_TextChanged(object sender, EventArgs e)
-        {
-            maximumXpathAttempts = int.Parse(this.XPathGeneratorMaxAttempts.Text);
-        }
 
         private void panel6_Paint_1(object sender, PaintEventArgs e)
         {
@@ -776,103 +782,5 @@ namespace ProtoTest.Specter
                 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var sibling = element.GetChild();
-                SelectElement(sibling);
-            }
-            catch (Exception)
-            {
-                Error("Element did not have a child");
-            }
-            
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var sibling = element.GetSibling();
-                SelectElement(sibling);
-            }
-            catch (Exception)
-            {
-                Error("Element did not have a sibling");
-            }
-            
-           
-
-        }
-
-        private void SplitAttributesCheckbox_CheckedChanged(object sender, EventArgs e)
-        {
-            splitAttributes = SplitAttributesCheckbox.Checked;
-            if(SplitAttributesCheckbox.Checked)
-                UseContainsCheckBox.Checked = true;
-        }
-
-        private void RefreshTimeTextBox_TextChanged(object sender, EventArgs e)
-        {
-            refreshMs = int.Parse(RefreshTimeTextBox.Text);
-        }
-
-        private void UseContainsCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            useContains = UseContainsCheckBox.Checked;
-            if (!UseContainsCheckBox.Checked)
-                SplitAttributesCheckbox.Checked = false;
-        }
-
-        private void SkipAttributeTextBox_TextChanged(object sender, EventArgs e)
-        {
-            skipAttributeString = SkipAttributeTextBox.Text;
-        }
-
-        private void MaxAttLength_TextChanged(object sender, EventArgs e)
-        {
-            maxAttLength = int.Parse(MaxAttLength.Text);
-        }
-
-        private void UseQuotesCheckbox_CheckedChanged(object sender, EventArgs e)
-        {
-            useDoubleQuotes = UseQuotesCheckbox.Checked;
-        }
-
-        private void UseTextCheckbox_CheckedChanged(object sender, EventArgs e)
-        {
-            useText = UseTextCheckbox.Checked;
-        }
-
-        private void CheckSelfCheckbox_CheckedChanged(object sender, EventArgs e)
-        {
-            checkSelf = CheckSelfCheckbox.Checked;
-        }
-
-        private void CheckAncestorsCheckbox_CheckedChanged(object sender, EventArgs e)
-        {
-            checkAncestors = CheckAncestorsCheckbox.Checked;
-        }
-
-        private void CheckSiblingsCheckbox_CheckedChanged(object sender, EventArgs e)
-        {
-            checkSiblings = CheckSiblingsCheckbox.Checked;
-        }
-
-        private void CheckChildrenCheckbox_CheckedChanged(object sender, EventArgs e)
-        {
-            checkChildren = CheckSiblingsCheckbox.Checked;
-        }
-
-        private void CheckCousinsCheckbox_CheckedChanged(object sender, EventArgs e)
-        {
-            checkCousins = CheckCousinsCheckbox.Checked;
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

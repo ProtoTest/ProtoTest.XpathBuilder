@@ -16,12 +16,15 @@ namespace ProtoTest.XpathBuilder
             InitializeComponent();
         }
 
+        public static bool done = false;
+
         //Progress Bar Timer
         private void timer1_Tick(object sender, EventArgs e)
         {
             this.progressBar1.Increment(1); //Internal last set to 50
             if (progressBar1.Value == 100) //Time length maximum (units of above)
             {
+                done = true;
                 this.SpecterSplashTimer.Stop();
             }
         }

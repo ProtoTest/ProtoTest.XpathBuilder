@@ -162,7 +162,6 @@
             this.label8.Size = new System.Drawing.Size(63, 17);
             this.label8.TabIndex = 18;
             this.label8.Text = "Minimum";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // ExecuteCommandButton
             // 
@@ -275,7 +274,6 @@
             this.label1.Size = new System.Drawing.Size(110, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Current Element";
-            this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // GetParentButton
             // 
@@ -627,7 +625,6 @@
             this.label2.Size = new System.Drawing.Size(59, 17);
             this.label2.TabIndex = 7;
             this.label2.Text = "Browser";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // JavascriptPanel
             // 
@@ -701,11 +698,12 @@
             // 
             // JavscriptTextBox
             // 
-            this.JavscriptTextBox.Location = new System.Drawing.Point(81, 10);
+            this.JavscriptTextBox.Location = new System.Drawing.Point(81, 11);
             this.JavscriptTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.JavscriptTextBox.Name = "JavscriptTextBox";
             this.JavscriptTextBox.Size = new System.Drawing.Size(569, 22);
             this.JavscriptTextBox.TabIndex = 1;
+            this.JavscriptTextBox.TextChanged += new System.EventHandler(this.JavscriptTextBox_TextChanged);
             // 
             // HidePanelButton
             // 

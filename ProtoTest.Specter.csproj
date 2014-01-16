@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Specter Icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CSharpFormat, Version=2.5.4988.26483, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -115,9 +118,7 @@
     </Content>
     <Content Include="packages\Selenium.WebDriver.ChromeDriver.2.3.0.0\content\chromedriver.exe" />
     <Content Include="packages\Selenium.WebDriver.IEDriver.2.35.3.3\content\IEDriverServer.exe" />
-    <SplashScreen Include="SpecterLogo.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </SplashScreen>
+    <Content Include="Specter Icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup Label="DownloadChromeDriverBuildTask">

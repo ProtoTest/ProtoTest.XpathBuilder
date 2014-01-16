@@ -13,7 +13,7 @@ namespace ProtoTest.Specter
     public static class Program
     {
         public static Specter specter;
-        private static BackgroundWorker worker;
+        public static BackgroundWorker worker;
         [STAThread]
         static void Main()
         {
@@ -30,8 +30,18 @@ namespace ProtoTest.Specter
 
         static void SpecterFormClosed(object sender, FormClosedEventArgs e)
         {
-            worker.CancelAsync();
-            specter.driver.Close();
+            try
+            {
+
+                worker.CancelAsync();
+                specter.driver.Close();
+            }
+            catch (Exception)
+            {
+
+            }
+            
+           
         }
 
         static void worker_DoWork(object sender, DoWorkEventArgs e)
