@@ -120,6 +120,20 @@ namespace ProtoTest.Specter
             }
 
         }
+        private void RegisterLeftClickButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Specter.updateElement = true;
+                driver.RegisterClickEvent();
+                driver.RegisterHighlightOnMouseOver();
+            }
+            catch (Exception err)
+            {
+                Error("Could not register rick click : " + err.Message);
+            }
+
+        }
         private void RegisterClickEventButton_Click(object sender, EventArgs e)
         {
             try
@@ -259,7 +273,7 @@ namespace ProtoTest.Specter
         {
             try
             {
-                Program.worker.RunWorkerAsync();
+                //Program.worker.RunWorkerAsync();
                 BackgroundWorker bw = new BackgroundWorker();
                 bw.DoWork += LauncHBrowser;
                 bw.RunWorkerAsync();
@@ -816,5 +830,22 @@ namespace ProtoTest.Specter
         {
 
         }
+
+        private void CopyXPathToClipboard_Click(object sender, EventArgs e)
+        {
+            string locator = XpathsDropdown.Text.ToString();
+            System.Windows.Forms.Clipboard.SetText(locator);
+        }
+
+        private void Help1Textbox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

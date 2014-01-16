@@ -63,6 +63,16 @@ namespace ProtoTest.XpathBuilder.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap page_under_construction {
+            get {
+                object obj = ResourceManager.GetObject("page_under_construction", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap sprocket_dark {
             get {
                 object obj = ResourceManager.GetObject("sprocket_dark", resourceCulture);

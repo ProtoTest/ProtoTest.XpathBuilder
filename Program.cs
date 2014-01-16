@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -26,6 +27,7 @@ namespace ProtoTest.Specter
             worker.WorkerSupportsCancellation = true;
             worker.RunWorkerAsync();
             Application.Run(specter);
+            
         }
 
         static void SpecterFormClosed(object sender, FormClosedEventArgs e)

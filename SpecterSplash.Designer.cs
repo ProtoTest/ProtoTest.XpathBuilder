@@ -42,11 +42,10 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(167, 615);
+            this.progressBar1.Location = new System.Drawing.Point(107, 396);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(442, 44);
+            this.progressBar1.Size = new System.Drawing.Size(288, 28);
             this.progressBar1.TabIndex = 1;
-            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
             // 
             // SpecterSplash
             // 
@@ -55,8 +54,9 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(776, 730);
+            this.ClientSize = new System.Drawing.Size(500, 470);
             this.Controls.Add(this.progressBar1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SpecterSplash";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
