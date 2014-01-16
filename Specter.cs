@@ -762,25 +762,59 @@ namespace ProtoTest.Specter
         {
             if (element.IsStale())
             {
-                ElementPanel.BackColor = Color.Black;
+                //ElementPanel.BackColor = Color.Black;
             }
             else
-                ElementPanel.BackColor = Color.DimGray;
+                //ElementPanel.BackColor = Color.DimGray;
             if (driver.IsWebDriverConnected())
             {
-               // CommandPanel.BackColor = Color.DimGray;
-                JavascriptPanel.BackColor = Color.DimGray;
-                XpathPanel.BackColor = Color.DimGray;
+                //CommandPanel.BackColor = Color.DimGray;
+                //JavascriptPanel.BackColor = Color.DimGray;
+                //XpathPanel.BackColor = Color.DimGray;
             }
             else
             {
                 //CommandPanel.BackColor = Color.Black;
-                JavascriptPanel.BackColor = Color.Black;
-                XpathPanel.BackColor = Color.Black;
+                //JavascriptPanel.BackColor = Color.Black;
+                //XpathPanel.BackColor = Color.Black;
             }
                 
                 
         }
 
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DisableOnClickButton_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DisableMouseOverButton_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void JavscriptTextBox_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void HidePanelButton_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LogTextBox_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

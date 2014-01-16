@@ -32,8 +32,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Specter));
-            this.RegisterRightClickButton = new System.Windows.Forms.Button();
-            this.RegisterClickEventButton = new System.Windows.Forms.Button();
             this.WebDriverCommandText = new System.Windows.Forms.TextBox();
             this.WebDriverCommandDropdown = new System.Windows.Forms.ComboBox();
             this.MinimumXpathsTextBox = new System.Windows.Forms.TextBox();
@@ -41,18 +39,12 @@
             this.ExecuteCommandButton = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.XpathsDropdown = new System.Windows.Forms.ComboBox();
-            this.ElementPanel = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.RefreshTimeTextBox = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.WebText = new System.Windows.Forms.WebBrowser();
-            this.label1 = new System.Windows.Forms.Label();
             this.GetParentButton = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.XPathGeneratorMaxAttempts = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.XpathPanel = new System.Windows.Forms.Panel();
             this.CheckCousinsCheckbox = new System.Windows.Forms.CheckBox();
             this.CheckChildrenCheckbox = new System.Windows.Forms.CheckBox();
             this.UseQuotesCheckbox = new System.Windows.Forms.CheckBox();
@@ -66,61 +58,56 @@
             this.SkipAttLabel = new System.Windows.Forms.Label();
             this.SkipAttributeTextBox = new System.Windows.Forms.TextBox();
             this.SplitAttributesCheckbox = new System.Windows.Forms.CheckBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.GoToUrlButton = new System.Windows.Forms.Button();
             this.UrlTextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.BrowserPanel = new System.Windows.Forms.Panel();
             this.LaunchBrowserButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.HostTextBox = new System.Windows.Forms.TextBox();
             this.BrowserDropdown = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.JavascriptPanel = new System.Windows.Forms.Panel();
+            this.ExecuteJS = new System.Windows.Forms.Button();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label15 = new System.Windows.Forms.Label();
+            this.WebText = new System.Windows.Forms.WebBrowser();
+            this.label4 = new System.Windows.Forms.Label();
+            this.RefreshTimeTextBox = new System.Windows.Forms.TextBox();
+            this.RegisterLeftClickButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.RegisterRightClickButton = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label11 = new System.Windows.Forms.Label();
             this.DisableOnClickButton = new System.Windows.Forms.Button();
             this.DisableMouseOverButton = new System.Windows.Forms.Button();
-            this.ExecuteJS = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.JavscriptTextBox = new System.Windows.Forms.TextBox();
             this.HidePanelButton = new System.Windows.Forms.Button();
-            this.LogPanel = new System.Windows.Forms.Panel();
-            this.ClearLogButton = new System.Windows.Forms.Button();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.LogTextBox = new System.Windows.Forms.RichTextBox();
+            this.ClearLogButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.ElementPanel.SuspendLayout();
-            this.XpathPanel.SuspendLayout();
-            this.BrowserPanel.SuspendLayout();
-            this.JavascriptPanel.SuspendLayout();
-            this.LogPanel.SuspendLayout();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.XPathSectionLoadWebsiteElement = new System.Windows.Forms.Label();
+            this.XPathSectionLoadElementPanel = new System.Windows.Forms.Panel();
+            this.XPathSectionXPathGenerate = new System.Windows.Forms.Panel();
+            this.XPathSectionLocatorUse = new System.Windows.Forms.Panel();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.XPathSectionLoadElementPanel.SuspendLayout();
+            this.XPathSectionXPathGenerate.SuspendLayout();
+            this.XPathSectionLocatorUse.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // RegisterRightClickButton
-            // 
-            this.RegisterRightClickButton.Location = new System.Drawing.Point(136, 6);
-            this.RegisterRightClickButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.RegisterRightClickButton.Name = "RegisterRightClickButton";
-            this.RegisterRightClickButton.Size = new System.Drawing.Size(141, 23);
-            this.RegisterRightClickButton.TabIndex = 15;
-            this.RegisterRightClickButton.Text = "RecordRightClick";
-            this.RegisterRightClickButton.UseVisualStyleBackColor = true;
-            this.RegisterRightClickButton.Click += new System.EventHandler(this.RegisterRightClickButton_Click);
-            // 
-            // RegisterClickEventButton
-            // 
-            this.RegisterClickEventButton.Location = new System.Drawing.Point(283, 6);
-            this.RegisterClickEventButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.RegisterClickEventButton.Name = "RegisterClickEventButton";
-            this.RegisterClickEventButton.Size = new System.Drawing.Size(141, 23);
-            this.RegisterClickEventButton.TabIndex = 8;
-            this.RegisterClickEventButton.Text = "RecordLeftClick";
-            this.RegisterClickEventButton.UseVisualStyleBackColor = true;
-            this.RegisterClickEventButton.Click += new System.EventHandler(this.RegisterClickEventButton_Click);
             // 
             // WebDriverCommandText
             // 
-            this.WebDriverCommandText.Location = new System.Drawing.Point(1195, 82);
+            this.WebDriverCommandText.Location = new System.Drawing.Point(233, 52);
             this.WebDriverCommandText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.WebDriverCommandText.Name = "WebDriverCommandText";
             this.WebDriverCommandText.Size = new System.Drawing.Size(152, 22);
@@ -137,7 +124,7 @@
             "MouseOver",
             "Type",
             "Count"});
-            this.WebDriverCommandDropdown.Location = new System.Drawing.Point(972, 81);
+            this.WebDriverCommandDropdown.Location = new System.Drawing.Point(11, 52);
             this.WebDriverCommandDropdown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.WebDriverCommandDropdown.Name = "WebDriverCommandDropdown";
             this.WebDriverCommandDropdown.Size = new System.Drawing.Size(216, 24);
@@ -146,7 +133,7 @@
             // 
             // MinimumXpathsTextBox
             // 
-            this.MinimumXpathsTextBox.Location = new System.Drawing.Point(253, 16);
+            this.MinimumXpathsTextBox.Location = new System.Drawing.Point(14, 30);
             this.MinimumXpathsTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MinimumXpathsTextBox.Name = "MinimumXpathsTextBox";
             this.MinimumXpathsTextBox.Size = new System.Drawing.Size(39, 22);
@@ -157,7 +144,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(297, 20);
+            this.label8.Location = new System.Drawing.Point(59, 35);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(63, 17);
             this.label8.TabIndex = 18;
@@ -165,10 +152,10 @@
             // 
             // ExecuteCommandButton
             // 
-            this.ExecuteCommandButton.Location = new System.Drawing.Point(1363, 82);
+            this.ExecuteCommandButton.Location = new System.Drawing.Point(394, 51);
             this.ExecuteCommandButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ExecuteCommandButton.Name = "ExecuteCommandButton";
-            this.ExecuteCommandButton.Size = new System.Drawing.Size(83, 23);
+            this.ExecuteCommandButton.Size = new System.Drawing.Size(93, 32);
             this.ExecuteCommandButton.TabIndex = 4;
             this.ExecuteCommandButton.Text = "Execute";
             this.ExecuteCommandButton.UseVisualStyleBackColor = true;
@@ -176,7 +163,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(73, 17);
+            this.button3.Location = new System.Drawing.Point(15, 138);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(168, 23);
@@ -188,108 +175,51 @@
             // XpathsDropdown
             // 
             this.XpathsDropdown.FormattingEnabled = true;
-            this.XpathsDropdown.Location = new System.Drawing.Point(73, 46);
+            this.XpathsDropdown.Location = new System.Drawing.Point(17, 165);
             this.XpathsDropdown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.XpathsDropdown.MaxDropDownItems = 20;
             this.XpathsDropdown.Name = "XpathsDropdown";
-            this.XpathsDropdown.Size = new System.Drawing.Size(1371, 24);
+            this.XpathsDropdown.Size = new System.Drawing.Size(463, 24);
             this.XpathsDropdown.TabIndex = 0;
             this.XpathsDropdown.SelectedIndexChanged += new System.EventHandler(this.XpathsDropdown_SelectedIndexChanged);
             // 
-            // ElementPanel
-            // 
-            this.ElementPanel.BackColor = System.Drawing.Color.DimGray;
-            this.ElementPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ElementPanel.Controls.Add(this.label4);
-            this.ElementPanel.Controls.Add(this.RefreshTimeTextBox);
-            this.ElementPanel.Controls.Add(this.button2);
-            this.ElementPanel.Controls.Add(this.button1);
-            this.ElementPanel.Controls.Add(this.WebText);
-            this.ElementPanel.Controls.Add(this.RegisterClickEventButton);
-            this.ElementPanel.Controls.Add(this.label1);
-            this.ElementPanel.Controls.Add(this.RegisterRightClickButton);
-            this.ElementPanel.Controls.Add(this.GetParentButton);
-            this.ElementPanel.Location = new System.Drawing.Point(3, 100);
-            this.ElementPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ElementPanel.Name = "ElementPanel";
-            this.ElementPanel.Size = new System.Drawing.Size(1466, 203);
-            this.ElementPanel.TabIndex = 5;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(508, 10);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(125, 17);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "Refresh Time (ms)";
-            // 
-            // RefreshTimeTextBox
-            // 
-            this.RefreshTimeTextBox.Location = new System.Drawing.Point(445, 6);
-            this.RefreshTimeTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.RefreshTimeTextBox.Name = "RefreshTimeTextBox";
-            this.RefreshTimeTextBox.Size = new System.Drawing.Size(53, 22);
-            this.RefreshTimeTextBox.TabIndex = 18;
-            this.RefreshTimeTextBox.Text = "2000";
-            this.RefreshTimeTextBox.TextChanged += new System.EventHandler(this.RefreshTimeTextBox_TextChanged);
-            // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(1159, 6);
+            this.button2.Location = new System.Drawing.Point(15, 200);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(92, 23);
+            this.button2.Size = new System.Drawing.Size(166, 29);
             this.button2.TabIndex = 17;
-            this.button2.Text = "FindChild";
+            this.button2.Text = "Find Element\'s Child";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1256, 6);
+            this.button1.Location = new System.Drawing.Point(187, 200);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 23);
+            this.button1.Size = new System.Drawing.Size(166, 29);
             this.button1.TabIndex = 16;
-            this.button1.Text = "FindSibling";
+            this.button1.Text = "Find Element\'s Sibling";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // WebText
-            // 
-            this.WebText.Location = new System.Drawing.Point(9, 39);
-            this.WebText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.WebText.MinimumSize = new System.Drawing.Size(20, 20);
-            this.WebText.Name = "WebText";
-            this.WebText.Size = new System.Drawing.Size(1437, 159);
-            this.WebText.TabIndex = 12;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Current Element";
-            // 
             // GetParentButton
             // 
-            this.GetParentButton.Location = new System.Drawing.Point(1353, 6);
+            this.GetParentButton.Location = new System.Drawing.Point(359, 200);
             this.GetParentButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.GetParentButton.Name = "GetParentButton";
-            this.GetParentButton.Size = new System.Drawing.Size(92, 23);
+            this.GetParentButton.Size = new System.Drawing.Size(166, 29);
             this.GetParentButton.TabIndex = 10;
-            this.GetParentButton.Text = "FindParent";
+            this.GetParentButton.Text = "Find Element\'s Parent";
             this.GetParentButton.UseVisualStyleBackColor = true;
             this.GetParentButton.Click += new System.EventHandler(this.GetParentButton_Click);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(425, 21);
+            this.label13.Location = new System.Drawing.Point(170, 35);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(92, 17);
             this.label13.TabIndex = 25;
@@ -297,7 +227,7 @@
             // 
             // XPathGeneratorMaxAttempts
             // 
-            this.XPathGeneratorMaxAttempts.Location = new System.Drawing.Point(380, 17);
+            this.XPathGeneratorMaxAttempts.Location = new System.Drawing.Point(125, 30);
             this.XPathGeneratorMaxAttempts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.XPathGeneratorMaxAttempts.Name = "XPathGeneratorMaxAttempts";
             this.XPathGeneratorMaxAttempts.Size = new System.Drawing.Size(39, 22);
@@ -308,53 +238,18 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(839, 86);
+            this.label14.Location = new System.Drawing.Point(8, 33);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(125, 17);
             this.label14.TabIndex = 27;
             this.label14.Text = "Execute Command";
-            // 
-            // XpathPanel
-            // 
-            this.XpathPanel.AutoSize = true;
-            this.XpathPanel.BackColor = System.Drawing.Color.DimGray;
-            this.XpathPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.XpathPanel.Controls.Add(this.CheckCousinsCheckbox);
-            this.XpathPanel.Controls.Add(this.CheckChildrenCheckbox);
-            this.XpathPanel.Controls.Add(this.UseQuotesCheckbox);
-            this.XpathPanel.Controls.Add(this.CheckSiblingsCheckbox);
-            this.XpathPanel.Controls.Add(this.UseTextCheckbox);
-            this.XpathPanel.Controls.Add(this.CheckAncestorsCheckbox);
-            this.XpathPanel.Controls.Add(this.label9);
-            this.XpathPanel.Controls.Add(this.CheckSelfCheckbox);
-            this.XpathPanel.Controls.Add(this.MaxAttLength);
-            this.XpathPanel.Controls.Add(this.UseContainsCheckBox);
-            this.XpathPanel.Controls.Add(this.SkipAttLabel);
-            this.XpathPanel.Controls.Add(this.SkipAttributeTextBox);
-            this.XpathPanel.Controls.Add(this.SplitAttributesCheckbox);
-            this.XpathPanel.Controls.Add(this.label15);
-            this.XpathPanel.Controls.Add(this.button3);
-            this.XpathPanel.Controls.Add(this.label14);
-            this.XpathPanel.Controls.Add(this.ExecuteCommandButton);
-            this.XpathPanel.Controls.Add(this.XpathsDropdown);
-            this.XpathPanel.Controls.Add(this.WebDriverCommandDropdown);
-            this.XpathPanel.Controls.Add(this.XPathGeneratorMaxAttempts);
-            this.XpathPanel.Controls.Add(this.WebDriverCommandText);
-            this.XpathPanel.Controls.Add(this.label13);
-            this.XpathPanel.Controls.Add(this.label8);
-            this.XpathPanel.Controls.Add(this.MinimumXpathsTextBox);
-            this.XpathPanel.Location = new System.Drawing.Point(3, 309);
-            this.XpathPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.XpathPanel.Name = "XpathPanel";
-            this.XpathPanel.Size = new System.Drawing.Size(1466, 114);
-            this.XpathPanel.TabIndex = 7;
             // 
             // CheckCousinsCheckbox
             // 
             this.CheckCousinsCheckbox.AutoSize = true;
             this.CheckCousinsCheckbox.Checked = true;
             this.CheckCousinsCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckCousinsCheckbox.Location = new System.Drawing.Point(428, 82);
+            this.CheckCousinsCheckbox.Location = new System.Drawing.Point(820, 88);
             this.CheckCousinsCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.CheckCousinsCheckbox.Name = "CheckCousinsCheckbox";
             this.CheckCousinsCheckbox.Size = new System.Drawing.Size(80, 21);
@@ -368,7 +263,7 @@
             this.CheckChildrenCheckbox.AutoSize = true;
             this.CheckChildrenCheckbox.Checked = true;
             this.CheckChildrenCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckChildrenCheckbox.Location = new System.Drawing.Point(335, 82);
+            this.CheckChildrenCheckbox.Location = new System.Drawing.Point(739, 88);
             this.CheckChildrenCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.CheckChildrenCheckbox.Name = "CheckChildrenCheckbox";
             this.CheckChildrenCheckbox.Size = new System.Drawing.Size(82, 21);
@@ -382,7 +277,7 @@
             this.UseQuotesCheckbox.AutoSize = true;
             this.UseQuotesCheckbox.Checked = true;
             this.UseQuotesCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.UseQuotesCheckbox.Location = new System.Drawing.Point(1301, 17);
+            this.UseQuotesCheckbox.Location = new System.Drawing.Point(235, 117);
             this.UseQuotesCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.UseQuotesCheckbox.Name = "UseQuotesCheckbox";
             this.UseQuotesCheckbox.Size = new System.Drawing.Size(154, 21);
@@ -396,7 +291,7 @@
             this.CheckSiblingsCheckbox.AutoSize = true;
             this.CheckSiblingsCheckbox.Checked = true;
             this.CheckSiblingsCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckSiblingsCheckbox.Location = new System.Drawing.Point(244, 82);
+            this.CheckSiblingsCheckbox.Location = new System.Drawing.Point(662, 88);
             this.CheckSiblingsCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.CheckSiblingsCheckbox.Name = "CheckSiblingsCheckbox";
             this.CheckSiblingsCheckbox.Size = new System.Drawing.Size(79, 21);
@@ -408,7 +303,7 @@
             // UseTextCheckbox
             // 
             this.UseTextCheckbox.AutoSize = true;
-            this.UseTextCheckbox.Location = new System.Drawing.Point(1197, 18);
+            this.UseTextCheckbox.Location = new System.Drawing.Point(187, 88);
             this.UseTextCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.UseTextCheckbox.Name = "UseTextCheckbox";
             this.UseTextCheckbox.Size = new System.Drawing.Size(91, 21);
@@ -422,7 +317,7 @@
             this.CheckAncestorsCheckbox.AutoSize = true;
             this.CheckAncestorsCheckbox.Checked = true;
             this.CheckAncestorsCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckAncestorsCheckbox.Location = new System.Drawing.Point(141, 82);
+            this.CheckAncestorsCheckbox.Location = new System.Drawing.Point(561, 88);
             this.CheckAncestorsCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.CheckAncestorsCheckbox.Name = "CheckAncestorsCheckbox";
             this.CheckAncestorsCheckbox.Size = new System.Drawing.Size(93, 21);
@@ -434,7 +329,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(1072, 21);
+            this.label9.Location = new System.Drawing.Point(68, 83);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(115, 17);
@@ -446,7 +341,7 @@
             this.CheckSelfCheckbox.AutoSize = true;
             this.CheckSelfCheckbox.Checked = true;
             this.CheckSelfCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckSelfCheckbox.Location = new System.Drawing.Point(75, 82);
+            this.CheckSelfCheckbox.Location = new System.Drawing.Point(499, 88);
             this.CheckSelfCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.CheckSelfCheckbox.Name = "CheckSelfCheckbox";
             this.CheckSelfCheckbox.Size = new System.Drawing.Size(54, 21);
@@ -457,7 +352,7 @@
             // 
             // MaxAttLength
             // 
-            this.MaxAttLength.Location = new System.Drawing.Point(1020, 16);
+            this.MaxAttLength.Location = new System.Drawing.Point(17, 80);
             this.MaxAttLength.Margin = new System.Windows.Forms.Padding(4);
             this.MaxAttLength.Name = "MaxAttLength";
             this.MaxAttLength.Size = new System.Drawing.Size(43, 22);
@@ -470,7 +365,7 @@
             this.UseContainsCheckBox.AutoSize = true;
             this.UseContainsCheckBox.Checked = true;
             this.UseContainsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.UseContainsCheckBox.Location = new System.Drawing.Point(659, 20);
+            this.UseContainsCheckBox.Location = new System.Drawing.Point(138, 58);
             this.UseContainsCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.UseContainsCheckBox.Name = "UseContainsCheckBox";
             this.UseContainsCheckBox.Size = new System.Drawing.Size(124, 21);
@@ -482,7 +377,7 @@
             // SkipAttLabel
             // 
             this.SkipAttLabel.AutoSize = true;
-            this.SkipAttLabel.Location = new System.Drawing.Point(919, 21);
+            this.SkipAttLabel.Location = new System.Drawing.Point(303, 37);
             this.SkipAttLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.SkipAttLabel.Name = "SkipAttLabel";
             this.SkipAttLabel.Size = new System.Drawing.Size(92, 17);
@@ -491,7 +386,7 @@
             // 
             // SkipAttributeTextBox
             // 
-            this.SkipAttributeTextBox.Location = new System.Drawing.Point(791, 17);
+            this.SkipAttributeTextBox.Location = new System.Drawing.Point(270, 58);
             this.SkipAttributeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.SkipAttributeTextBox.Name = "SkipAttributeTextBox";
             this.SkipAttributeTextBox.Size = new System.Drawing.Size(119, 22);
@@ -503,7 +398,7 @@
             this.SplitAttributesCheckbox.AutoSize = true;
             this.SplitAttributesCheckbox.Checked = true;
             this.SplitAttributesCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.SplitAttributesCheckbox.Location = new System.Drawing.Point(536, 18);
+            this.SplitAttributesCheckbox.Location = new System.Drawing.Point(15, 58);
             this.SplitAttributesCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.SplitAttributesCheckbox.Name = "SplitAttributesCheckbox";
             this.SplitAttributesCheckbox.Size = new System.Drawing.Size(121, 21);
@@ -512,19 +407,9 @@
             this.SplitAttributesCheckbox.UseVisualStyleBackColor = true;
             this.SplitAttributesCheckbox.CheckedChanged += new System.EventHandler(this.SplitAttributesCheckbox_CheckedChanged);
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(8, 26);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(45, 17);
-            this.label15.TabIndex = 28;
-            this.label15.Text = "Xpath";
-            // 
             // GoToUrlButton
             // 
-            this.GoToUrlButton.Location = new System.Drawing.Point(605, 42);
+            this.GoToUrlButton.Location = new System.Drawing.Point(603, 35);
             this.GoToUrlButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.GoToUrlButton.Name = "GoToUrlButton";
             this.GoToUrlButton.Size = new System.Drawing.Size(95, 23);
@@ -535,7 +420,7 @@
             // 
             // UrlTextBox
             // 
-            this.UrlTextBox.Location = new System.Drawing.Point(75, 42);
+            this.UrlTextBox.Location = new System.Drawing.Point(73, 35);
             this.UrlTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UrlTextBox.Name = "UrlTextBox";
             this.UrlTextBox.Size = new System.Drawing.Size(524, 22);
@@ -545,34 +430,15 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 42);
+            this.label6.Location = new System.Drawing.Point(6, 35);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(36, 17);
             this.label6.TabIndex = 12;
             this.label6.Text = "URL";
             // 
-            // BrowserPanel
-            // 
-            this.BrowserPanel.AutoSize = true;
-            this.BrowserPanel.BackColor = System.Drawing.Color.DimGray;
-            this.BrowserPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.BrowserPanel.Controls.Add(this.GoToUrlButton);
-            this.BrowserPanel.Controls.Add(this.LaunchBrowserButton);
-            this.BrowserPanel.Controls.Add(this.label3);
-            this.BrowserPanel.Controls.Add(this.UrlTextBox);
-            this.BrowserPanel.Controls.Add(this.HostTextBox);
-            this.BrowserPanel.Controls.Add(this.BrowserDropdown);
-            this.BrowserPanel.Controls.Add(this.label6);
-            this.BrowserPanel.Controls.Add(this.label2);
-            this.BrowserPanel.Location = new System.Drawing.Point(3, 12);
-            this.BrowserPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.BrowserPanel.Name = "BrowserPanel";
-            this.BrowserPanel.Size = new System.Drawing.Size(708, 82);
-            this.BrowserPanel.TabIndex = 4;
-            // 
             // LaunchBrowserButton
             // 
-            this.LaunchBrowserButton.Location = new System.Drawing.Point(608, 14);
+            this.LaunchBrowserButton.Location = new System.Drawing.Point(606, 7);
             this.LaunchBrowserButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LaunchBrowserButton.Name = "LaunchBrowserButton";
             this.LaunchBrowserButton.Size = new System.Drawing.Size(95, 23);
@@ -584,7 +450,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(299, 15);
+            this.label3.Location = new System.Drawing.Point(297, 8);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 17);
             this.label3.TabIndex = 10;
@@ -592,7 +458,7 @@
             // 
             // HostTextBox
             // 
-            this.HostTextBox.Location = new System.Drawing.Point(341, 14);
+            this.HostTextBox.Location = new System.Drawing.Point(339, 7);
             this.HostTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.HostTextBox.Name = "HostTextBox";
             this.HostTextBox.Size = new System.Drawing.Size(257, 22);
@@ -610,7 +476,7 @@
             "IE",
             "Safari",
             "Android"});
-            this.BrowserDropdown.Location = new System.Drawing.Point(75, 12);
+            this.BrowserDropdown.Location = new System.Drawing.Point(73, 5);
             this.BrowserDropdown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BrowserDropdown.Name = "BrowserDropdown";
             this.BrowserDropdown.Size = new System.Drawing.Size(219, 24);
@@ -620,65 +486,15 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 15);
+            this.label2.Location = new System.Drawing.Point(6, 8);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 17);
             this.label2.TabIndex = 7;
             this.label2.Text = "Browser";
             // 
-            // JavascriptPanel
-            // 
-            this.JavascriptPanel.AutoSize = true;
-            this.JavascriptPanel.BackColor = System.Drawing.Color.DimGray;
-            this.JavascriptPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.JavascriptPanel.Controls.Add(this.label11);
-            this.JavascriptPanel.Controls.Add(this.DisableOnClickButton);
-            this.JavascriptPanel.Controls.Add(this.DisableMouseOverButton);
-            this.JavascriptPanel.Controls.Add(this.ExecuteJS);
-            this.JavascriptPanel.Controls.Add(this.label7);
-            this.JavascriptPanel.Controls.Add(this.JavscriptTextBox);
-            this.JavascriptPanel.Controls.Add(this.HidePanelButton);
-            this.JavascriptPanel.Location = new System.Drawing.Point(713, 12);
-            this.JavascriptPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.JavascriptPanel.Name = "JavascriptPanel";
-            this.JavascriptPanel.Size = new System.Drawing.Size(755, 82);
-            this.JavascriptPanel.TabIndex = 8;
-            this.JavascriptPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint_1);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(77, 48);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(130, 17);
-            this.label11.TabIndex = 14;
-            this.label11.Text = "Prebuilt Commands";
-            // 
-            // DisableOnClickButton
-            // 
-            this.DisableOnClickButton.Location = new System.Drawing.Point(213, 46);
-            this.DisableOnClickButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.DisableOnClickButton.Name = "DisableOnClickButton";
-            this.DisableOnClickButton.Size = new System.Drawing.Size(117, 23);
-            this.DisableOnClickButton.TabIndex = 13;
-            this.DisableOnClickButton.Text = "DisableOnClick";
-            this.DisableOnClickButton.UseVisualStyleBackColor = true;
-            this.DisableOnClickButton.Click += new System.EventHandler(this.DisableOnClickButton_Click);
-            // 
-            // DisableMouseOverButton
-            // 
-            this.DisableMouseOverButton.Location = new System.Drawing.Point(348, 46);
-            this.DisableMouseOverButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.DisableMouseOverButton.Name = "DisableMouseOverButton";
-            this.DisableMouseOverButton.Size = new System.Drawing.Size(143, 23);
-            this.DisableMouseOverButton.TabIndex = 12;
-            this.DisableMouseOverButton.Text = "Disable MouseOver";
-            this.DisableMouseOverButton.UseVisualStyleBackColor = true;
-            this.DisableMouseOverButton.Click += new System.EventHandler(this.DisableMouseOverButton_Click);
-            // 
             // ExecuteJS
             // 
-            this.ExecuteJS.Location = new System.Drawing.Point(657, 12);
+            this.ExecuteJS.Location = new System.Drawing.Point(432, 93);
             this.ExecuteJS.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ExecuteJS.Name = "ExecuteJS";
             this.ExecuteJS.Size = new System.Drawing.Size(93, 23);
@@ -687,83 +503,342 @@
             this.ExecuteJS.UseVisualStyleBackColor = true;
             this.ExecuteJS.Click += new System.EventHandler(this.ExecuteJS_Click);
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 16);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(72, 17);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Javascript";
-            // 
-            // JavscriptTextBox
-            // 
-            this.JavscriptTextBox.Location = new System.Drawing.Point(81, 11);
-            this.JavscriptTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.JavscriptTextBox.Name = "JavscriptTextBox";
-            this.JavscriptTextBox.Size = new System.Drawing.Size(569, 22);
-            this.JavscriptTextBox.TabIndex = 1;
-            this.JavscriptTextBox.TextChanged += new System.EventHandler(this.JavscriptTextBox_TextChanged);
-            // 
-            // HidePanelButton
-            // 
-            this.HidePanelButton.Location = new System.Drawing.Point(503, 46);
-            this.HidePanelButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.HidePanelButton.Name = "HidePanelButton";
-            this.HidePanelButton.Size = new System.Drawing.Size(145, 23);
-            this.HidePanelButton.TabIndex = 11;
-            this.HidePanelButton.Text = "HideDTVEPanel";
-            this.HidePanelButton.UseVisualStyleBackColor = true;
-            this.HidePanelButton.Click += new System.EventHandler(this.HidePanelButton_Click);
-            // 
-            // LogPanel
-            // 
-            this.LogPanel.BackColor = System.Drawing.Color.DimGray;
-            this.LogPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LogPanel.Controls.Add(this.ClearLogButton);
-            this.LogPanel.Controls.Add(this.LogTextBox);
-            this.LogPanel.Controls.Add(this.label5);
-            this.LogPanel.Location = new System.Drawing.Point(3, 428);
-            this.LogPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.LogPanel.Name = "LogPanel";
-            this.LogPanel.Size = new System.Drawing.Size(1466, 254);
-            this.LogPanel.TabIndex = 7;
-            this.LogPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
-            // 
-            // ClearLogButton
-            // 
-            this.ClearLogButton.Location = new System.Drawing.Point(49, 6);
-            this.ClearLogButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ClearLogButton.Name = "ClearLogButton";
-            this.ClearLogButton.Size = new System.Drawing.Size(75, 23);
-            this.ClearLogButton.TabIndex = 2;
-            this.ClearLogButton.Text = "Clear";
-            this.ClearLogButton.UseVisualStyleBackColor = true;
-            this.ClearLogButton.Click += new System.EventHandler(this.ClearLogButton_Click);
-            // 
-            // LogTextBox
-            // 
-            this.LogTextBox.Location = new System.Drawing.Point(7, 34);
-            this.LogTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.LogTextBox.Name = "LogTextBox";
-            this.LogTextBox.Size = new System.Drawing.Size(1437, 212);
-            this.LogTextBox.TabIndex = 1;
-            this.LogTextBox.Text = "";
-            this.LogTextBox.TextChanged += new System.EventHandler(this.LogTextBox_TextChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 9);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(32, 17);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Log";
-            // 
             // notifyIcon1
             // 
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.tabPage6);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.ShowToolTips = true;
+            this.tabControl1.Size = new System.Drawing.Size(982, 653);
+            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
+            this.tabControl1.TabIndex = 9;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.XPathSectionLocatorUse);
+            this.tabPage1.Controls.Add(this.XPathSectionXPathGenerate);
+            this.tabPage1.Controls.Add(this.XPathSectionLoadElementPanel);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(974, 624);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "XPath Generation";
+            this.tabPage1.ToolTipText = "All things XPath related";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(5, 6);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(45, 17);
+            this.label15.TabIndex = 29;
+            this.label15.Text = "Xpath";
+            // 
+            // WebText
+            // 
+            this.WebText.Location = new System.Drawing.Point(15, 103);
+            this.WebText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.WebText.MinimumSize = new System.Drawing.Size(20, 20);
+            this.WebText.Name = "WebText";
+            this.WebText.Size = new System.Drawing.Size(929, 83);
+            this.WebText.TabIndex = 25;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(350, 42);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(125, 17);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Refresh Time (ms)";
+            // 
+            // RefreshTimeTextBox
+            // 
+            this.RefreshTimeTextBox.Location = new System.Drawing.Point(306, 39);
+            this.RefreshTimeTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.RefreshTimeTextBox.Name = "RefreshTimeTextBox";
+            this.RefreshTimeTextBox.Size = new System.Drawing.Size(36, 22);
+            this.RefreshTimeTextBox.TabIndex = 23;
+            this.RefreshTimeTextBox.Text = "2000";
+            // 
+            // RegisterLeftClickButton
+            // 
+            this.RegisterLeftClickButton.Location = new System.Drawing.Point(12, 35);
+            this.RegisterLeftClickButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.RegisterLeftClickButton.Name = "RegisterLeftClickButton";
+            this.RegisterLeftClickButton.Size = new System.Drawing.Size(138, 30);
+            this.RegisterLeftClickButton.TabIndex = 21;
+            this.RegisterLeftClickButton.Text = "Record Left-click";
+            this.RegisterLeftClickButton.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 84);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(110, 17);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Current Element";
+            // 
+            // RegisterRightClickButton
+            // 
+            this.RegisterRightClickButton.Location = new System.Drawing.Point(156, 35);
+            this.RegisterRightClickButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.RegisterRightClickButton.Name = "RegisterRightClickButton";
+            this.RegisterRightClickButton.Size = new System.Drawing.Size(138, 30);
+            this.RegisterRightClickButton.TabIndex = 22;
+            this.RegisterRightClickButton.Text = "Record Right-click";
+            this.RegisterRightClickButton.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.GoToUrlButton);
+            this.tabPage2.Controls.Add(this.label2);
+            this.tabPage2.Controls.Add(this.LaunchBrowserButton);
+            this.tabPage2.Controls.Add(this.label6);
+            this.tabPage2.Controls.Add(this.label3);
+            this.tabPage2.Controls.Add(this.BrowserDropdown);
+            this.tabPage2.Controls.Add(this.UrlTextBox);
+            this.tabPage2.Controls.Add(this.HostTextBox);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(974, 424);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Launch Browser";
+            this.tabPage2.ToolTipText = "Launch various browsers";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.ExecuteJS);
+            this.tabPage3.Controls.Add(this.label11);
+            this.tabPage3.Controls.Add(this.DisableOnClickButton);
+            this.tabPage3.Controls.Add(this.DisableMouseOverButton);
+            this.tabPage3.Controls.Add(this.label7);
+            this.tabPage3.Controls.Add(this.JavscriptTextBox);
+            this.tabPage3.Controls.Add(this.HidePanelButton);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(974, 424);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "JavaScript";
+            this.tabPage3.ToolTipText = "Place JS on the page";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 74);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(130, 17);
+            this.label11.TabIndex = 20;
+            this.label11.Text = "Prebuilt Commands";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
+            // 
+            // DisableOnClickButton
+            // 
+            this.DisableOnClickButton.Location = new System.Drawing.Point(9, 93);
+            this.DisableOnClickButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.DisableOnClickButton.Name = "DisableOnClickButton";
+            this.DisableOnClickButton.Size = new System.Drawing.Size(117, 23);
+            this.DisableOnClickButton.TabIndex = 19;
+            this.DisableOnClickButton.Text = "DisableOnClick";
+            this.DisableOnClickButton.UseVisualStyleBackColor = true;
+            this.DisableOnClickButton.Click += new System.EventHandler(this.DisableOnClickButton_Click_1);
+            // 
+            // DisableMouseOverButton
+            // 
+            this.DisableMouseOverButton.Location = new System.Drawing.Point(132, 93);
+            this.DisableMouseOverButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.DisableMouseOverButton.Name = "DisableMouseOverButton";
+            this.DisableMouseOverButton.Size = new System.Drawing.Size(143, 23);
+            this.DisableMouseOverButton.TabIndex = 18;
+            this.DisableMouseOverButton.Text = "Disable MouseOver";
+            this.DisableMouseOverButton.UseVisualStyleBackColor = true;
+            this.DisableMouseOverButton.Click += new System.EventHandler(this.DisableMouseOverButton_Click_1);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 4);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(72, 17);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Javascript";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // JavscriptTextBox
+            // 
+            this.JavscriptTextBox.Location = new System.Drawing.Point(9, 29);
+            this.JavscriptTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.JavscriptTextBox.Name = "JavscriptTextBox";
+            this.JavscriptTextBox.Size = new System.Drawing.Size(569, 22);
+            this.JavscriptTextBox.TabIndex = 16;
+            this.JavscriptTextBox.TextChanged += new System.EventHandler(this.JavscriptTextBox_TextChanged_1);
+            // 
+            // HidePanelButton
+            // 
+            this.HidePanelButton.Location = new System.Drawing.Point(281, 93);
+            this.HidePanelButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.HidePanelButton.Name = "HidePanelButton";
+            this.HidePanelButton.Size = new System.Drawing.Size(145, 23);
+            this.HidePanelButton.TabIndex = 17;
+            this.HidePanelButton.Text = "HideDTVEPanel";
+            this.HidePanelButton.UseVisualStyleBackColor = true;
+            this.HidePanelButton.Click += new System.EventHandler(this.HidePanelButton_Click_1);
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.LogTextBox);
+            this.tabPage4.Controls.Add(this.ClearLogButton);
+            this.tabPage4.Controls.Add(this.label5);
+            this.tabPage4.Location = new System.Drawing.Point(4, 25);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(974, 424);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Error Log";
+            this.tabPage4.ToolTipText = "Where to find where you fucked up";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // LogTextBox
+            // 
+            this.LogTextBox.Location = new System.Drawing.Point(12, 38);
+            this.LogTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.LogTextBox.Name = "LogTextBox";
+            this.LogTextBox.Size = new System.Drawing.Size(421, 205);
+            this.LogTextBox.TabIndex = 4;
+            this.LogTextBox.Text = "";
+            this.LogTextBox.TextChanged += new System.EventHandler(this.LogTextBox_TextChanged_1);
+            // 
+            // ClearLogButton
+            // 
+            this.ClearLogButton.Location = new System.Drawing.Point(47, 6);
+            this.ClearLogButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ClearLogButton.Name = "ClearLogButton";
+            this.ClearLogButton.Size = new System.Drawing.Size(75, 23);
+            this.ClearLogButton.TabIndex = 3;
+            this.ClearLogButton.Text = "Clear";
+            this.ClearLogButton.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(32, 17);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Log";
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Location = new System.Drawing.Point(4, 25);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(974, 424);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Help";
+            this.tabPage5.ToolTipText = "HELP!!";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.tabPage6.Location = new System.Drawing.Point(4, 25);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(974, 424);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "Settings";
+            this.tabPage6.ToolTipText = "Change shit";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // XPathSectionLoadWebsiteElement
+            // 
+            this.XPathSectionLoadWebsiteElement.AutoSize = true;
+            this.XPathSectionLoadWebsiteElement.BackColor = System.Drawing.Color.DarkGray;
+            this.XPathSectionLoadWebsiteElement.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.XPathSectionLoadWebsiteElement.Location = new System.Drawing.Point(5, 5);
+            this.XPathSectionLoadWebsiteElement.Name = "XPathSectionLoadWebsiteElement";
+            this.XPathSectionLoadWebsiteElement.Size = new System.Drawing.Size(178, 20);
+            this.XPathSectionLoadWebsiteElement.TabIndex = 38;
+            this.XPathSectionLoadWebsiteElement.Text = "Load Website Element";
+            // 
+            // XPathSectionLoadElementPanel
+            // 
+            this.XPathSectionLoadElementPanel.BackColor = System.Drawing.Color.Silver;
+            this.XPathSectionLoadElementPanel.Controls.Add(this.label1);
+            this.XPathSectionLoadElementPanel.Controls.Add(this.XPathSectionLoadWebsiteElement);
+            this.XPathSectionLoadElementPanel.Controls.Add(this.RegisterLeftClickButton);
+            this.XPathSectionLoadElementPanel.Controls.Add(this.RegisterRightClickButton);
+            this.XPathSectionLoadElementPanel.Controls.Add(this.RefreshTimeTextBox);
+            this.XPathSectionLoadElementPanel.Controls.Add(this.label4);
+            this.XPathSectionLoadElementPanel.Controls.Add(this.GetParentButton);
+            this.XPathSectionLoadElementPanel.Controls.Add(this.button1);
+            this.XPathSectionLoadElementPanel.Controls.Add(this.button2);
+            this.XPathSectionLoadElementPanel.Controls.Add(this.WebText);
+            this.XPathSectionLoadElementPanel.Location = new System.Drawing.Point(6, 6);
+            this.XPathSectionLoadElementPanel.Name = "XPathSectionLoadElementPanel";
+            this.XPathSectionLoadElementPanel.Size = new System.Drawing.Size(960, 243);
+            this.XPathSectionLoadElementPanel.TabIndex = 39;
+            // 
+            // XPathSectionXPathGenerate
+            // 
+            this.XPathSectionXPathGenerate.BackColor = System.Drawing.Color.Silver;
+            this.XPathSectionXPathGenerate.Controls.Add(this.label15);
+            this.XPathSectionXPathGenerate.Controls.Add(this.button3);
+            this.XPathSectionXPathGenerate.Controls.Add(this.label8);
+            this.XPathSectionXPathGenerate.Controls.Add(this.MinimumXpathsTextBox);
+            this.XPathSectionXPathGenerate.Controls.Add(this.label13);
+            this.XPathSectionXPathGenerate.Controls.Add(this.XPathGeneratorMaxAttempts);
+            this.XPathSectionXPathGenerate.Controls.Add(this.CheckCousinsCheckbox);
+            this.XPathSectionXPathGenerate.Controls.Add(this.SplitAttributesCheckbox);
+            this.XPathSectionXPathGenerate.Controls.Add(this.CheckChildrenCheckbox);
+            this.XPathSectionXPathGenerate.Controls.Add(this.UseContainsCheckBox);
+            this.XPathSectionXPathGenerate.Controls.Add(this.CheckSiblingsCheckbox);
+            this.XPathSectionXPathGenerate.Controls.Add(this.CheckAncestorsCheckbox);
+            this.XPathSectionXPathGenerate.Controls.Add(this.SkipAttributeTextBox);
+            this.XPathSectionXPathGenerate.Controls.Add(this.CheckSelfCheckbox);
+            this.XPathSectionXPathGenerate.Controls.Add(this.UseQuotesCheckbox);
+            this.XPathSectionXPathGenerate.Controls.Add(this.SkipAttLabel);
+            this.XPathSectionXPathGenerate.Controls.Add(this.XpathsDropdown);
+            this.XPathSectionXPathGenerate.Controls.Add(this.label9);
+            this.XPathSectionXPathGenerate.Controls.Add(this.MaxAttLength);
+            this.XPathSectionXPathGenerate.Controls.Add(this.UseTextCheckbox);
+            this.XPathSectionXPathGenerate.Location = new System.Drawing.Point(6, 270);
+            this.XPathSectionXPathGenerate.Name = "XPathSectionXPathGenerate";
+            this.XPathSectionXPathGenerate.Size = new System.Drawing.Size(960, 217);
+            this.XPathSectionXPathGenerate.TabIndex = 40;
+            // 
+            // XPathSectionLocatorUse
+            // 
+            this.XPathSectionLocatorUse.BackColor = System.Drawing.Color.Silver;
+            this.XPathSectionLocatorUse.Controls.Add(this.WebDriverCommandDropdown);
+            this.XPathSectionLocatorUse.Controls.Add(this.WebDriverCommandText);
+            this.XPathSectionLocatorUse.Controls.Add(this.label14);
+            this.XPathSectionLocatorUse.Controls.Add(this.ExecuteCommandButton);
+            this.XPathSectionLocatorUse.Location = new System.Drawing.Point(6, 506);
+            this.XPathSectionLocatorUse.Name = "XPathSectionLocatorUse";
+            this.XPathSectionLocatorUse.Size = new System.Drawing.Size(960, 110);
+            this.XPathSectionLocatorUse.TabIndex = 41;
             // 
             // Specter
             // 
@@ -771,31 +846,32 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1360, 733);
-            this.Controls.Add(this.JavascriptPanel);
-            this.Controls.Add(this.BrowserPanel);
-            this.Controls.Add(this.LogPanel);
-            this.Controls.Add(this.XpathPanel);
-            this.Controls.Add(this.ElementPanel);
+            this.ClientSize = new System.Drawing.Size(982, 653);
+            this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximumSize = new System.Drawing.Size(1000, 700);
+            this.MinimumSize = new System.Drawing.Size(1000, 700);
             this.Name = "Specter";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ProtoTest.Specter";
+            this.Text = "Specter, by ProtoTest";
             this.Load += new System.EventHandler(this.Specter_Load);
-            this.ElementPanel.ResumeLayout(false);
-            this.ElementPanel.PerformLayout();
-            this.XpathPanel.ResumeLayout(false);
-            this.XpathPanel.PerformLayout();
-            this.BrowserPanel.ResumeLayout(false);
-            this.BrowserPanel.PerformLayout();
-            this.JavascriptPanel.ResumeLayout(false);
-            this.JavascriptPanel.PerformLayout();
-            this.LogPanel.ResumeLayout(false);
-            this.LogPanel.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            this.XPathSectionLoadElementPanel.ResumeLayout(false);
+            this.XPathSectionLoadElementPanel.PerformLayout();
+            this.XPathSectionXPathGenerate.ResumeLayout(false);
+            this.XPathSectionXPathGenerate.PerformLayout();
+            this.XPathSectionLocatorUse.ResumeLayout(false);
+            this.XPathSectionLocatorUse.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -803,14 +879,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel ElementPanel;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button ExecuteCommandButton;
         private System.Windows.Forms.ComboBox XpathsDropdown;
-        private System.Windows.Forms.Button RegisterClickEventButton;
         private System.Windows.Forms.Button GetParentButton;
-        private System.Windows.Forms.Button RegisterRightClickButton;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox MinimumXpathsTextBox;
         private System.Windows.Forms.TextBox WebDriverCommandText;
@@ -818,8 +890,6 @@
         private System.Windows.Forms.TextBox XPathGeneratorMaxAttempts;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Panel XpathPanel;
-        private System.Windows.Forms.Panel BrowserPanel;
         private System.Windows.Forms.Button GoToUrlButton;
         private System.Windows.Forms.TextBox UrlTextBox;
         private System.Windows.Forms.Label label6;
@@ -828,29 +898,14 @@
         private System.Windows.Forms.TextBox HostTextBox;
         private System.Windows.Forms.ComboBox BrowserDropdown;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel JavascriptPanel;
-        private System.Windows.Forms.Button DisableOnClickButton;
-        private System.Windows.Forms.Button DisableMouseOverButton;
         private System.Windows.Forms.Button ExecuteJS;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox JavscriptTextBox;
-        private System.Windows.Forms.Button HidePanelButton;
-        private System.Windows.Forms.Panel LogPanel;
-        private System.Windows.Forms.Button ClearLogButton;
-        private System.Windows.Forms.RichTextBox LogTextBox;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.WebBrowser WebText;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox UseContainsCheckBox;
         private System.Windows.Forms.Label SkipAttLabel;
         private System.Windows.Forms.TextBox SkipAttributeTextBox;
         private System.Windows.Forms.CheckBox SplitAttributesCheckbox;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox RefreshTimeTextBox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox MaxAttLength;
         private System.Windows.Forms.CheckBox UseQuotesCheckbox;
@@ -860,6 +915,33 @@
         private System.Windows.Forms.CheckBox CheckSiblingsCheckbox;
         private System.Windows.Forms.CheckBox CheckAncestorsCheckbox;
         private System.Windows.Forms.CheckBox CheckSelfCheckbox;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button DisableOnClickButton;
+        private System.Windows.Forms.Button DisableMouseOverButton;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox JavscriptTextBox;
+        private System.Windows.Forms.Button HidePanelButton;
+        private System.Windows.Forms.RichTextBox LogTextBox;
+        private System.Windows.Forms.Button ClearLogButton;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.WebBrowser WebText;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox RefreshTimeTextBox;
+        private System.Windows.Forms.Button RegisterLeftClickButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button RegisterRightClickButton;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label XPathSectionLoadWebsiteElement;
+        private System.Windows.Forms.Panel XPathSectionLoadElementPanel;
+        private System.Windows.Forms.Panel XPathSectionXPathGenerate;
+        private System.Windows.Forms.Panel XPathSectionLocatorUse;
     }
 }
 

@@ -116,6 +116,8 @@
     <Content Include="IEDriverServer.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="images\window_gear.png" />
+    <None Include="images\sprocket_dark.png" />
     <Content Include="packages\Selenium.WebDriver.ChromeDriver.2.3.0.0\content\chromedriver.exe" />
     <Content Include="packages\Selenium.WebDriver.IEDriver.2.35.3.3\content\IEDriverServer.exe" />
     <Content Include="Specter Icon.ico" />
