@@ -72,9 +72,10 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.XPathSectionLocatorUse = new System.Windows.Forms.Panel();
             this.VerifyXPathLocatorOnPage = new System.Windows.Forms.Button();
-            this.CopyXPathToClipboard = new System.Windows.Forms.Button();
             this.XPathLocatorExecuteWebdriver = new System.Windows.Forms.Label();
+            this.CopyXPathToClipboard = new System.Windows.Forms.Button();
             this.XPathSectionXPathGenerate = new System.Windows.Forms.Panel();
+            this.XPathSectionLocatorChoose = new System.Windows.Forms.Label();
             this.XPathSectionLocatorGeneration = new System.Windows.Forms.Label();
             this.XPathSectionLoadElementPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -124,10 +125,11 @@
             // 
             // WebDriverCommandText
             // 
-            this.WebDriverCommandText.Location = new System.Drawing.Point(463, 39);
+            this.WebDriverCommandText.Location = new System.Drawing.Point(463, 72);
             this.WebDriverCommandText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.WebDriverCommandText.Multiline = true;
             this.WebDriverCommandText.Name = "WebDriverCommandText";
-            this.WebDriverCommandText.Size = new System.Drawing.Size(292, 22);
+            this.WebDriverCommandText.Size = new System.Drawing.Size(292, 24);
             this.WebDriverCommandText.TabIndex = 20;
             this.WebDriverCommandText.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -141,7 +143,7 @@
             "MouseOver",
             "Type",
             "Count"});
-            this.WebDriverCommandDropdown.Location = new System.Drawing.Point(212, 39);
+            this.WebDriverCommandDropdown.Location = new System.Drawing.Point(212, 72);
             this.WebDriverCommandDropdown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.WebDriverCommandDropdown.Name = "WebDriverCommandDropdown";
             this.WebDriverCommandDropdown.Size = new System.Drawing.Size(245, 24);
@@ -169,10 +171,10 @@
             // 
             // ExecuteCommandButton
             // 
-            this.ExecuteCommandButton.Location = new System.Drawing.Point(760, 38);
+            this.ExecuteCommandButton.Location = new System.Drawing.Point(761, 72);
             this.ExecuteCommandButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ExecuteCommandButton.Name = "ExecuteCommandButton";
-            this.ExecuteCommandButton.Size = new System.Drawing.Size(93, 29);
+            this.ExecuteCommandButton.Size = new System.Drawing.Size(93, 24);
             this.ExecuteCommandButton.TabIndex = 4;
             this.ExecuteCommandButton.Text = "Execute";
             this.ExecuteCommandButton.UseVisualStyleBackColor = true;
@@ -192,11 +194,11 @@
             // XpathsDropdown
             // 
             this.XpathsDropdown.FormattingEnabled = true;
-            this.XpathsDropdown.Location = new System.Drawing.Point(15, 181);
+            this.XpathsDropdown.Location = new System.Drawing.Point(123, 181);
             this.XpathsDropdown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.XpathsDropdown.MaxDropDownItems = 20;
             this.XpathsDropdown.Name = "XpathsDropdown";
-            this.XpathsDropdown.Size = new System.Drawing.Size(404, 24);
+            this.XpathsDropdown.Size = new System.Drawing.Size(402, 24);
             this.XpathsDropdown.TabIndex = 0;
             this.XpathsDropdown.SelectedIndexChanged += new System.EventHandler(this.XpathsDropdown_SelectedIndexChanged);
             // 
@@ -258,16 +260,16 @@
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(6, 10);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(101, 20);
+            this.label14.Size = new System.Drawing.Size(203, 20);
             this.label14.TabIndex = 27;
-            this.label14.Text = "Use Locator";
+            this.label14.Text = "Step 3 - Use/Test Locator";
             // 
             // CheckCousinsCheckbox
             // 
             this.CheckCousinsCheckbox.AutoSize = true;
             this.CheckCousinsCheckbox.Checked = true;
             this.CheckCousinsCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckCousinsCheckbox.Location = new System.Drawing.Point(754, 183);
+            this.CheckCousinsCheckbox.Location = new System.Drawing.Point(864, 181);
             this.CheckCousinsCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.CheckCousinsCheckbox.Name = "CheckCousinsCheckbox";
             this.CheckCousinsCheckbox.Size = new System.Drawing.Size(80, 21);
@@ -281,7 +283,7 @@
             this.CheckChildrenCheckbox.AutoSize = true;
             this.CheckChildrenCheckbox.Checked = true;
             this.CheckChildrenCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckChildrenCheckbox.Location = new System.Drawing.Point(673, 183);
+            this.CheckChildrenCheckbox.Location = new System.Drawing.Point(783, 181);
             this.CheckChildrenCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.CheckChildrenCheckbox.Name = "CheckChildrenCheckbox";
             this.CheckChildrenCheckbox.Size = new System.Drawing.Size(82, 21);
@@ -295,7 +297,7 @@
             this.UseQuotesCheckbox.AutoSize = true;
             this.UseQuotesCheckbox.Checked = true;
             this.UseQuotesCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.UseQuotesCheckbox.Location = new System.Drawing.Point(235, 86);
+            this.UseQuotesCheckbox.Location = new System.Drawing.Point(235, 60);
             this.UseQuotesCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.UseQuotesCheckbox.Name = "UseQuotesCheckbox";
             this.UseQuotesCheckbox.Size = new System.Drawing.Size(154, 21);
@@ -309,7 +311,7 @@
             this.CheckSiblingsCheckbox.AutoSize = true;
             this.CheckSiblingsCheckbox.Checked = true;
             this.CheckSiblingsCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckSiblingsCheckbox.Location = new System.Drawing.Point(596, 183);
+            this.CheckSiblingsCheckbox.Location = new System.Drawing.Point(706, 181);
             this.CheckSiblingsCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.CheckSiblingsCheckbox.Name = "CheckSiblingsCheckbox";
             this.CheckSiblingsCheckbox.Size = new System.Drawing.Size(79, 21);
@@ -321,7 +323,7 @@
             // UseTextCheckbox
             // 
             this.UseTextCheckbox.AutoSize = true;
-            this.UseTextCheckbox.Location = new System.Drawing.Point(235, 57);
+            this.UseTextCheckbox.Location = new System.Drawing.Point(235, 89);
             this.UseTextCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.UseTextCheckbox.Name = "UseTextCheckbox";
             this.UseTextCheckbox.Size = new System.Drawing.Size(91, 21);
@@ -335,7 +337,7 @@
             this.CheckAncestorsCheckbox.AutoSize = true;
             this.CheckAncestorsCheckbox.Checked = true;
             this.CheckAncestorsCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckAncestorsCheckbox.Location = new System.Drawing.Point(495, 183);
+            this.CheckAncestorsCheckbox.Location = new System.Drawing.Point(605, 181);
             this.CheckAncestorsCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.CheckAncestorsCheckbox.Name = "CheckAncestorsCheckbox";
             this.CheckAncestorsCheckbox.Size = new System.Drawing.Size(93, 21);
@@ -359,7 +361,7 @@
             this.CheckSelfCheckbox.AutoSize = true;
             this.CheckSelfCheckbox.Checked = true;
             this.CheckSelfCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckSelfCheckbox.Location = new System.Drawing.Point(433, 183);
+            this.CheckSelfCheckbox.Location = new System.Drawing.Point(543, 181);
             this.CheckSelfCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.CheckSelfCheckbox.Name = "CheckSelfCheckbox";
             this.CheckSelfCheckbox.Size = new System.Drawing.Size(54, 21);
@@ -383,7 +385,7 @@
             this.UseContainsCheckBox.AutoSize = true;
             this.UseContainsCheckBox.Checked = true;
             this.UseContainsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.UseContainsCheckBox.Location = new System.Drawing.Point(235, 115);
+            this.UseContainsCheckBox.Location = new System.Drawing.Point(235, 118);
             this.UseContainsCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.UseContainsCheckBox.Name = "UseContainsCheckBox";
             this.UseContainsCheckBox.Size = new System.Drawing.Size(124, 21);
@@ -555,14 +557,14 @@
             this.tabPage1.Size = new System.Drawing.Size(974, 624);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "XPath Generation";
-            this.tabPage1.ToolTipText = "All things XPath related";
+            this.tabPage1.ToolTipText = "Record a site element, then generate and test the XPath locators.";
             // 
             // XPathSectionLocatorUse
             // 
             this.XPathSectionLocatorUse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(182)))), ((int)(((byte)(69)))));
             this.XPathSectionLocatorUse.Controls.Add(this.VerifyXPathLocatorOnPage);
-            this.XPathSectionLocatorUse.Controls.Add(this.CopyXPathToClipboard);
             this.XPathSectionLocatorUse.Controls.Add(this.XPathLocatorExecuteWebdriver);
+            this.XPathSectionLocatorUse.Controls.Add(this.CopyXPathToClipboard);
             this.XPathSectionLocatorUse.Controls.Add(this.WebDriverCommandDropdown);
             this.XPathSectionLocatorUse.Controls.Add(this.WebDriverCommandText);
             this.XPathSectionLocatorUse.Controls.Add(this.label14);
@@ -574,16 +576,26 @@
             // 
             // VerifyXPathLocatorOnPage
             // 
-            this.VerifyXPathLocatorOnPage.Location = new System.Drawing.Point(254, 70);
+            this.VerifyXPathLocatorOnPage.Location = new System.Drawing.Point(248, 35);
             this.VerifyXPathLocatorOnPage.Name = "VerifyXPathLocatorOnPage";
             this.VerifyXPathLocatorOnPage.Size = new System.Drawing.Size(214, 32);
             this.VerifyXPathLocatorOnPage.TabIndex = 30;
             this.VerifyXPathLocatorOnPage.Text = "Show XPath Locator on page";
             this.VerifyXPathLocatorOnPage.UseVisualStyleBackColor = true;
+            this.VerifyXPathLocatorOnPage.Click += new System.EventHandler(this.VerifyXPathLocatorOnPage_Click);
+            // 
+            // XPathLocatorExecuteWebdriver
+            // 
+            this.XPathLocatorExecuteWebdriver.AutoSize = true;
+            this.XPathLocatorExecuteWebdriver.Location = new System.Drawing.Point(12, 75);
+            this.XPathLocatorExecuteWebdriver.Name = "XPathLocatorExecuteWebdriver";
+            this.XPathLocatorExecuteWebdriver.Size = new System.Drawing.Size(194, 17);
+            this.XPathLocatorExecuteWebdriver.TabIndex = 28;
+            this.XPathLocatorExecuteWebdriver.Text = "Execute Webdriver Command";
             // 
             // CopyXPathToClipboard
             // 
-            this.CopyXPathToClipboard.Location = new System.Drawing.Point(15, 70);
+            this.CopyXPathToClipboard.Location = new System.Drawing.Point(9, 35);
             this.CopyXPathToClipboard.Name = "CopyXPathToClipboard";
             this.CopyXPathToClipboard.Size = new System.Drawing.Size(231, 32);
             this.CopyXPathToClipboard.TabIndex = 29;
@@ -591,18 +603,10 @@
             this.CopyXPathToClipboard.UseVisualStyleBackColor = true;
             this.CopyXPathToClipboard.Click += new System.EventHandler(this.CopyXPathToClipboard_Click);
             // 
-            // XPathLocatorExecuteWebdriver
-            // 
-            this.XPathLocatorExecuteWebdriver.AutoSize = true;
-            this.XPathLocatorExecuteWebdriver.Location = new System.Drawing.Point(12, 42);
-            this.XPathLocatorExecuteWebdriver.Name = "XPathLocatorExecuteWebdriver";
-            this.XPathLocatorExecuteWebdriver.Size = new System.Drawing.Size(194, 17);
-            this.XPathLocatorExecuteWebdriver.TabIndex = 28;
-            this.XPathLocatorExecuteWebdriver.Text = "Execute Webdriver Command";
-            // 
             // XPathSectionXPathGenerate
             // 
             this.XPathSectionXPathGenerate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(182)))), ((int)(((byte)(69)))));
+            this.XPathSectionXPathGenerate.Controls.Add(this.XPathSectionLocatorChoose);
             this.XPathSectionXPathGenerate.Controls.Add(this.XPathSectionLocatorGeneration);
             this.XPathSectionXPathGenerate.Controls.Add(this.GenerateXPathLocatorsButton);
             this.XPathSectionXPathGenerate.Controls.Add(this.label8);
@@ -628,6 +632,15 @@
             this.XPathSectionXPathGenerate.Size = new System.Drawing.Size(960, 217);
             this.XPathSectionXPathGenerate.TabIndex = 40;
             // 
+            // XPathSectionLocatorChoose
+            // 
+            this.XPathSectionLocatorChoose.AutoSize = true;
+            this.XPathSectionLocatorChoose.Location = new System.Drawing.Point(10, 184);
+            this.XPathSectionLocatorChoose.Name = "XPathSectionLocatorChoose";
+            this.XPathSectionLocatorChoose.Size = new System.Drawing.Size(107, 17);
+            this.XPathSectionLocatorChoose.TabIndex = 38;
+            this.XPathSectionLocatorChoose.Text = "Choose locator:";
+            // 
             // XPathSectionLocatorGeneration
             // 
             this.XPathSectionLocatorGeneration.AutoSize = true;
@@ -635,9 +648,9 @@
             this.XPathSectionLocatorGeneration.Location = new System.Drawing.Point(5, 6);
             this.XPathSectionLocatorGeneration.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.XPathSectionLocatorGeneration.Name = "XPathSectionLocatorGeneration";
-            this.XPathSectionLocatorGeneration.Size = new System.Drawing.Size(199, 20);
+            this.XPathSectionLocatorGeneration.Size = new System.Drawing.Size(263, 20);
             this.XPathSectionLocatorGeneration.TabIndex = 29;
-            this.XPathSectionLocatorGeneration.Text = "Generate XPath Locators";
+            this.XPathSectionLocatorGeneration.Text = "Step 2 - Generate XPath Locators";
             // 
             // XPathSectionLoadElementPanel
             // 
@@ -662,9 +675,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 84);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 17);
+            this.label1.Size = new System.Drawing.Size(269, 17);
             this.label1.TabIndex = 20;
-            this.label1.Text = "Current Element";
+            this.label1.Text = "Current Element (extracted from website):";
             // 
             // XPathSectionLoadWebsiteElement
             // 
@@ -673,45 +686,45 @@
             this.XPathSectionLoadWebsiteElement.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.XPathSectionLoadWebsiteElement.Location = new System.Drawing.Point(5, 5);
             this.XPathSectionLoadWebsiteElement.Name = "XPathSectionLoadWebsiteElement";
-            this.XPathSectionLoadWebsiteElement.Size = new System.Drawing.Size(178, 20);
+            this.XPathSectionLoadWebsiteElement.Size = new System.Drawing.Size(242, 20);
             this.XPathSectionLoadWebsiteElement.TabIndex = 38;
-            this.XPathSectionLoadWebsiteElement.Text = "Load Website Element";
+            this.XPathSectionLoadWebsiteElement.Text = "Step 1 - Load Website Element";
             // 
             // RegisterLeftClickButton
             // 
             this.RegisterLeftClickButton.Location = new System.Drawing.Point(9, 42);
             this.RegisterLeftClickButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RegisterLeftClickButton.Name = "RegisterLeftClickButton";
-            this.RegisterLeftClickButton.Size = new System.Drawing.Size(138, 30);
+            this.RegisterLeftClickButton.Size = new System.Drawing.Size(219, 30);
             this.RegisterLeftClickButton.TabIndex = 21;
-            this.RegisterLeftClickButton.Text = "Record Left-click";
+            this.RegisterLeftClickButton.Text = "Capture Element with Left-click";
             this.RegisterLeftClickButton.UseVisualStyleBackColor = true;
             this.RegisterLeftClickButton.Click += new System.EventHandler(this.RegisterLeftClickButton_Click);
             // 
             // RegisterRightClickButton
             // 
-            this.RegisterRightClickButton.Location = new System.Drawing.Point(153, 42);
+            this.RegisterRightClickButton.Location = new System.Drawing.Point(232, 42);
             this.RegisterRightClickButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RegisterRightClickButton.Name = "RegisterRightClickButton";
-            this.RegisterRightClickButton.Size = new System.Drawing.Size(138, 30);
+            this.RegisterRightClickButton.Size = new System.Drawing.Size(228, 30);
             this.RegisterRightClickButton.TabIndex = 22;
-            this.RegisterRightClickButton.Text = "Record Right-click";
+            this.RegisterRightClickButton.Text = "Capture Element with Right-click";
             this.RegisterRightClickButton.UseVisualStyleBackColor = true;
             this.RegisterRightClickButton.Click += new System.EventHandler(this.RegisterRightClickButton_Click);
             // 
             // RefreshTimeTextBox
             // 
-            this.RefreshTimeTextBox.Location = new System.Drawing.Point(442, 48);
+            this.RefreshTimeTextBox.Location = new System.Drawing.Point(608, 48);
             this.RefreshTimeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.RefreshTimeTextBox.Name = "RefreshTimeTextBox";
-            this.RefreshTimeTextBox.Size = new System.Drawing.Size(36, 22);
+            this.RefreshTimeTextBox.Size = new System.Drawing.Size(41, 22);
             this.RefreshTimeTextBox.TabIndex = 23;
             this.RefreshTimeTextBox.Text = "2000";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(309, 49);
+            this.label4.Location = new System.Drawing.Point(475, 49);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(129, 17);
@@ -737,7 +750,7 @@
             this.tabPage2.Size = new System.Drawing.Size(974, 624);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Launch Browser";
-            this.tabPage2.ToolTipText = "Launch various browsers";
+            this.tabPage2.ToolTipText = "Launch the browser on a local or remote machine.";
             // 
             // panel1
             // 
@@ -765,7 +778,7 @@
             this.tabPage3.Size = new System.Drawing.Size(974, 624);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "JavaScript";
-            this.tabPage3.ToolTipText = "Place JS on the page";
+            this.tabPage3.ToolTipText = "Execute Javascript";
             // 
             // panel2
             // 
@@ -854,7 +867,7 @@
             this.tabPage4.Size = new System.Drawing.Size(974, 624);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Error Log";
-            this.tabPage4.ToolTipText = "Where to find where you fucked up";
+            this.tabPage4.ToolTipText = "Log of errors";
             // 
             // panel3
             // 
@@ -895,6 +908,7 @@
             this.ClearLogButton.TabIndex = 3;
             this.ClearLogButton.Text = "Clear";
             this.ClearLogButton.UseVisualStyleBackColor = true;
+            this.ClearLogButton.Click += new System.EventHandler(this.ClearLogButton_Click);
             // 
             // tabPage5
             // 
@@ -906,7 +920,7 @@
             this.tabPage5.Size = new System.Drawing.Size(974, 624);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Help";
-            this.tabPage5.ToolTipText = "HELP!!";
+            this.tabPage5.ToolTipText = "HELP!!!";
             // 
             // panel4
             // 
@@ -948,13 +962,13 @@
             this.tabPage6.Size = new System.Drawing.Size(974, 624);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Settings";
-            this.tabPage6.ToolTipText = "Change shit";
+            this.tabPage6.ToolTipText = "Specter internal settings";
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::ProtoTest.XpathBuilder.Properties.Resources.page_under_construction;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.Location = new System.Drawing.Point(333, 17);
+            this.pictureBox1.Location = new System.Drawing.Point(6, 6);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(505, 382);
             this.pictureBox1.TabIndex = 0;
@@ -1081,6 +1095,7 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox Help1Textbox1;
         private System.Windows.Forms.Label HelpHeader1;
+        private System.Windows.Forms.Label XPathSectionLocatorChoose;
     }
 }
 

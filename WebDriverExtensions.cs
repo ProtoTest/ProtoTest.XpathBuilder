@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using Golem.Framework.Specter;
 using OpenQA.Selenium;
 using System.Text.RegularExpressions;
@@ -185,7 +186,7 @@ namespace ProtoTest.Specter
                 var driver = ((IWrapsDriver)element).WrappedDriver;
                 var jsDriver = ((IJavaScriptExecutor)driver);
                 originalElementBorder = (string)jsDriver.ExecuteScript("return arguments[0].style.border", element);
-                jsDriver.ExecuteScript("arguments[0].style.border='3px solid red'", element);
+                jsDriver.ExecuteScript("arguments[0].style.border='5px solid red'", element);
             }
             catch (Exception)
             {
@@ -213,6 +214,7 @@ namespace ProtoTest.Specter
         public static void Flash(this IWebElement element)
         {
             element.Highlight();
+            Thread.Sleep(1000);
             element.UnHighlight();
         }
         public static string GetHtml(this IWebElement element)

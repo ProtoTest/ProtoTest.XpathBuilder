@@ -319,7 +319,7 @@ namespace ProtoTest.Specter
         //Logging Options
         private void ClearLogButton_Click(object sender, EventArgs e)
         {
-            LogTextBox.Text = "";
+            LogTextBox.Clear();
         }
 
 
@@ -845,6 +845,18 @@ namespace ProtoTest.Specter
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void VerifyXPathLocatorOnPage_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                element.Flash();
+            }
+            catch (Exception)
+            {
+                Error("Element not found, start over!");
+            }
         }
 
     }
