@@ -267,19 +267,16 @@ namespace ProtoTest.Specter
  
         public static IWebElement GetAncestor(this IWebElement element, IWebElement relative)
         {
-            var elementAncestor = element;
-            
-            while (elementAncestor.TagName != "html"&&elementAncestor.TagName !="")
+            var ancestor = relative;
+            while (element.Text == "")
             {
-                var relativeAncestor = relative;
-                while (relativeAncestor.TagName != "html")
-                {
-                    if (elementAncestor.GetHtml() == relativeAncestor.GetHtml())
-                        return relativeAncestor;
-                    else
-                        relativeAncestor = relativeAncestor.GetParent();
-                }
-                elementAncestor = elementAncestor.GetParent();
+                element = element.GetParent();
+            }
+            while (ancestor.TagName!="body"&&ancestor.TagName!="html")
+            {
+                if (ancestor.Text.Contains(element.Text))
+                    return ancestor;
+                ancestor = ancestor.GetParent();
             }
             return null;
         }
