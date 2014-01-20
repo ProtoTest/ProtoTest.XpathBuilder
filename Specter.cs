@@ -35,6 +35,7 @@ namespace ProtoTest.Specter
         public List<string> xpaths;
         private BackgroundWorker bw;
         public IWebDriver driver;
+        public static bool updateElement = false;
         public static int minimumXpaths = 3;
         public static int maximumXpathAttempts = 100;
         public static bool splitAttributes = true;
@@ -44,7 +45,6 @@ namespace ProtoTest.Specter
         public static int maxAttLength = 50;
         public static bool useDoubleQuotes = true;
         public static bool useText = false;
-        public static bool updateElement = false;
         public static bool checkSelf = true;
         public static bool checkAncestors = true;
         public static bool checkChildren = true;
@@ -110,7 +110,6 @@ namespace ProtoTest.Specter
         {
             try
             {
-                Specter.updateElement = true;
                 driver.RegisterRightClickEvent();
                 driver.RegisterHighlightOnMouseOver();
             }
@@ -124,7 +123,6 @@ namespace ProtoTest.Specter
         {
             try
             {
-                Specter.updateElement = true;
                 driver.RegisterClickEvent();
                 driver.RegisterHighlightOnMouseOver();
             }
@@ -748,6 +746,7 @@ namespace ProtoTest.Specter
         {
             try
             {
+                var lastElement = element;
                 element = driver.GetElementClicked();
 
                 if (element == null)
@@ -758,7 +757,7 @@ namespace ProtoTest.Specter
                 {
                     WebText.DocumentText = "";
                 }
-                else
+                else if (lastElement == null || lastElement.Location != element.Location)
                 {
                     element.UnHighlight();
                     string html = element.GetHtml();

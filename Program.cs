@@ -52,11 +52,8 @@ namespace ProtoTest.Specter
 
             while (!backgroundWorker.CancellationPending)
             {
-                if (Specter.updateElement)
-                {
-                    specter.UpdateElement();
-                    Thread.Sleep(Specter.refreshMs);
-                }
+                specter.UpdateElement();
+                Thread.Sleep(Specter.refreshMs);
             }
         }
 
