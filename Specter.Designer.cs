@@ -106,6 +106,7 @@
             this.HelpHeader1 = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.LaunchBrowserHostExplanation = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.XPathSectionLocatorUse.SuspendLayout();
@@ -440,7 +441,7 @@
             // 
             // UrlTextBox
             // 
-            this.UrlTextBox.Location = new System.Drawing.Point(45, 145);
+            this.UrlTextBox.Location = new System.Drawing.Point(49, 149);
             this.UrlTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UrlTextBox.Name = "UrlTextBox";
             this.UrlTextBox.Size = new System.Drawing.Size(524, 22);
@@ -452,13 +453,13 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(3, 150);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(36, 17);
+            this.label6.Size = new System.Drawing.Size(40, 17);
             this.label6.TabIndex = 12;
-            this.label6.Text = "URL";
+            this.label6.Text = "URL:";
             // 
             // LaunchBrowserButton
             // 
-            this.LaunchBrowserButton.Location = new System.Drawing.Point(355, 26);
+            this.LaunchBrowserButton.Location = new System.Drawing.Point(356, 30);
             this.LaunchBrowserButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LaunchBrowserButton.Name = "LaunchBrowserButton";
             this.LaunchBrowserButton.Size = new System.Drawing.Size(191, 30);
@@ -472,13 +473,13 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(3, 93);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 17);
+            this.label3.Size = new System.Drawing.Size(57, 17);
             this.label3.TabIndex = 10;
-            this.label3.Text = "Host IP";
+            this.label3.Text = "Host IP:";
             // 
             // HostTextBox
             // 
-            this.HostTextBox.Location = new System.Drawing.Point(82, 88);
+            this.HostTextBox.Location = new System.Drawing.Point(62, 92);
             this.HostTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.HostTextBox.Name = "HostTextBox";
             this.HostTextBox.Size = new System.Drawing.Size(257, 22);
@@ -496,7 +497,7 @@
             "IE",
             "Safari",
             "Android"});
-            this.BrowserDropdown.Location = new System.Drawing.Point(120, 28);
+            this.BrowserDropdown.Location = new System.Drawing.Point(120, 33);
             this.BrowserDropdown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BrowserDropdown.Name = "BrowserDropdown";
             this.BrowserDropdown.Size = new System.Drawing.Size(219, 24);
@@ -508,18 +509,18 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(3, 35);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 17);
+            this.label2.Size = new System.Drawing.Size(115, 17);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Choose Browser";
+            this.label2.Text = "Choose Browser:";
             // 
             // ExecuteJS
             // 
-            this.ExecuteJS.Location = new System.Drawing.Point(429, 129);
+            this.ExecuteJS.Location = new System.Drawing.Point(581, 27);
             this.ExecuteJS.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ExecuteJS.Name = "ExecuteJS";
-            this.ExecuteJS.Size = new System.Drawing.Size(93, 23);
+            this.ExecuteJS.Size = new System.Drawing.Size(142, 34);
             this.ExecuteJS.TabIndex = 2;
-            this.ExecuteJS.Text = "Execute JS";
+            this.ExecuteJS.Text = "Execute Javascript";
             this.ExecuteJS.UseVisualStyleBackColor = true;
             this.ExecuteJS.Click += new System.EventHandler(this.ExecuteJS_Click);
             // 
@@ -755,6 +756,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(182)))), ((int)(((byte)(69)))));
+            this.panel1.Controls.Add(this.LaunchBrowserHostExplanation);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.GoToUrlButton);
             this.panel1.Controls.Add(this.BrowserDropdown);
@@ -792,7 +794,7 @@
             this.panel2.Controls.Add(this.label11);
             this.panel2.Location = new System.Drawing.Point(6, 6);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(959, 228);
+            this.panel2.Size = new System.Drawing.Size(959, 205);
             this.panel2.TabIndex = 21;
             // 
             // label7
@@ -800,9 +802,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(3, 14);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(72, 17);
+            this.label7.Size = new System.Drawing.Size(183, 17);
             this.label7.TabIndex = 15;
-            this.label7.Text = "Javascript";
+            this.label7.Text = "Enter Javascript to execute:";
             this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // JavscriptTextBox
@@ -816,10 +818,10 @@
             // 
             // HidePanelButton
             // 
-            this.HidePanelButton.Location = new System.Drawing.Point(278, 129);
+            this.HidePanelButton.Location = new System.Drawing.Point(288, 129);
             this.HidePanelButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.HidePanelButton.Name = "HidePanelButton";
-            this.HidePanelButton.Size = new System.Drawing.Size(145, 23);
+            this.HidePanelButton.Size = new System.Drawing.Size(147, 33);
             this.HidePanelButton.TabIndex = 17;
             this.HidePanelButton.Text = "Hide DTVE Panel";
             this.HidePanelButton.UseVisualStyleBackColor = true;
@@ -827,10 +829,10 @@
             // 
             // DisableMouseOverButton
             // 
-            this.DisableMouseOverButton.Location = new System.Drawing.Point(129, 129);
+            this.DisableMouseOverButton.Location = new System.Drawing.Point(139, 129);
             this.DisableMouseOverButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DisableMouseOverButton.Name = "DisableMouseOverButton";
-            this.DisableMouseOverButton.Size = new System.Drawing.Size(143, 23);
+            this.DisableMouseOverButton.Size = new System.Drawing.Size(143, 33);
             this.DisableMouseOverButton.TabIndex = 18;
             this.DisableMouseOverButton.Text = "Disable MouseOver";
             this.DisableMouseOverButton.UseVisualStyleBackColor = true;
@@ -841,7 +843,7 @@
             this.DisableOnClickButton.Location = new System.Drawing.Point(6, 129);
             this.DisableOnClickButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DisableOnClickButton.Name = "DisableOnClickButton";
-            this.DisableOnClickButton.Size = new System.Drawing.Size(117, 23);
+            this.DisableOnClickButton.Size = new System.Drawing.Size(127, 33);
             this.DisableOnClickButton.TabIndex = 19;
             this.DisableOnClickButton.Text = "Disable OnClick";
             this.DisableOnClickButton.UseVisualStyleBackColor = true;
@@ -974,6 +976,16 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // LaunchBrowserHostExplanation
+            // 
+            this.LaunchBrowserHostExplanation.AutoSize = true;
+            this.LaunchBrowserHostExplanation.Location = new System.Drawing.Point(329, 94);
+            this.LaunchBrowserHostExplanation.Name = "LaunchBrowserHostExplanation";
+            this.LaunchBrowserHostExplanation.Size = new System.Drawing.Size(620, 17);
+            this.LaunchBrowserHostExplanation.TabIndex = 15;
+            this.LaunchBrowserHostExplanation.Text = "\"localhost\" will target this computer.  To launch on a remote system, enter the t" +
+    "arget\'s IP address.";
+            // 
             // Specter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1096,6 +1108,7 @@
         private System.Windows.Forms.TextBox Help1Textbox1;
         private System.Windows.Forms.Label HelpHeader1;
         private System.Windows.Forms.Label XPathSectionLocatorChoose;
+        private System.Windows.Forms.Label LaunchBrowserHostExplanation;
     }
 }
 
