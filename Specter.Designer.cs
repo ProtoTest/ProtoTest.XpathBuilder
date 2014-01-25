@@ -106,7 +106,6 @@
             this.Help1Textbox1 = new System.Windows.Forms.TextBox();
             this.HelpHeader1 = new System.Windows.Forms.Label();
             this.Setting_tab = new System.Windows.Forms.TabPage();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.LaunchBrowser_tab.SuspendLayout();
             this.Browser_Panel.SuspendLayout();
@@ -120,12 +119,11 @@
             this.panel3.SuspendLayout();
             this.Help_tab.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.Setting_tab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // WebDriverCommandText
             // 
+            this.WebDriverCommandText.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.WebDriverCommandText.Location = new System.Drawing.Point(347, 58);
             this.WebDriverCommandText.Margin = new System.Windows.Forms.Padding(2);
             this.WebDriverCommandText.Multiline = true;
@@ -136,6 +134,7 @@
             // 
             // WebDriverCommandDropdown
             // 
+            this.WebDriverCommandDropdown.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.WebDriverCommandDropdown.DisplayMember = "1";
             this.WebDriverCommandDropdown.FormattingEnabled = true;
             this.WebDriverCommandDropdown.Items.AddRange(new object[] {
@@ -173,6 +172,7 @@
             // 
             // ExecuteCommandButton
             // 
+            this.ExecuteCommandButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ExecuteCommandButton.Location = new System.Drawing.Point(571, 58);
             this.ExecuteCommandButton.Margin = new System.Windows.Forms.Padding(2);
             this.ExecuteCommandButton.Name = "ExecuteCommandButton";
@@ -206,6 +206,7 @@
             // 
             // button2
             // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.button2.Location = new System.Drawing.Point(11, 162);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
@@ -217,6 +218,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.button1.Location = new System.Drawing.Point(140, 162);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
@@ -228,6 +230,7 @@
             // 
             // GetParentButton
             // 
+            this.GetParentButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.GetParentButton.Location = new System.Drawing.Point(269, 162);
             this.GetParentButton.Margin = new System.Windows.Forms.Padding(2);
             this.GetParentButton.Name = "GetParentButton";
@@ -555,6 +558,9 @@
             // 
             // Browser_Panel
             // 
+            this.Browser_Panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Browser_Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(182)))), ((int)(((byte)(69)))));
             this.Browser_Panel.Controls.Add(this.LaunchBrowserHostExplanation);
             this.Browser_Panel.Controls.Add(this.label2);
@@ -568,7 +574,7 @@
             this.Browser_Panel.Location = new System.Drawing.Point(4, 5);
             this.Browser_Panel.Margin = new System.Windows.Forms.Padding(2);
             this.Browser_Panel.Name = "Browser_Panel";
-            this.Browser_Panel.Size = new System.Drawing.Size(718, 161);
+            this.Browser_Panel.Size = new System.Drawing.Size(718, 500);
             this.Browser_Panel.TabIndex = 15;
             // 
             // LaunchBrowserHostExplanation
@@ -599,6 +605,7 @@
             // 
             // XPathSectionLocatorUsePanel
             // 
+            this.XPathSectionLocatorUsePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.XPathSectionLocatorUsePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(182)))), ((int)(((byte)(69)))));
             this.XPathSectionLocatorUsePanel.Controls.Add(this.VerifyXPathLocatorOnPage);
             this.XPathSectionLocatorUsePanel.Controls.Add(this.XPathLocatorExecuteWebdriver);
@@ -626,6 +633,7 @@
             // 
             // XPathLocatorExecuteWebdriver
             // 
+            this.XPathLocatorExecuteWebdriver.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.XPathLocatorExecuteWebdriver.AutoSize = true;
             this.XPathLocatorExecuteWebdriver.Location = new System.Drawing.Point(9, 61);
             this.XPathLocatorExecuteWebdriver.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -647,6 +655,7 @@
             // 
             // XPathSectionXPathGeneratePanel
             // 
+            this.XPathSectionXPathGeneratePanel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.XPathSectionXPathGeneratePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(182)))), ((int)(((byte)(69)))));
             this.XPathSectionXPathGeneratePanel.Controls.Add(this.XPathSectionLocatorChoose);
             this.XPathSectionXPathGeneratePanel.Controls.Add(this.XPathSectionLocatorGeneration);
@@ -697,6 +706,9 @@
             // 
             // XPathSectionLoadElementPanel
             // 
+            this.XPathSectionLoadElementPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.XPathSectionLoadElementPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(182)))), ((int)(((byte)(69)))));
             this.XPathSectionLoadElementPanel.Controls.Add(this.label1);
             this.XPathSectionLoadElementPanel.Controls.Add(this.XPathSectionLoadWebsiteElement);
@@ -777,11 +789,14 @@
             // 
             // WebText
             // 
+            this.WebText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.WebText.Location = new System.Drawing.Point(11, 84);
             this.WebText.Margin = new System.Windows.Forms.Padding(2);
             this.WebText.MinimumSize = new System.Drawing.Size(15, 16);
             this.WebText.Name = "WebText";
-            this.WebText.Size = new System.Drawing.Size(697, 67);
+            this.WebText.Size = new System.Drawing.Size(691, 74);
             this.WebText.TabIndex = 25;
             // 
             // JavaScript_tab
@@ -800,6 +815,9 @@
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(182)))), ((int)(((byte)(69)))));
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.ExecuteJS);
@@ -811,7 +829,7 @@
             this.panel2.Location = new System.Drawing.Point(4, 5);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(719, 167);
+            this.panel2.Size = new System.Drawing.Size(719, 500);
             this.panel2.TabIndex = 21;
             // 
             // label7
@@ -893,6 +911,9 @@
             // 
             // panel3
             // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(182)))), ((int)(((byte)(69)))));
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.LogTextBox);
@@ -900,7 +921,7 @@
             this.panel3.Location = new System.Drawing.Point(4, 5);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(716, 292);
+            this.panel3.Size = new System.Drawing.Size(716, 500);
             this.panel3.TabIndex = 5;
             // 
             // label5
@@ -949,13 +970,16 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(182)))), ((int)(((byte)(69)))));
             this.panel4.Controls.Add(this.Help1Textbox1);
             this.panel4.Controls.Add(this.HelpHeader1);
             this.panel4.Location = new System.Drawing.Point(4, 5);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(722, 496);
+            this.panel4.Size = new System.Drawing.Size(722, 505);
             this.panel4.TabIndex = 0;
             // 
             // Help1Textbox1
@@ -964,7 +988,7 @@
             this.Help1Textbox1.Margin = new System.Windows.Forms.Padding(2);
             this.Help1Textbox1.Multiline = true;
             this.Help1Textbox1.Name = "Help1Textbox1";
-            this.Help1Textbox1.Size = new System.Drawing.Size(640, 73);
+            this.Help1Textbox1.Size = new System.Drawing.Size(640, 81);
             this.Help1Textbox1.TabIndex = 1;
             this.Help1Textbox1.Text = resources.GetString("Help1Textbox1.Text");
             this.Help1Textbox1.TextChanged += new System.EventHandler(this.Help1Textbox1_TextChanged);
@@ -983,7 +1007,6 @@
             // 
             this.Setting_tab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(129)))), ((int)(((byte)(132)))));
             this.Setting_tab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Setting_tab.Controls.Add(this.pictureBox1);
             this.Setting_tab.Location = new System.Drawing.Point(4, 22);
             this.Setting_tab.Margin = new System.Windows.Forms.Padding(2);
             this.Setting_tab.Name = "Setting_tab";
@@ -993,27 +1016,16 @@
             this.Setting_tab.Text = "Settings";
             this.Setting_tab.ToolTipText = "Specter internal settings";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::ProtoTest.XpathBuilder.Properties.Resources.page_under_construction;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.Location = new System.Drawing.Point(4, 5);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(379, 310);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // Specter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(129)))), ((int)(((byte)(132)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(738, 538);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MaximumSize = new System.Drawing.Size(1024, 768);
+            this.MaximumSize = new System.Drawing.Size(754, 1024);
             this.MinimumSize = new System.Drawing.Size(754, 576);
             this.Name = "Specter";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
@@ -1040,8 +1052,6 @@
             this.Help_tab.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.Setting_tab.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1119,7 +1129,6 @@
         private System.Windows.Forms.Panel Browser_Panel;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox Help1Textbox1;
         private System.Windows.Forms.Label HelpHeader1;
