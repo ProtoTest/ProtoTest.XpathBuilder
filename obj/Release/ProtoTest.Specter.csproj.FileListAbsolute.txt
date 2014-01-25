@@ -15,3 +15,6 @@ C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\obj\Release\ProtoTest.Xpa
 C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\obj\Release\ProtoTest.Specter.csproj.GenerateResource.Cache
 C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\obj\Release\ProtoTest.XpathBuilder.exe
 C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\obj\Release\ProtoTest.XpathBuilder.pdb
+Z:\CodeProjects\GitHub\ProtoTest.XpathBuilder\bin\Release\ProtoTest.XpathBuilder.exe.config
+Z:\CodeProjects\GitHub\ProtoTest.XpathBuilder\obj\Release\ProtoTest.XpathBuilder.exe
+Z:\CodeProjects\GitHub\ProtoTest.XpathBuilder\obj\Release\ProtoTest.XpathBuilder.pdb
