@@ -335,6 +335,7 @@
             this.UseTextCheckbox.Size = new System.Drawing.Size(71, 17);
             this.UseTextCheckbox.TabIndex = 35;
             this.UseTextCheckbox.Text = "Use text()";
+            this.UIToolTip.SetToolTip(this.UseTextCheckbox, "Determines whether or not to include text in the attribute list for the Locator.");
             this.UseTextCheckbox.UseVisualStyleBackColor = true;
             this.UseTextCheckbox.CheckedChanged += new System.EventHandler(this.UseTextCheckbox_CheckedChanged);
             // 
@@ -410,6 +411,7 @@
             this.SkipAttributeTextBox.Name = "SkipAttributeTextBox";
             this.SkipAttributeTextBox.Size = new System.Drawing.Size(90, 20);
             this.SkipAttributeTextBox.TabIndex = 31;
+            this.UIToolTip.SetToolTip(this.SkipAttributeTextBox, "The value entered into this field will be ignored when building xpaths.");
             this.SkipAttributeTextBox.TextChanged += new System.EventHandler(this.SkipAttributeTextBox_TextChanged);
             // 
             // SplitAttributesCheckbox
@@ -733,6 +735,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(9, 68);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -795,7 +798,8 @@
             // WebText
             // 
             this.WebText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.WebText.Location = new System.Drawing.Point(12, 83);
+            this.WebText.CausesValidation = false;
+            this.WebText.Location = new System.Drawing.Point(12, 84);
             this.WebText.Margin = new System.Windows.Forms.Padding(2);
             this.WebText.MinimumSize = new System.Drawing.Size(15, 16);
             this.WebText.Name = "WebText";

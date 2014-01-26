@@ -186,6 +186,8 @@ namespace ProtoTest.Specter
                 XpathsDropdown.Items.Clear();
 
                 var xpathGetter = new BackgroundWorker();
+                //Basically xpathGetter_DoWork is a special function call.  
+                //All the work that function is doing is put on a seperate thread to not cause interface lag
                 xpathGetter.DoWork += xpathGetter_DoWork;
                 xpathGetter.RunWorkerAsync();
 
@@ -359,6 +361,7 @@ namespace ProtoTest.Specter
             Log("Launching " + browserString);
             switch (browserString)
             {
+                    //TODO: If users don't have a paticular browser installed this pukes -- would be cool if we could detect which browsers the user has installed
                 case "Firefox":
                     driver = new FirefoxDriver();
                     break;
@@ -583,6 +586,12 @@ namespace ProtoTest.Specter
         {
             if (!urlString.Contains("http"))
                 urlString = "http://" + urlString;
+            //need to check here first if the browser is started
+            while(driver == null)
+            {
+                
+                LauncHBrowser(sender, e);
+            }
             driver.Navigate().GoToUrl(urlString);
         }
 

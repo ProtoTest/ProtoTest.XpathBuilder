@@ -61,6 +61,7 @@ namespace ProtoTest.Specter
         public void CheckXpath()
         {
             currentXpathAttempts++;
+            //If this function doesn't return anything there's an exception
             var eles = driver.FindElements(By.XPath(xpath));
             var count = eles.Count;
             if (count == 0)
