@@ -577,6 +577,12 @@ namespace ProtoTest.Specter
         private void Specter_Load(object sender, EventArgs e)
         {
             //SU - Default settings can be found in Project->Project Properties-> Settings
+            //TODO: Put this stuff into a class to handle it
+            if (Settings.Default.DefaultBrowser != null)
+            {
+                BrowserDropdown.Text = Settings.Default.DefaultBrowser;
+                DefaultBrowser_cb.Text = Settings.Default.DefaultBrowser;
+            }
             if (Settings.Default.WindowLocation != null)
             {
                 this.Location = Settings.Default.WindowLocation;
@@ -891,6 +897,7 @@ namespace ProtoTest.Specter
         {
             //Copy window location to app settings
             Settings.Default.WindowLocation = this.Location;
+            Settings.Default.DefaultBrowser = DefaultBrowser_cb.Text;
 
             //Copy Window size to app settings - check to make sure the window is not minimized 
             if (this.WindowState == FormWindowState.Normal)

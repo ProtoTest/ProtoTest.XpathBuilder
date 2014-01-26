@@ -8,5 +8,8 @@
     <Setting Name="WindowSize" Type="System.Drawing.Size" Scope="User">
       <Value Profile="(Default)">754, 576</Value>
     </Setting>
+    <Setting Name="DefaultBrowser" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Firefox</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

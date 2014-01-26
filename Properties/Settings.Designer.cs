@@ -46,5 +46,17 @@ namespace ProtoTest.XpathBuilder.Properties {
                 this["WindowSize"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Firefox")]
+        public string DefaultBrowser {
+            get {
+                return ((string)(this["DefaultBrowser"]));
+            }
+            set {
+                this["DefaultBrowser"] = value;
+            }
+        }
     }
 }

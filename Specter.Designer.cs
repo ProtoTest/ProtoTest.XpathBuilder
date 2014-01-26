@@ -106,6 +106,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.HostTextBox = new System.Windows.Forms.TextBox();
             this.Step1_Label = new System.Windows.Forms.Label();
+            this.Settings_Panel = new System.Windows.Forms.Panel();
+            this.defaultBrowser_label = new System.Windows.Forms.Label();
+            this.DefaultBrowser_cb = new System.Windows.Forms.ComboBox();
             this.MainTabControl.SuspendLayout();
             this.XPathGenerator_tab.SuspendLayout();
             this.XPathSectionLocatorUsePanel.SuspendLayout();
@@ -117,7 +120,9 @@
             this.panel3.SuspendLayout();
             this.Help_tab.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.Setting_tab.SuspendLayout();
             this.Browser_Panel.SuspendLayout();
+            this.Settings_Panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // WebDriverCommandText
@@ -922,6 +927,7 @@
             this.Setting_tab.AccessibleName = "Settings_tab";
             this.Setting_tab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(117)))), ((int)(((byte)(255)))));
             this.Setting_tab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Setting_tab.Controls.Add(this.Settings_Panel);
             this.Setting_tab.Location = new System.Drawing.Point(4, 22);
             this.Setting_tab.Margin = new System.Windows.Forms.Padding(2);
             this.Setting_tab.Name = "Setting_tab";
@@ -1067,6 +1073,39 @@
             this.Step1_Label.TabIndex = 39;
             this.Step1_Label.Text = "Step 1 - Start Browser";
             // 
+            // Settings_Panel
+            // 
+            this.Settings_Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(182)))), ((int)(((byte)(69)))));
+            this.Settings_Panel.Controls.Add(this.DefaultBrowser_cb);
+            this.Settings_Panel.Controls.Add(this.defaultBrowser_label);
+            this.Settings_Panel.Location = new System.Drawing.Point(8, 5);
+            this.Settings_Panel.Name = "Settings_Panel";
+            this.Settings_Panel.Size = new System.Drawing.Size(714, 220);
+            this.Settings_Panel.TabIndex = 0;
+            // 
+            // defaultBrowser_label
+            // 
+            this.defaultBrowser_label.AutoSize = true;
+            this.defaultBrowser_label.Location = new System.Drawing.Point(17, 11);
+            this.defaultBrowser_label.Name = "defaultBrowser_label";
+            this.defaultBrowser_label.Size = new System.Drawing.Size(82, 13);
+            this.defaultBrowser_label.TabIndex = 0;
+            this.defaultBrowser_label.Text = "Default Browser";
+            // 
+            // DefaultBrowser_cb
+            // 
+            this.DefaultBrowser_cb.FormattingEnabled = true;
+            this.DefaultBrowser_cb.Items.AddRange(new object[] {
+            "Firefox",
+            "Chrome",
+            "IE",
+            "Safari",
+            "Android"});
+            this.DefaultBrowser_cb.Location = new System.Drawing.Point(105, 8);
+            this.DefaultBrowser_cb.Name = "DefaultBrowser_cb";
+            this.DefaultBrowser_cb.Size = new System.Drawing.Size(121, 21);
+            this.DefaultBrowser_cb.TabIndex = 1;
+            // 
             // Specter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1102,8 +1141,11 @@
             this.Help_tab.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.Setting_tab.ResumeLayout(false);
             this.Browser_Panel.ResumeLayout(false);
             this.Browser_Panel.PerformLayout();
+            this.Settings_Panel.ResumeLayout(false);
+            this.Settings_Panel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1186,6 +1228,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox HostTextBox;
         private System.Windows.Forms.Label Step1_Label;
+        private System.Windows.Forms.Panel Settings_Panel;
+        private System.Windows.Forms.ComboBox DefaultBrowser_cb;
+        private System.Windows.Forms.Label defaultBrowser_label;
     }
 }
 
