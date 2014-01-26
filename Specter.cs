@@ -21,6 +21,8 @@ using System.Xml;
 using Manoli.Utils.CSharpFormat;
 using System.Threading;
 using ProtoTest.XpathBuilder;
+using ProtoTest.XpathBuilder.Properties;
+
 
 namespace ProtoTest.Specter
 {
@@ -574,7 +576,16 @@ namespace ProtoTest.Specter
 
         private void Specter_Load(object sender, EventArgs e)
         {
-
+            //SU - Default settings can be found in Project->Project Properties-> Settings
+            if (Settings.Default.WindowLocation != null)
+            {
+                this.Location = Settings.Default.WindowLocation;
+            }
+            if (Settings.Default.WindowSize != null)
+            {
+                this.Size = Settings.Default.WindowSize;
+            }
+            //Size and Position settings are persisted with the FormClosing event handler function
         }
 
         private void panel5_Paint(object sender, PaintEventArgs e)
@@ -870,6 +881,31 @@ namespace ProtoTest.Specter
         private void LaunchBrowser_tooltip_Popup(object sender, PopupEventArgs e)
         {
 
+        }
+
+        private void RefreshTimeTextBox_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Specter_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //Copy window location to app settings
+            Settings.Default.WindowLocation = this.Location;
+
+            //Copy Window size to app settings - check to make sure the window is not minimized 
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                Settings.Default.WindowSize = this.Size;
+            }
+            //else forget those settings and put it back
+            else
+            {
+                Settings.Default.WindowSize = this.RestoreBounds.Size;
+            }
+
+            Settings.Default.Save();
+            
         }
 
     }

@@ -208,7 +208,7 @@
             // button2
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button2.Location = new System.Drawing.Point(11, 162);
+            this.button2.Location = new System.Drawing.Point(11, 166);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(124, 24);
@@ -221,7 +221,7 @@
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button1.Location = new System.Drawing.Point(140, 162);
+            this.button1.Location = new System.Drawing.Point(140, 166);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(124, 24);
@@ -234,7 +234,7 @@
             // GetParentButton
             // 
             this.GetParentButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.GetParentButton.Location = new System.Drawing.Point(269, 162);
+            this.GetParentButton.Location = new System.Drawing.Point(269, 166);
             this.GetParentButton.Margin = new System.Windows.Forms.Padding(2);
             this.GetParentButton.Name = "GetParentButton";
             this.GetParentButton.Size = new System.Drawing.Size(124, 24);
@@ -546,7 +546,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.ShowToolTips = true;
-            this.tabControl1.Size = new System.Drawing.Size(738, 538);
+            this.tabControl1.Size = new System.Drawing.Size(738, 542);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.tabControl1.TabIndex = 9;
             // 
@@ -605,7 +605,7 @@
             this.XPathGenerator_tab.Margin = new System.Windows.Forms.Padding(2);
             this.XPathGenerator_tab.Name = "XPathGenerator_tab";
             this.XPathGenerator_tab.Padding = new System.Windows.Forms.Padding(2);
-            this.XPathGenerator_tab.Size = new System.Drawing.Size(730, 512);
+            this.XPathGenerator_tab.Size = new System.Drawing.Size(730, 516);
             this.XPathGenerator_tab.TabIndex = 0;
             this.XPathGenerator_tab.Text = "XPath Generation";
             this.XPathGenerator_tab.ToolTipText = "Record a site element, then generate and test the XPath locators.";
@@ -621,7 +621,7 @@
             this.XPathSectionLocatorUsePanel.Controls.Add(this.WebDriverCommandText);
             this.XPathSectionLocatorUsePanel.Controls.Add(this.label14);
             this.XPathSectionLocatorUsePanel.Controls.Add(this.ExecuteCommandButton);
-            this.XPathSectionLocatorUsePanel.Location = new System.Drawing.Point(4, 411);
+            this.XPathSectionLocatorUsePanel.Location = new System.Drawing.Point(4, 415);
             this.XPathSectionLocatorUsePanel.Margin = new System.Windows.Forms.Padding(2);
             this.XPathSectionLocatorUsePanel.Name = "XPathSectionLocatorUsePanel";
             this.XPathSectionLocatorUsePanel.Size = new System.Drawing.Size(720, 89);
@@ -685,7 +685,7 @@
             this.XPathSectionXPathGeneratePanel.Controls.Add(this.label9);
             this.XPathSectionXPathGeneratePanel.Controls.Add(this.MaxAttLength);
             this.XPathSectionXPathGeneratePanel.Controls.Add(this.UseTextCheckbox);
-            this.XPathSectionXPathGeneratePanel.Location = new System.Drawing.Point(4, 219);
+            this.XPathSectionXPathGeneratePanel.Location = new System.Drawing.Point(4, 223);
             this.XPathSectionXPathGeneratePanel.Margin = new System.Windows.Forms.Padding(2);
             this.XPathSectionXPathGeneratePanel.Name = "XPathSectionXPathGeneratePanel";
             this.XPathSectionXPathGeneratePanel.Size = new System.Drawing.Size(720, 176);
@@ -730,7 +730,7 @@
             this.XPathSectionLoadElementPanel.Location = new System.Drawing.Point(4, 5);
             this.XPathSectionLoadElementPanel.Margin = new System.Windows.Forms.Padding(2);
             this.XPathSectionLoadElementPanel.Name = "XPathSectionLoadElementPanel";
-            this.XPathSectionLoadElementPanel.Size = new System.Drawing.Size(720, 197);
+            this.XPathSectionLoadElementPanel.Size = new System.Drawing.Size(720, 201);
             this.XPathSectionLoadElementPanel.TabIndex = 39;
             // 
             // label1
@@ -785,6 +785,7 @@
             this.RefreshTimeTextBox.Size = new System.Drawing.Size(32, 20);
             this.RefreshTimeTextBox.TabIndex = 23;
             this.RefreshTimeTextBox.Text = "2000";
+            this.RefreshTimeTextBox.TextChanged += new System.EventHandler(this.RefreshTimeTextBox_TextChanged_1);
             // 
             // label4
             // 
@@ -803,7 +804,7 @@
             this.WebText.Margin = new System.Windows.Forms.Padding(2);
             this.WebText.MinimumSize = new System.Drawing.Size(15, 16);
             this.WebText.Name = "WebText";
-            this.WebText.Size = new System.Drawing.Size(691, 74);
+            this.WebText.Size = new System.Drawing.Size(691, 78);
             this.WebText.TabIndex = 25;
             // 
             // JavaScript_tab
@@ -1038,6 +1039,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(738, 538);
             this.Controls.Add(this.tabControl1);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(754, 1024);
@@ -1046,6 +1048,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Specter, by ProtoTest";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Specter_FormClosing);
             this.Load += new System.EventHandler(this.Specter_Load);
             this.tabControl1.ResumeLayout(false);
             this.LaunchBrowser_tab.ResumeLayout(false);
