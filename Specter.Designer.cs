@@ -60,8 +60,7 @@
             this.SplitAttributesCheckbox = new System.Windows.Forms.CheckBox();
             this.ExecuteJS = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.LaunchBrowser_tab = new System.Windows.Forms.TabPage();
+            this.MainTabControl = new System.Windows.Forms.TabControl();
             this.XPathGenerator_tab = new System.Windows.Forms.TabPage();
             this.XPathSectionLocatorUsePanel = new System.Windows.Forms.Panel();
             this.VerifyXPathLocatorOnPage = new System.Windows.Forms.Button();
@@ -107,7 +106,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.HostTextBox = new System.Windows.Forms.TextBox();
             this.Step1_Label = new System.Windows.Forms.Label();
-            this.tabControl1.SuspendLayout();
+            this.MainTabControl.SuspendLayout();
             this.XPathGenerator_tab.SuspendLayout();
             this.XPathSectionLocatorUsePanel.SuspendLayout();
             this.XPathSectionXPathGeneratePanel.SuspendLayout();
@@ -123,8 +122,9 @@
             // 
             // WebDriverCommandText
             // 
+            this.WebDriverCommandText.AccessibleName = "WebDriverCommandText_textbox";
             this.WebDriverCommandText.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.WebDriverCommandText.Location = new System.Drawing.Point(347, 58);
+            this.WebDriverCommandText.Location = new System.Drawing.Point(347, 56);
             this.WebDriverCommandText.Margin = new System.Windows.Forms.Padding(2);
             this.WebDriverCommandText.Multiline = true;
             this.WebDriverCommandText.Name = "WebDriverCommandText";
@@ -134,6 +134,7 @@
             // 
             // WebDriverCommandDropdown
             // 
+            this.WebDriverCommandDropdown.AccessibleName = "ExecuteWebDriverCommand_dropdown";
             this.WebDriverCommandDropdown.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.WebDriverCommandDropdown.DisplayMember = "1";
             this.WebDriverCommandDropdown.FormattingEnabled = true;
@@ -143,7 +144,7 @@
             "MouseOver",
             "Type",
             "Count"});
-            this.WebDriverCommandDropdown.Location = new System.Drawing.Point(159, 58);
+            this.WebDriverCommandDropdown.Location = new System.Drawing.Point(159, 56);
             this.WebDriverCommandDropdown.Margin = new System.Windows.Forms.Padding(2);
             this.WebDriverCommandDropdown.Name = "WebDriverCommandDropdown";
             this.WebDriverCommandDropdown.Size = new System.Drawing.Size(185, 21);
@@ -152,6 +153,7 @@
             // 
             // MinimumXpathsTextBox
             // 
+            this.MinimumXpathsTextBox.AccessibleName = "MinNumGenerated_textbox";
             this.MinimumXpathsTextBox.Location = new System.Drawing.Point(124, 26);
             this.MinimumXpathsTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumXpathsTextBox.Name = "MinimumXpathsTextBox";
@@ -172,8 +174,9 @@
             // 
             // ExecuteCommandButton
             // 
+            this.ExecuteCommandButton.AccessibleName = "Execute_button";
             this.ExecuteCommandButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.ExecuteCommandButton.Location = new System.Drawing.Point(571, 58);
+            this.ExecuteCommandButton.Location = new System.Drawing.Point(571, 56);
             this.ExecuteCommandButton.Margin = new System.Windows.Forms.Padding(2);
             this.ExecuteCommandButton.Name = "ExecuteCommandButton";
             this.ExecuteCommandButton.Size = new System.Drawing.Size(70, 20);
@@ -184,7 +187,9 @@
             // 
             // GenerateXPathLocatorsButton
             // 
-            this.GenerateXPathLocatorsButton.Location = new System.Drawing.Point(7, 118);
+            this.GenerateXPathLocatorsButton.AccessibleName = "GenerateXpathLocators_button";
+            this.GenerateXPathLocatorsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.GenerateXPathLocatorsButton.Location = new System.Drawing.Point(7, 120);
             this.GenerateXPathLocatorsButton.Margin = new System.Windows.Forms.Padding(2);
             this.GenerateXPathLocatorsButton.Name = "GenerateXPathLocatorsButton";
             this.GenerateXPathLocatorsButton.Size = new System.Drawing.Size(146, 24);
@@ -195,8 +200,11 @@
             // 
             // XpathsDropdown
             // 
+            this.XpathsDropdown.AccessibleName = "ChooseLocator_dropdown";
+            this.XpathsDropdown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.XpathsDropdown.FormattingEnabled = true;
-            this.XpathsDropdown.Location = new System.Drawing.Point(92, 147);
+            this.XpathsDropdown.Location = new System.Drawing.Point(92, 149);
             this.XpathsDropdown.Margin = new System.Windows.Forms.Padding(2);
             this.XpathsDropdown.MaxDropDownItems = 20;
             this.XpathsDropdown.Name = "XpathsDropdown";
@@ -206,8 +214,9 @@
             // 
             // button2
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button2.Location = new System.Drawing.Point(11, 152);
+            this.button2.AccessibleName = "FindChild_Button";
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button2.Location = new System.Drawing.Point(11, 124);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(124, 24);
@@ -219,8 +228,9 @@
             // 
             // button1
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button1.Location = new System.Drawing.Point(140, 152);
+            this.button1.AccessibleName = "FindSibling_button";
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button1.Location = new System.Drawing.Point(140, 124);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(124, 24);
@@ -232,8 +242,9 @@
             // 
             // GetParentButton
             // 
-            this.GetParentButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.GetParentButton.Location = new System.Drawing.Point(269, 152);
+            this.GetParentButton.AccessibleName = "FindParent_button";
+            this.GetParentButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.GetParentButton.Location = new System.Drawing.Point(269, 124);
             this.GetParentButton.Margin = new System.Windows.Forms.Padding(2);
             this.GetParentButton.Name = "GetParentButton";
             this.GetParentButton.Size = new System.Drawing.Size(124, 24);
@@ -255,6 +266,7 @@
             // 
             // XPathGeneratorMaxAttempts
             // 
+            this.XPathGeneratorMaxAttempts.AccessibleName = "MaxNumGenerated_textbox";
             this.XPathGeneratorMaxAttempts.Location = new System.Drawing.Point(124, 47);
             this.XPathGeneratorMaxAttempts.Margin = new System.Windows.Forms.Padding(2);
             this.XPathGeneratorMaxAttempts.Name = "XPathGeneratorMaxAttempts";
@@ -272,14 +284,16 @@
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(171, 17);
             this.label14.TabIndex = 27;
-            this.label14.Text = "Step 3 - Use/Test Locator";
+            this.label14.Text = "Step 4 - Use/Test Locator";
             // 
             // CheckCousinsCheckbox
             // 
+            this.CheckCousinsCheckbox.AccessibleName = "Cousins_checkbox";
+            this.CheckCousinsCheckbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CheckCousinsCheckbox.AutoSize = true;
             this.CheckCousinsCheckbox.Checked = true;
             this.CheckCousinsCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckCousinsCheckbox.Location = new System.Drawing.Point(648, 147);
+            this.CheckCousinsCheckbox.Location = new System.Drawing.Point(648, 149);
             this.CheckCousinsCheckbox.Name = "CheckCousinsCheckbox";
             this.CheckCousinsCheckbox.Size = new System.Drawing.Size(63, 17);
             this.CheckCousinsCheckbox.TabIndex = 37;
@@ -289,10 +303,12 @@
             // 
             // CheckChildrenCheckbox
             // 
+            this.CheckChildrenCheckbox.AccessibleName = "Children_checkbox";
+            this.CheckChildrenCheckbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CheckChildrenCheckbox.AutoSize = true;
             this.CheckChildrenCheckbox.Checked = true;
             this.CheckChildrenCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckChildrenCheckbox.Location = new System.Drawing.Point(587, 147);
+            this.CheckChildrenCheckbox.Location = new System.Drawing.Point(587, 149);
             this.CheckChildrenCheckbox.Name = "CheckChildrenCheckbox";
             this.CheckChildrenCheckbox.Size = new System.Drawing.Size(64, 17);
             this.CheckChildrenCheckbox.TabIndex = 23;
@@ -302,6 +318,7 @@
             // 
             // UseQuotesCheckbox
             // 
+            this.UseQuotesCheckbox.AccessibleName = "UseDoubleQuotes_checkbox";
             this.UseQuotesCheckbox.AutoSize = true;
             this.UseQuotesCheckbox.Checked = true;
             this.UseQuotesCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -315,10 +332,12 @@
             // 
             // CheckSiblingsCheckbox
             // 
+            this.CheckSiblingsCheckbox.AccessibleName = "Siblings_checkbox";
+            this.CheckSiblingsCheckbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CheckSiblingsCheckbox.AutoSize = true;
             this.CheckSiblingsCheckbox.Checked = true;
             this.CheckSiblingsCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckSiblingsCheckbox.Location = new System.Drawing.Point(530, 147);
+            this.CheckSiblingsCheckbox.Location = new System.Drawing.Point(530, 149);
             this.CheckSiblingsCheckbox.Name = "CheckSiblingsCheckbox";
             this.CheckSiblingsCheckbox.Size = new System.Drawing.Size(62, 17);
             this.CheckSiblingsCheckbox.TabIndex = 22;
@@ -328,6 +347,7 @@
             // 
             // UseTextCheckbox
             // 
+            this.UseTextCheckbox.AccessibleName = "UseText_checkbox";
             this.UseTextCheckbox.AutoSize = true;
             this.UseTextCheckbox.Location = new System.Drawing.Point(176, 72);
             this.UseTextCheckbox.Name = "UseTextCheckbox";
@@ -340,10 +360,12 @@
             // 
             // CheckAncestorsCheckbox
             // 
+            this.CheckAncestorsCheckbox.AccessibleName = "Ancestors_checkbox";
+            this.CheckAncestorsCheckbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CheckAncestorsCheckbox.AutoSize = true;
             this.CheckAncestorsCheckbox.Checked = true;
             this.CheckAncestorsCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckAncestorsCheckbox.Location = new System.Drawing.Point(454, 147);
+            this.CheckAncestorsCheckbox.Location = new System.Drawing.Point(454, 149);
             this.CheckAncestorsCheckbox.Name = "CheckAncestorsCheckbox";
             this.CheckAncestorsCheckbox.Size = new System.Drawing.Size(73, 17);
             this.CheckAncestorsCheckbox.TabIndex = 21;
@@ -362,10 +384,12 @@
             // 
             // CheckSelfCheckbox
             // 
+            this.CheckSelfCheckbox.AccessibleName = "Self_checkbox";
+            this.CheckSelfCheckbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CheckSelfCheckbox.AutoSize = true;
             this.CheckSelfCheckbox.Checked = true;
             this.CheckSelfCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckSelfCheckbox.Location = new System.Drawing.Point(407, 147);
+            this.CheckSelfCheckbox.Location = new System.Drawing.Point(407, 149);
             this.CheckSelfCheckbox.Name = "CheckSelfCheckbox";
             this.CheckSelfCheckbox.Size = new System.Drawing.Size(44, 17);
             this.CheckSelfCheckbox.TabIndex = 20;
@@ -375,6 +399,7 @@
             // 
             // MaxAttLength
             // 
+            this.MaxAttLength.AccessibleName = "MaxCharactersGenerated_textbox";
             this.MaxAttLength.Location = new System.Drawing.Point(124, 70);
             this.MaxAttLength.Name = "MaxAttLength";
             this.MaxAttLength.Size = new System.Drawing.Size(30, 20);
@@ -384,6 +409,7 @@
             // 
             // UseContainsCheckBox
             // 
+            this.UseContainsCheckBox.AccessibleName = "UseContains_checkbox";
             this.UseContainsCheckBox.AutoSize = true;
             this.UseContainsCheckBox.Checked = true;
             this.UseContainsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -406,6 +432,7 @@
             // 
             // SkipAttributeTextBox
             // 
+            this.SkipAttributeTextBox.AccessibleName = "DoNOTuseHTML_textbox";
             this.SkipAttributeTextBox.Location = new System.Drawing.Point(456, 23);
             this.SkipAttributeTextBox.Name = "SkipAttributeTextBox";
             this.SkipAttributeTextBox.Size = new System.Drawing.Size(90, 20);
@@ -415,6 +442,7 @@
             // 
             // SplitAttributesCheckbox
             // 
+            this.SplitAttributesCheckbox.AccessibleName = "SplitAttributes_Checkbox";
             this.SplitAttributesCheckbox.AutoSize = true;
             this.SplitAttributesCheckbox.Checked = true;
             this.SplitAttributesCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -442,39 +470,27 @@
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
             // 
-            // tabControl1
+            // MainTabControl
             // 
-            this.tabControl1.Controls.Add(this.LaunchBrowser_tab);
-            this.tabControl1.Controls.Add(this.XPathGenerator_tab);
-            this.tabControl1.Controls.Add(this.JavaScript_tab);
-            this.tabControl1.Controls.Add(this.ErrorLog_tab);
-            this.tabControl1.Controls.Add(this.Help_tab);
-            this.tabControl1.Controls.Add(this.Setting_tab);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.ShowToolTips = true;
-            this.tabControl1.Size = new System.Drawing.Size(738, 585);
-            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
-            this.tabControl1.TabIndex = 9;
-            // 
-            // LaunchBrowser_tab
-            // 
-            this.LaunchBrowser_tab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(129)))), ((int)(((byte)(132)))));
-            this.LaunchBrowser_tab.Location = new System.Drawing.Point(4, 22);
-            this.LaunchBrowser_tab.Margin = new System.Windows.Forms.Padding(2);
-            this.LaunchBrowser_tab.Name = "LaunchBrowser_tab";
-            this.LaunchBrowser_tab.Padding = new System.Windows.Forms.Padding(2);
-            this.LaunchBrowser_tab.Size = new System.Drawing.Size(730, 573);
-            this.LaunchBrowser_tab.TabIndex = 1;
-            this.LaunchBrowser_tab.Text = "Launch Browser";
-            this.LaunchBrowser_tab.ToolTipText = "Launch the browser on a local or remote machine.";
+            this.MainTabControl.Controls.Add(this.XPathGenerator_tab);
+            this.MainTabControl.Controls.Add(this.JavaScript_tab);
+            this.MainTabControl.Controls.Add(this.ErrorLog_tab);
+            this.MainTabControl.Controls.Add(this.Help_tab);
+            this.MainTabControl.Controls.Add(this.Setting_tab);
+            this.MainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainTabControl.Location = new System.Drawing.Point(0, 0);
+            this.MainTabControl.Margin = new System.Windows.Forms.Padding(2);
+            this.MainTabControl.Name = "MainTabControl";
+            this.MainTabControl.SelectedIndex = 0;
+            this.MainTabControl.ShowToolTips = true;
+            this.MainTabControl.Size = new System.Drawing.Size(738, 538);
+            this.MainTabControl.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
+            this.MainTabControl.TabIndex = 9;
             // 
             // XPathGenerator_tab
             // 
-            this.XPathGenerator_tab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(129)))), ((int)(((byte)(132)))));
+            this.XPathGenerator_tab.AccessibleName = "XpathGenerator_tab";
+            this.XPathGenerator_tab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(117)))), ((int)(((byte)(255)))));
             this.XPathGenerator_tab.Controls.Add(this.Browser_Panel);
             this.XPathGenerator_tab.Controls.Add(this.XPathSectionLocatorUsePanel);
             this.XPathGenerator_tab.Controls.Add(this.XPathSectionXPathGeneratePanel);
@@ -483,14 +499,15 @@
             this.XPathGenerator_tab.Margin = new System.Windows.Forms.Padding(2);
             this.XPathGenerator_tab.Name = "XPathGenerator_tab";
             this.XPathGenerator_tab.Padding = new System.Windows.Forms.Padding(2);
-            this.XPathGenerator_tab.Size = new System.Drawing.Size(730, 559);
+            this.XPathGenerator_tab.Size = new System.Drawing.Size(730, 512);
             this.XPathGenerator_tab.TabIndex = 0;
             this.XPathGenerator_tab.Text = "XPath Generation";
             this.XPathGenerator_tab.ToolTipText = "Record a site element, then generate and test the XPath locators.";
             // 
             // XPathSectionLocatorUsePanel
             // 
-            this.XPathSectionLocatorUsePanel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.XPathSectionLocatorUsePanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.XPathSectionLocatorUsePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(182)))), ((int)(((byte)(69)))));
             this.XPathSectionLocatorUsePanel.Controls.Add(this.VerifyXPathLocatorOnPage);
             this.XPathSectionLocatorUsePanel.Controls.Add(this.XPathLocatorExecuteWebdriver);
@@ -499,14 +516,15 @@
             this.XPathSectionLocatorUsePanel.Controls.Add(this.WebDriverCommandText);
             this.XPathSectionLocatorUsePanel.Controls.Add(this.label14);
             this.XPathSectionLocatorUsePanel.Controls.Add(this.ExecuteCommandButton);
-            this.XPathSectionLocatorUsePanel.Location = new System.Drawing.Point(4, 466);
+            this.XPathSectionLocatorUsePanel.Location = new System.Drawing.Point(4, 422);
             this.XPathSectionLocatorUsePanel.Margin = new System.Windows.Forms.Padding(2);
             this.XPathSectionLocatorUsePanel.Name = "XPathSectionLocatorUsePanel";
-            this.XPathSectionLocatorUsePanel.Size = new System.Drawing.Size(720, 89);
+            this.XPathSectionLocatorUsePanel.Size = new System.Drawing.Size(720, 87);
             this.XPathSectionLocatorUsePanel.TabIndex = 41;
             // 
             // VerifyXPathLocatorOnPage
             // 
+            this.VerifyXPathLocatorOnPage.AccessibleName = "ShowXpathLocator_button";
             this.VerifyXPathLocatorOnPage.Location = new System.Drawing.Point(186, 28);
             this.VerifyXPathLocatorOnPage.Margin = new System.Windows.Forms.Padding(2);
             this.VerifyXPathLocatorOnPage.Name = "VerifyXPathLocatorOnPage";
@@ -520,7 +538,7 @@
             // 
             this.XPathLocatorExecuteWebdriver.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.XPathLocatorExecuteWebdriver.AutoSize = true;
-            this.XPathLocatorExecuteWebdriver.Location = new System.Drawing.Point(9, 61);
+            this.XPathLocatorExecuteWebdriver.Location = new System.Drawing.Point(9, 59);
             this.XPathLocatorExecuteWebdriver.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.XPathLocatorExecuteWebdriver.Name = "XPathLocatorExecuteWebdriver";
             this.XPathLocatorExecuteWebdriver.Size = new System.Drawing.Size(148, 13);
@@ -529,6 +547,7 @@
             // 
             // CopyXPathToClipboard
             // 
+            this.CopyXPathToClipboard.AccessibleName = "CopyXpathtoclipboard_button";
             this.CopyXPathToClipboard.Location = new System.Drawing.Point(7, 28);
             this.CopyXPathToClipboard.Margin = new System.Windows.Forms.Padding(2);
             this.CopyXPathToClipboard.Name = "CopyXPathToClipboard";
@@ -540,7 +559,8 @@
             // 
             // XPathSectionXPathGeneratePanel
             // 
-            this.XPathSectionXPathGeneratePanel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.XPathSectionXPathGeneratePanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.XPathSectionXPathGeneratePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(182)))), ((int)(((byte)(69)))));
             this.XPathSectionXPathGeneratePanel.Controls.Add(this.XPathSectionLocatorChoose);
             this.XPathSectionXPathGeneratePanel.Controls.Add(this.XPathSectionLocatorGeneration);
@@ -563,10 +583,10 @@
             this.XPathSectionXPathGeneratePanel.Controls.Add(this.label9);
             this.XPathSectionXPathGeneratePanel.Controls.Add(this.MaxAttLength);
             this.XPathSectionXPathGeneratePanel.Controls.Add(this.UseTextCheckbox);
-            this.XPathSectionXPathGeneratePanel.Location = new System.Drawing.Point(4, 286);
+            this.XPathSectionXPathGeneratePanel.Location = new System.Drawing.Point(4, 240);
             this.XPathSectionXPathGeneratePanel.Margin = new System.Windows.Forms.Padding(2);
             this.XPathSectionXPathGeneratePanel.Name = "XPathSectionXPathGeneratePanel";
-            this.XPathSectionXPathGeneratePanel.Size = new System.Drawing.Size(720, 176);
+            this.XPathSectionXPathGeneratePanel.Size = new System.Drawing.Size(720, 178);
             this.XPathSectionXPathGeneratePanel.TabIndex = 40;
             // 
             // XPathSectionLocatorChoose
@@ -587,7 +607,7 @@
             this.XPathSectionLocatorGeneration.Name = "XPathSectionLocatorGeneration";
             this.XPathSectionLocatorGeneration.Size = new System.Drawing.Size(223, 17);
             this.XPathSectionLocatorGeneration.TabIndex = 29;
-            this.XPathSectionLocatorGeneration.Text = "Step 2 - Generate XPath Locators";
+            this.XPathSectionLocatorGeneration.Text = "Step 3 - Generate XPath Locators";
             // 
             // XPathSectionLoadElementPanel
             // 
@@ -605,15 +625,14 @@
             this.XPathSectionLoadElementPanel.Controls.Add(this.button1);
             this.XPathSectionLoadElementPanel.Controls.Add(this.button2);
             this.XPathSectionLoadElementPanel.Controls.Add(this.WebText);
-            this.XPathSectionLoadElementPanel.Location = new System.Drawing.Point(4, 95);
+            this.XPathSectionLoadElementPanel.Location = new System.Drawing.Point(4, 84);
             this.XPathSectionLoadElementPanel.Margin = new System.Windows.Forms.Padding(2);
             this.XPathSectionLoadElementPanel.Name = "XPathSectionLoadElementPanel";
-            this.XPathSectionLoadElementPanel.Size = new System.Drawing.Size(720, 187);
+            this.XPathSectionLoadElementPanel.Size = new System.Drawing.Size(720, 152);
             this.XPathSectionLoadElementPanel.TabIndex = 39;
             // 
             // label1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(9, 68);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -632,10 +651,11 @@
             this.XPathSectionLoadWebsiteElement.Name = "XPathSectionLoadWebsiteElement";
             this.XPathSectionLoadWebsiteElement.Size = new System.Drawing.Size(204, 17);
             this.XPathSectionLoadWebsiteElement.TabIndex = 38;
-            this.XPathSectionLoadWebsiteElement.Text = "Step 1 - Load Website Element";
+            this.XPathSectionLoadWebsiteElement.Text = "Step 2 - Load Website Element";
             // 
             // RegisterLeftClickButton
             // 
+            this.RegisterLeftClickButton.AccessibleName = "CaptureElement_LeftClick_Button";
             this.RegisterLeftClickButton.Location = new System.Drawing.Point(7, 34);
             this.RegisterLeftClickButton.Margin = new System.Windows.Forms.Padding(2);
             this.RegisterLeftClickButton.Name = "RegisterLeftClickButton";
@@ -647,6 +667,7 @@
             // 
             // RegisterRightClickButton
             // 
+            this.RegisterRightClickButton.AccessibleName = "CaptureElement_RightClick_button";
             this.RegisterRightClickButton.Location = new System.Drawing.Point(174, 34);
             this.RegisterRightClickButton.Margin = new System.Windows.Forms.Padding(2);
             this.RegisterRightClickButton.Name = "RegisterRightClickButton";
@@ -658,6 +679,7 @@
             // 
             // RefreshTimeTextBox
             // 
+            this.RefreshTimeTextBox.AccessibleName = "RefreshTimer_textbox";
             this.RefreshTimeTextBox.Location = new System.Drawing.Point(456, 39);
             this.RefreshTimeTextBox.Name = "RefreshTimeTextBox";
             this.RefreshTimeTextBox.Size = new System.Drawing.Size(32, 20);
@@ -676,18 +698,22 @@
             // 
             // WebText
             // 
-            this.WebText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.WebText.AccessibleName = "WebText_browserBox";
+            this.WebText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.WebText.CausesValidation = false;
             this.WebText.Location = new System.Drawing.Point(12, 84);
             this.WebText.Margin = new System.Windows.Forms.Padding(2);
             this.WebText.MinimumSize = new System.Drawing.Size(15, 16);
             this.WebText.Name = "WebText";
-            this.WebText.Size = new System.Drawing.Size(691, 64);
+            this.WebText.Size = new System.Drawing.Size(691, 36);
             this.WebText.TabIndex = 25;
             // 
             // JavaScript_tab
             // 
-            this.JavaScript_tab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(129)))), ((int)(((byte)(132)))));
+            this.JavaScript_tab.AccessibleName = "JavaScript_Tab";
+            this.JavaScript_tab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(117)))), ((int)(((byte)(255)))));
             this.JavaScript_tab.Controls.Add(this.panel2);
             this.JavaScript_tab.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.JavaScript_tab.Location = new System.Drawing.Point(4, 22);
@@ -784,7 +810,8 @@
             // 
             // ErrorLog_tab
             // 
-            this.ErrorLog_tab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(129)))), ((int)(((byte)(132)))));
+            this.ErrorLog_tab.AccessibleName = "ErrorLog_tab";
+            this.ErrorLog_tab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(117)))), ((int)(((byte)(255)))));
             this.ErrorLog_tab.Controls.Add(this.panel3);
             this.ErrorLog_tab.Location = new System.Drawing.Point(4, 22);
             this.ErrorLog_tab.Margin = new System.Windows.Forms.Padding(2);
@@ -843,7 +870,8 @@
             // 
             // Help_tab
             // 
-            this.Help_tab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(129)))), ((int)(((byte)(132)))));
+            this.Help_tab.AccessibleName = "Help_tab";
+            this.Help_tab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(117)))), ((int)(((byte)(255)))));
             this.Help_tab.Controls.Add(this.panel4);
             this.Help_tab.Location = new System.Drawing.Point(4, 22);
             this.Help_tab.Margin = new System.Windows.Forms.Padding(2);
@@ -891,7 +919,8 @@
             // 
             // Setting_tab
             // 
-            this.Setting_tab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(129)))), ((int)(((byte)(132)))));
+            this.Setting_tab.AccessibleName = "Settings_tab";
+            this.Setting_tab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(117)))), ((int)(((byte)(255)))));
             this.Setting_tab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.Setting_tab.Location = new System.Drawing.Point(4, 22);
             this.Setting_tab.Margin = new System.Windows.Forms.Padding(2);
@@ -912,7 +941,8 @@
             // 
             // Browser_Panel
             // 
-            this.Browser_Panel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Browser_Panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Browser_Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(182)))), ((int)(((byte)(69)))));
             this.Browser_Panel.Controls.Add(this.Step1_Label);
             this.Browser_Panel.Controls.Add(this.Browser_label);
@@ -926,7 +956,7 @@
             this.Browser_Panel.Location = new System.Drawing.Point(4, 4);
             this.Browser_Panel.Margin = new System.Windows.Forms.Padding(2);
             this.Browser_Panel.Name = "Browser_Panel";
-            this.Browser_Panel.Size = new System.Drawing.Size(722, 85);
+            this.Browser_Panel.Size = new System.Drawing.Size(720, 76);
             this.Browser_Panel.TabIndex = 42;
             // 
             // Browser_label
@@ -941,7 +971,8 @@
             // 
             // GoToUrlButton
             // 
-            this.GoToUrlButton.Location = new System.Drawing.Point(456, 51);
+            this.GoToUrlButton.AccessibleName = "GotoURL_button";
+            this.GoToUrlButton.Location = new System.Drawing.Point(456, 46);
             this.GoToUrlButton.Margin = new System.Windows.Forms.Padding(2);
             this.GoToUrlButton.Name = "GoToUrlButton";
             this.GoToUrlButton.Size = new System.Drawing.Size(71, 24);
@@ -952,6 +983,7 @@
             // 
             // BrowserDropdown
             // 
+            this.BrowserDropdown.AccessibleName = "BrowserSelector";
             this.BrowserDropdown.DisplayMember = "1";
             this.BrowserDropdown.FormattingEnabled = true;
             this.BrowserDropdown.Items.AddRange(new object[] {
@@ -969,13 +1001,14 @@
             // 
             // LaunchBrowserButton
             // 
+            this.LaunchBrowserButton.AccessibleName = "LaunchBrowser_Button";
             this.LaunchBrowserButton.Location = new System.Drawing.Point(225, 18);
             this.LaunchBrowserButton.Margin = new System.Windows.Forms.Padding(2);
             this.LaunchBrowserButton.Name = "LaunchBrowserButton";
             this.LaunchBrowserButton.Size = new System.Drawing.Size(143, 24);
             this.LaunchBrowserButton.TabIndex = 11;
             this.LaunchBrowserButton.Text = "Launch Browser";
-            this.UIToolTip.SetToolTip(this.LaunchBrowserButton, "Here\'s an example of ta tool TIP.  Hope this works.\r\n");
+            this.UIToolTip.SetToolTip(this.LaunchBrowserButton, "This Launches a browser duh!");
             this.LaunchBrowserButton.UseVisualStyleBackColor = true;
             this.LaunchBrowserButton.Click += new System.EventHandler(this.LaunchBrowserButton_Click);
             // 
@@ -991,7 +1024,8 @@
             // 
             // UrlTextBox
             // 
-            this.UrlTextBox.Location = new System.Drawing.Point(57, 54);
+            this.UrlTextBox.AccessibleName = "URL_textbox";
+            this.UrlTextBox.Location = new System.Drawing.Point(57, 49);
             this.UrlTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.UrlTextBox.Name = "UrlTextBox";
             this.UrlTextBox.Size = new System.Drawing.Size(394, 20);
@@ -1001,7 +1035,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(20, 57);
+            this.label6.Location = new System.Drawing.Point(20, 52);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(32, 13);
@@ -1010,6 +1044,7 @@
             // 
             // HostTextBox
             // 
+            this.HostTextBox.AccessibleName = "Localhost_textbox";
             this.HostTextBox.Location = new System.Drawing.Point(421, 21);
             this.HostTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.HostTextBox.Name = "HostTextBox";
@@ -1037,12 +1072,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(738, 585);
-            this.Controls.Add(this.tabControl1);
+            this.ClientSize = new System.Drawing.Size(738, 538);
+            this.Controls.Add(this.MainTabControl);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MaximumSize = new System.Drawing.Size(754, 1024);
+            this.MaximumSize = new System.Drawing.Size(1024, 1024);
             this.MinimumSize = new System.Drawing.Size(754, 576);
             this.Name = "Specter";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
@@ -1050,7 +1085,7 @@
             this.Text = "Specter, by ProtoTest";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Specter_FormClosing);
             this.Load += new System.EventHandler(this.Specter_Load);
-            this.tabControl1.ResumeLayout(false);
+            this.MainTabControl.ResumeLayout(false);
             this.XPathGenerator_tab.ResumeLayout(false);
             this.XPathSectionLocatorUsePanel.ResumeLayout(false);
             this.XPathSectionLocatorUsePanel.PerformLayout();
@@ -1105,9 +1140,8 @@
         private System.Windows.Forms.CheckBox CheckSiblingsCheckbox;
         private System.Windows.Forms.CheckBox CheckAncestorsCheckbox;
         private System.Windows.Forms.CheckBox CheckSelfCheckbox;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl MainTabControl;
         private System.Windows.Forms.TabPage XPathGenerator_tab;
-        private System.Windows.Forms.TabPage LaunchBrowser_tab;
         private System.Windows.Forms.TabPage JavaScript_tab;
         private System.Windows.Forms.TabPage ErrorLog_tab;
         private System.Windows.Forms.TabPage Help_tab;
