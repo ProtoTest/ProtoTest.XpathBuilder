@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProtoTest.Specter;
+using ProtoTest.XpathBuilder;
 using Timer = System.Windows.Forms.Timer;
 
 namespace ProtoTest.Specter
@@ -15,6 +16,8 @@ namespace ProtoTest.Specter
     {
         public static Specter specter;
         public static BackgroundWorker worker;
+        public static List<GolemElementBuilder> elements;
+            
         [STAThread]
         static void Main()
         {
@@ -26,8 +29,8 @@ namespace ProtoTest.Specter
             specter.FormClosed += SpecterFormClosed;
             worker.WorkerSupportsCancellation = true;
             worker.RunWorkerAsync();
+            elements = new List<GolemElementBuilder>();
             Application.Run(specter);
-            
         }
 
         static void SpecterFormClosed(object sender, FormClosedEventArgs e)

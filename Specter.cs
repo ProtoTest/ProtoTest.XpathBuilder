@@ -895,6 +895,7 @@ namespace ProtoTest.Specter
 
         private void Specter_FormClosing(object sender, FormClosingEventArgs e)
         {
+            //This is essentially the exit function -- all settings will persist when the main form closes
             //Copy window location to app settings
             Settings.Default.WindowLocation = this.Location;
             Settings.Default.DefaultBrowser = DefaultBrowser_cb.Text;
@@ -912,6 +913,54 @@ namespace ProtoTest.Specter
 
             Settings.Default.Save();
             
+        }
+
+        private void ColorPicker_Link_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://www.colorpicker.com/");
+        }
+
+        private void BuildElement_button_Click(object sender, EventArgs e)
+        {
+            //added a list of elements to the Program.cs class -- seems like a good place to add globals
+            if (XpathsDropdown.Text != "")
+            {
+                if (Program.elements.Count == 0)
+                {
+                    Program.elements.Add(new GolemElementBuilder());
+                    Program.elements[0].ElementLocator = XpathsDropdown.Text;
+                }
+                else
+                {
+                    int numofele = Program.elements.Count;
+                    Program.elements.Add(new GolemElementBuilder());
+                    Program.elements[Program.elements.Count - 1].ElementLocator = XpathsDropdown.Text;
+                }
+                ElementProperties_Popup getProperties = new ElementProperties_Popup();
+                getProperties.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("There are no Xpaths generated or selected.", "Something's Wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
+
+        
+        private void MainTabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //This function gets called when the user changes tabs
+            Elements_rtb.Clear();
+            for (int x = 0; x < Program.elements.Count; x++)
+            {
+                Elements_rtb.AppendText(Program.elements[x].GetGolemElement());
+                Elements_rtb.AppendText("\n");
+            }
+        }
+
+        private void CopyElementsToClipboard_button_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Clipboard.SetText(Elements_rtb.Text);
         }
 
        

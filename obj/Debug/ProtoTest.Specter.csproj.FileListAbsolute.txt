@@ -33,3 +33,4 @@ Z:\CodeProjects\GitHub\ProtoTest.XpathBuilder\obj\Debug\ProtoTest.Specter.Specte
 Z:\CodeProjects\GitHub\ProtoTest.XpathBuilder\obj\Debug\ProtoTest.XpathBuilder.Properties.Resources.resources
 Z:\CodeProjects\GitHub\ProtoTest.XpathBuilder\obj\Debug\ProtoTest.XpathBuilder.SpecterSplash.resources
 Z:\CodeProjects\GitHub\ProtoTest.XpathBuilder\obj\Debug\ProtoTest.Specter.csproj.GenerateResource.Cache
+Z:\CodeProjects\GitHub\ProtoTest.XpathBuilder\obj\Debug\ProtoTest.XpathBuilder.ElementProperties_Popup.resources
