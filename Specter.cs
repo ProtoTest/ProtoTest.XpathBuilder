@@ -600,7 +600,6 @@ namespace ProtoTest.Specter
             //need to check here first if the browser is started
             while(driver == null)
             {
-                
                 LauncHBrowser(sender, e);
             }
             driver.Navigate().GoToUrl(urlString);
@@ -907,6 +906,8 @@ namespace ProtoTest.Specter
             Settings.Default.Save();
             
         }
+
+       
 
     }
 }
