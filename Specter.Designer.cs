@@ -106,6 +106,7 @@
             this.Help1Textbox1 = new System.Windows.Forms.TextBox();
             this.HelpHeader1 = new System.Windows.Forms.Label();
             this.Setting_tab = new System.Windows.Forms.TabPage();
+            this.UIToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1.SuspendLayout();
             this.LaunchBrowser_tab.SuspendLayout();
             this.Browser_Panel.SuspendLayout();
@@ -213,6 +214,7 @@
             this.button2.Size = new System.Drawing.Size(124, 24);
             this.button2.TabIndex = 17;
             this.button2.Text = "Find Element\'s Child";
+            this.UIToolTip.SetToolTip(this.button2, "Finds the currently selected elements children.");
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -225,6 +227,7 @@
             this.button1.Size = new System.Drawing.Size(124, 24);
             this.button1.TabIndex = 16;
             this.button1.Text = "Find Element\'s Sibling";
+            this.UIToolTip.SetToolTip(this.button1, "Finds the sibling of the selected element.");
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -237,6 +240,7 @@
             this.GetParentButton.Size = new System.Drawing.Size(124, 24);
             this.GetParentButton.TabIndex = 10;
             this.GetParentButton.Text = "Find Element\'s Parent";
+            this.UIToolTip.SetToolTip(this.GetParentButton, "Find the parents of the currently selected element.");
             this.GetParentButton.UseVisualStyleBackColor = true;
             this.GetParentButton.Click += new System.EventHandler(this.GetParentButton_Click);
             // 
@@ -459,6 +463,7 @@
             this.LaunchBrowserButton.Size = new System.Drawing.Size(143, 24);
             this.LaunchBrowserButton.TabIndex = 11;
             this.LaunchBrowserButton.Text = "Launch Browser";
+            this.UIToolTip.SetToolTip(this.LaunchBrowserButton, "Here\'s an example of ta tool TIP.  Hope this works.\r\n");
             this.LaunchBrowserButton.UseVisualStyleBackColor = true;
             this.LaunchBrowserButton.Click += new System.EventHandler(this.LaunchBrowserButton_Click);
             // 
@@ -789,10 +794,8 @@
             // 
             // WebText
             // 
-            this.WebText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.WebText.Location = new System.Drawing.Point(11, 84);
+            this.WebText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.WebText.Location = new System.Drawing.Point(12, 83);
             this.WebText.Margin = new System.Windows.Forms.Padding(2);
             this.WebText.MinimumSize = new System.Drawing.Size(15, 16);
             this.WebText.Name = "WebText";
@@ -1016,6 +1019,14 @@
             this.Setting_tab.Text = "Settings";
             this.Setting_tab.ToolTipText = "Specter internal settings";
             // 
+            // UIToolTip
+            // 
+            this.UIToolTip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(117)))), ((int)(((byte)(255)))));
+            this.UIToolTip.ShowAlways = true;
+            this.UIToolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.UIToolTip.ToolTipTitle = "What\'s this do?";
+            this.UIToolTip.Popup += new System.Windows.Forms.PopupEventHandler(this.LaunchBrowser_tooltip_Popup);
+            // 
             // Specter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1134,6 +1145,7 @@
         private System.Windows.Forms.Label HelpHeader1;
         private System.Windows.Forms.Label XPathSectionLocatorChoose;
         private System.Windows.Forms.Label LaunchBrowserHostExplanation;
+        private System.Windows.Forms.ToolTip UIToolTip;
     }
 }
 

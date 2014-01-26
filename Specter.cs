@@ -858,5 +858,10 @@ namespace ProtoTest.Specter
             }
         }
 
+        private void LaunchBrowser_tooltip_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
     }
 }
