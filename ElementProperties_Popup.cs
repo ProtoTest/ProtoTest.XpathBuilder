@@ -16,7 +16,6 @@ namespace ProtoTest.XpathBuilder
             if (ElementName_tb.Text != "" && !ElementName_tb.Text.Contains(" "))
             {
                 Program.elements[Program.elements.Count - 1].ElementName = ElementName_tb.Text;
-<<<<<<< HEAD
                 //This function gets called when the user changes tabs
                 //This function gets called when the user changes tabs
                 Program.specter.Elements_rtb.Clear();
@@ -26,9 +25,6 @@ namespace ProtoTest.XpathBuilder
                     Program.specter.Elements_rtb.AppendText("\n");
                 }
                 this.Dispose();
-=======
-                Dispose();
->>>>>>> Resharper code cleanup
             }
             else
             {

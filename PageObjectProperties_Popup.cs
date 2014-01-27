@@ -14,13 +14,8 @@ namespace ProtoTest.XpathBuilder
         private void Ok_button_Click(object sender, EventArgs e)
         {
             var pageObject = new PageObjectBuilder(PageName_tb.Text, Namespace_tb.Text, Program.elements);
-<<<<<<< HEAD
            Program.specter.SetElementText(pageObject.GetPageObjectCode());
             this.Dispose();
-=======
-            Program.specter.ShowElementText(pageObject.GetPageObjectCode());
-            Dispose();
->>>>>>> Resharper code cleanup
         }
 
         private void Cancel_button_Click(object sender, EventArgs e)
