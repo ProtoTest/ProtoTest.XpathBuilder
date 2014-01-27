@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -28,6 +29,7 @@ namespace ProtoTest.Specter
 {
     public partial class Specter : Form
     {
+        public static BackgroundWorker elementUpdater;
         public IWebElement element;
         public string urlString;
         public string browserString;
@@ -56,6 +58,9 @@ namespace ProtoTest.Specter
  
         public Specter()
         {
+            elementUpdater = new BackgroundWorker();
+            elementUpdater.DoWork += worker_DoWork;
+            elementUpdater.WorkerSupportsCancellation = true;
             //Start Splash Screen
             Thread time = new Thread(new ThreadStart(RunSpecterSplash));
             time.Start();
@@ -64,10 +69,12 @@ namespace ProtoTest.Specter
             InitializeComponent(); //Initialize Specter
             time.Abort();
             //End Splash Screen
-
+            
+            
             this.XpathsDropdown.TextChanged += XpathsDropdown_TextChanged;
             WebDriverCommandDropdown.SelectedIndex = 0;
             BrowserDropdown.SelectedIndex = 0; //Set default browser for startup
+           
             //LaunchBrowserButton_Click(null, null); //Launch browser at startup
         }
 
@@ -76,6 +83,16 @@ namespace ProtoTest.Specter
             Application.Run(new SpecterSplash());
         }
 
+        void worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var backgroundWorker = sender as BackgroundWorker;
+
+            while (!backgroundWorker.CancellationPending)
+            {
+                UpdateElement();
+                Thread.Sleep(Specter.refreshMs);
+            }
+        }
 
         //SCREEN ELEMENTS
 
@@ -112,8 +129,10 @@ namespace ProtoTest.Specter
         {
             try
             {
+                elementUpdater.RunWorkerAsync();
                 driver.RegisterRightClickEvent();
                 driver.RegisterHighlightOnMouseOver();
+
             }
             catch (Exception err)
             {
@@ -125,6 +144,7 @@ namespace ProtoTest.Specter
         {
             try
             {
+                elementUpdater.RunWorkerAsync();
                 driver.RegisterClickEvent();
                 driver.RegisterHighlightOnMouseOver();
             }
@@ -138,7 +158,7 @@ namespace ProtoTest.Specter
         {
             try
             {
-                Specter.updateElement = true;
+                updateElement = true;
                 driver.RegisterClickEvent();
                 driver.RegisterHighlightOnMouseOver();
             }
@@ -150,7 +170,7 @@ namespace ProtoTest.Specter
         }
         private void RefreshTimeTextBox_TextChanged(object sender, EventArgs e)
         {
-            refreshMs = int.Parse(RefreshTimeTextBox.Text);
+            refreshMs = Int32.Parse(RefreshTimeTextBox.Text);
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -184,7 +204,7 @@ namespace ProtoTest.Specter
         {
             try
             {
-                Log(string.Format("Tryng to Generate {0} xpaths. Max attempts : {1}", minimumXpaths, maximumXpathAttempts));
+                Log(String.Format("Tryng to Generate {0} xpaths. Max attempts : {1}", minimumXpaths, maximumXpathAttempts));
                 XpathsDropdown.Items.Clear();
 
                 var xpathGetter = new BackgroundWorker();
@@ -202,11 +222,11 @@ namespace ProtoTest.Specter
         }
         private void MinimumXpathsTextBox_TextChanged(object sender, EventArgs e)
         {
-            minimumXpaths = int.Parse(this.MinimumXpathsTextBox.Text);
+            minimumXpaths = Int32.Parse(this.MinimumXpathsTextBox.Text);
         }
         private void XPathGeneratorMaxAttempts_TextChanged(object sender, EventArgs e)
         {
-            maximumXpathAttempts = int.Parse(this.XPathGeneratorMaxAttempts.Text);
+            maximumXpathAttempts = Int32.Parse(this.XPathGeneratorMaxAttempts.Text);
         }
         private void SplitAttributesCheckbox_CheckedChanged(object sender, EventArgs e)
         {
@@ -226,7 +246,7 @@ namespace ProtoTest.Specter
         }
         private void MaxAttLength_TextChanged(object sender, EventArgs e)
         {
-            maxAttLength = int.Parse(MaxAttLength.Text);
+            maxAttLength = Int32.Parse(MaxAttLength.Text);
         }
         private void UseQuotesCheckbox_CheckedChanged(object sender, EventArgs e)
         {
@@ -270,6 +290,7 @@ namespace ProtoTest.Specter
         private void UrlTextBox_TextChanged(object sender, EventArgs e)
         {
             this.urlString = UrlTextBox.Text;
+            
         }
         private void LaunchBrowserButton_Click(object sender, EventArgs e)
         {
@@ -355,7 +376,7 @@ namespace ProtoTest.Specter
                     capabilities = DesiredCapabilities.Firefox();
                     break;
             }
-            var remoteAddress = new Uri(string.Format("http://{0}:{1}/wd/hub", hostString, port));
+            var remoteAddress = new Uri(String.Format("http://{0}:{1}/wd/hub", hostString, port));
             driver = new RemoteWebDriver(remoteAddress, capabilities);
         }
         private void LaunchLocalBrowser()
@@ -590,6 +611,12 @@ namespace ProtoTest.Specter
             if (Settings.Default.WindowSize != null)
             {
                 this.Size = Settings.Default.WindowSize;
+            }
+            if (Settings.Default.DefaultUrl != null)
+            {
+                this.urlString = Settings.Default.DefaultUrl;
+                this.DefaultUrl_tb.Text = Settings.Default.DefaultUrl;
+                UrlTextBox.Text = this.urlString;
             }
             //Size and Position settings are persisted with the FormClosing event handler function
         }
@@ -858,7 +885,7 @@ namespace ProtoTest.Specter
         private void CopyXPathToClipboard_Click(object sender, EventArgs e)
         {
             string locator = XpathsDropdown.Text.ToString();
-            System.Windows.Forms.Clipboard.SetText(locator);
+            Clipboard.SetText(locator);
         }
 
         private void Help1Textbox1_TextChanged(object sender, EventArgs e)
@@ -895,8 +922,11 @@ namespace ProtoTest.Specter
 
         private void Specter_FormClosing(object sender, FormClosingEventArgs e)
         {
+            elementUpdater.CancelAsync();
+            driver.Quit();
             //This is essentially the exit function -- all settings will persist when the main form closes
             //Copy window location to app settings
+
             Settings.Default.WindowLocation = this.Location;
             Settings.Default.DefaultBrowser = DefaultBrowser_cb.Text;
 
@@ -911,13 +941,15 @@ namespace ProtoTest.Specter
                 Settings.Default.WindowSize = this.RestoreBounds.Size;
             }
 
+            Settings.Default.DefaultUrl = DefaultUrl_tb.Text;
+
             Settings.Default.Save();
             
         }
 
         private void ColorPicker_Link_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.colorpicker.com/");
+            Process.Start("http://www.colorpicker.com/");
         }
 
         private void BuildElement_button_Click(object sender, EventArgs e)
@@ -960,7 +992,7 @@ namespace ProtoTest.Specter
 
         private void CopyElementsToClipboard_button_Click(object sender, EventArgs e)
         {
-            System.Windows.Forms.Clipboard.SetText(Elements_rtb.Text);
+            Clipboard.SetText(Elements_rtb.Text);
         }
 
         private void GetPageObjectButton_Click(object sender, EventArgs e)
@@ -974,7 +1006,10 @@ namespace ProtoTest.Specter
 
         }
 
-       
+        private void DefaultUrl_tb_TextChanged(object sender, EventArgs e)
+        {
+            
+        }   
 
     }
 }

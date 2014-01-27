@@ -11,5 +11,8 @@
     <Setting Name="DefaultBrowser" Type="System.String" Scope="User">
       <Value Profile="(Default)">Firefox</Value>
     </Setting>
+    <Setting Name="DefaultUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

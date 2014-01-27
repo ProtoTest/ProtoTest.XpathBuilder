@@ -19,7 +19,7 @@ namespace ProtoTest.XpathBuilder
         {
             if (ElementName != null && ElementLocator != null)
             {
-                GolemElement = string.Format(baseGolemElementSting, ElementName, ElementName, ElementLocator);
+                GolemElement = string.Format(baseGolemElementSting, ElementName, ElementName, ElementLocator.Replace("\"","\\\""));
             }
             return GolemElement;
         }
