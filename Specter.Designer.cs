@@ -854,7 +854,7 @@ namespace ProtoTest.Specter
             this.RefreshTimeTextBox.Size = new System.Drawing.Size(41, 20);
             this.RefreshTimeTextBox.TabIndex = 23;
             this.RefreshTimeTextBox.Text = "2000";
-            this.RefreshTimeTextBox.TextChanged += new System.EventHandler(this.RefreshTimeTextBox_TextChanged_1);
+            this.RefreshTimeTextBox.TextChanged += new System.EventHandler(this.RefreshTimeTextBox_TextChanged);
             // 
             // label4
             // 
@@ -1109,7 +1109,6 @@ namespace ProtoTest.Specter
             this.LogTextBox.Size = new System.Drawing.Size(932, 276);
             this.LogTextBox.TabIndex = 4;
             this.LogTextBox.Text = "";
-            this.LogTextBox.TextChanged += new System.EventHandler(this.LogTextBox_TextChanged_1);
             // 
             // ClearLogButton
             // 

@@ -433,9 +433,7 @@ namespace ProtoTest.Specter
             UpdateLog(message);
         }
 
-        private void LogTextBox_TextChanged(object sender, EventArgs e)
-        {
-        }
+       
 
         public void Error(string message)
         {
@@ -882,9 +880,7 @@ namespace ProtoTest.Specter
         {
         }
 
-        private void RefreshTimeTextBox_TextChanged_1(object sender, EventArgs e)
-        {
-        }
+        
 
         private void Specter_FormClosing(object sender, FormClosingEventArgs e)
         {
