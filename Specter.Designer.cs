@@ -942,6 +942,7 @@ namespace ProtoTest.Specter
             this.ClearElements_button.TabIndex = 2;
             this.ClearElements_button.Text = "Clear Elements";
             this.ClearElements_button.UseVisualStyleBackColor = true;
+            this.ClearElements_button.Click += new System.EventHandler(this.ClearElements_button_Click);
             // 
             // label2
             // 

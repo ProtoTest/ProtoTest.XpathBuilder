@@ -1,44 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Golem.Framework.Specter;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Android;
-using OpenQA.Selenium.IE;
-using OpenQA.Selenium.Safari;
-using OpenQA.Selenium.Remote;
-using System.Xml.Linq;
-using System.Xml;
 using Manoli.Utils.CSharpFormat;
-using System.Threading;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.IE;
+using OpenQA.Selenium.Remote;
+using OpenQA.Selenium.Safari;
 using ProtoTest.XpathBuilder;
 using ProtoTest.XpathBuilder.Properties;
-
 
 namespace ProtoTest.Specter
 {
     public partial class Specter : Form
     {
         public static BackgroundWorker elementUpdater;
-        public IWebElement element;
-        public string urlString;
-        public string browserString;
-        public string hostString = "localhost";
-        public string elementLocator;
-        public string currentXpath;
-        public List<string> xpaths;
-        private BackgroundWorker bw;
-        public IWebDriver driver;
         public static bool updateElement = false;
         public static int minimumXpaths = 3;
         public static int maximumXpathAttempts = 100;
@@ -55,26 +37,35 @@ namespace ProtoTest.Specter
         public static bool checkCousins = true;
         public static bool checkSiblings = true;
         public static string relativeXpath;
- 
+        public string browserString;
+        private BackgroundWorker bw;
+        public string currentXpath;
+        public IWebDriver driver;
+        public IWebElement element;
+        public string elementLocator;
+        public string hostString = "localhost";
+        public string urlString;
+        public List<string> xpaths;
+
         public Specter()
         {
             elementUpdater = new BackgroundWorker();
             elementUpdater.DoWork += worker_DoWork;
             elementUpdater.WorkerSupportsCancellation = true;
             //Start Splash Screen
-            Thread time = new Thread(new ThreadStart(RunSpecterSplash));
+            var time = new Thread(RunSpecterSplash);
             time.Start();
-            while(!SpecterSplash.done)
-                Thread.Sleep(10);  //Time length for Splash Screen to display
+            while (!SpecterSplash.done)
+                Thread.Sleep(10); //Time length for Splash Screen to display
             InitializeComponent(); //Initialize Specter
             time.Abort();
             //End Splash Screen
-            
-            
-            this.XpathsDropdown.TextChanged += XpathsDropdown_TextChanged;
+
+
+            XpathsDropdown.TextChanged += XpathsDropdown_TextChanged;
             WebDriverCommandDropdown.SelectedIndex = 0;
             BrowserDropdown.SelectedIndex = 0; //Set default browser for startup
-           
+
             //LaunchBrowserButton_Click(null, null); //Launch browser at startup
         }
 
@@ -83,14 +74,14 @@ namespace ProtoTest.Specter
             Application.Run(new SpecterSplash());
         }
 
-        void worker_DoWork(object sender, DoWorkEventArgs e)
+        private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
             var backgroundWorker = sender as BackgroundWorker;
 
             while (!backgroundWorker.CancellationPending)
             {
                 UpdateElement();
-                Thread.Sleep(Specter.refreshMs);
+                Thread.Sleep(refreshMs);
             }
         }
 
@@ -108,6 +99,7 @@ namespace ProtoTest.Specter
                 Error("Error caught trying to disable clicks : " + err.Message);
             }
         }
+
         private void DisableMouseOverButton_Click(object sender, EventArgs e)
         {
             try
@@ -119,11 +111,12 @@ namespace ProtoTest.Specter
                 Error("Error trying to disable mouse over : " + err.Message);
             }
         }
+
         private void HidePanelButton_Click(object sender, EventArgs e)
         {
             driver.DisableDTVEPanel();
         }
-        
+
         //XPath Locator Building
         private void RegisterRightClickButton_Click(object sender, EventArgs e)
         {
@@ -132,14 +125,13 @@ namespace ProtoTest.Specter
                 elementUpdater.RunWorkerAsync();
                 driver.RegisterRightClickEvent();
                 driver.RegisterHighlightOnMouseOver();
-
             }
             catch (Exception err)
             {
                 Error("Could not register rick click : " + err.Message);
             }
-
         }
+
         private void RegisterLeftClickButton_Click(object sender, EventArgs e)
         {
             try
@@ -152,8 +144,8 @@ namespace ProtoTest.Specter
             {
                 Error("Could not register rick click : " + err.Message);
             }
-
         }
+
         private void RegisterClickEventButton_Click(object sender, EventArgs e)
         {
             try
@@ -166,45 +158,45 @@ namespace ProtoTest.Specter
             {
                 Error("Could not register click events : " + err.Message);
             }
-
         }
+
         private void RefreshTimeTextBox_TextChanged(object sender, EventArgs e)
         {
             refreshMs = Int32.Parse(RefreshTimeTextBox.Text);
         }
+
         private void button2_Click(object sender, EventArgs e)
         {
             try
             {
-                var sibling = element.GetChild();
+                IWebElement sibling = element.GetChild();
                 SelectElement(sibling);
             }
             catch (Exception)
             {
                 Error("Element did not have a child");
             }
-
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
-                var sibling = element.GetSibling();
+                IWebElement sibling = element.GetSibling();
                 SelectElement(sibling);
             }
             catch (Exception)
             {
                 Error("Element did not have a sibling");
             }
-
-
-
         }
+
         private void GenerateXpathButton_Click(object sender, EventArgs e)
         {
             try
             {
-                Log(String.Format("Tryng to Generate {0} xpaths. Max attempts : {1}", minimumXpaths, maximumXpathAttempts));
+                Log(String.Format("Tryng to Generate {0} xpaths. Max attempts : {1}", minimumXpaths,
+                    maximumXpathAttempts));
                 XpathsDropdown.Items.Clear();
 
                 var xpathGetter = new BackgroundWorker();
@@ -212,92 +204,104 @@ namespace ProtoTest.Specter
                 //All the work that function is doing is put on a seperate thread to not cause interface lag
                 xpathGetter.DoWork += xpathGetter_DoWork;
                 xpathGetter.RunWorkerAsync();
-
-
             }
             catch (Exception err)
             {
                 Error("Could not generate xpath for element " + err.Message);
             }
         }
+
         private void MinimumXpathsTextBox_TextChanged(object sender, EventArgs e)
         {
-            minimumXpaths = Int32.Parse(this.MinimumXpathsTextBox.Text);
+            minimumXpaths = Int32.Parse(MinimumXpathsTextBox.Text);
         }
+
         private void XPathGeneratorMaxAttempts_TextChanged(object sender, EventArgs e)
         {
-            maximumXpathAttempts = Int32.Parse(this.XPathGeneratorMaxAttempts.Text);
+            maximumXpathAttempts = Int32.Parse(XPathGeneratorMaxAttempts.Text);
         }
+
         private void SplitAttributesCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             splitAttributes = SplitAttributesCheckbox.Checked;
             if (SplitAttributesCheckbox.Checked)
                 UseContainsCheckBox.Checked = true;
         }
+
         private void UseContainsCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             useContains = UseContainsCheckBox.Checked;
             if (!UseContainsCheckBox.Checked)
                 SplitAttributesCheckbox.Checked = false;
         }
+
         private void SkipAttributeTextBox_TextChanged(object sender, EventArgs e)
         {
             skipAttributeString = SkipAttributeTextBox.Text;
         }
+
         private void MaxAttLength_TextChanged(object sender, EventArgs e)
         {
             maxAttLength = Int32.Parse(MaxAttLength.Text);
         }
+
         private void UseQuotesCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             useDoubleQuotes = UseQuotesCheckbox.Checked;
         }
+
         private void UseTextCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             useText = UseTextCheckbox.Checked;
         }
+
         private void CheckSelfCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             checkSelf = CheckSelfCheckbox.Checked;
         }
+
         private void CheckAncestorsCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             checkAncestors = CheckAncestorsCheckbox.Checked;
         }
+
         private void CheckSiblingsCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             checkSiblings = CheckSiblingsCheckbox.Checked;
         }
+
         private void CheckChildrenCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             checkChildren = CheckSiblingsCheckbox.Checked;
         }
+
         private void CheckCousinsCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             checkCousins = CheckCousinsCheckbox.Checked;
         }
-        
+
         //Launch Browser Options
         private void BrowserDropdown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            browserString = (string)BrowserDropdown.SelectedItem;
+            browserString = (string) BrowserDropdown.SelectedItem;
         }
+
         private void HostTextBox_TextChanged(object sender, EventArgs e)
         {
-
-            this.hostString = HostTextBox.Text;
+            hostString = HostTextBox.Text;
         }
+
         private void UrlTextBox_TextChanged(object sender, EventArgs e)
         {
-            this.urlString = UrlTextBox.Text;
-            
+            urlString = UrlTextBox.Text;
         }
+
         private void LaunchBrowserButton_Click(object sender, EventArgs e)
         {
             try
             {
                 //Program.worker.RunWorkerAsync();
-                BackgroundWorker bw = new BackgroundWorker();
+                var bw = new BackgroundWorker();
                 bw.DoWork += LauncHBrowser;
                 bw.RunWorkerAsync();
             }
@@ -305,8 +309,8 @@ namespace ProtoTest.Specter
             {
                 Error("Could not launch browser : " + browserString + err.Message);
             }
-
         }
+
         private void GoToUrlButton_Click(object sender, EventArgs e)
         {
             try
@@ -319,24 +323,20 @@ namespace ProtoTest.Specter
             {
                 Error("Could not navigate to url : " + urlString + err.Message);
             }
-
         }
 
         //Execute Javascript Options
         private void JavscriptTextBox_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         //Execute Webdriver Command Options
         private void WebDriverCommandDropdown_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-
         }
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         //Logging Options
@@ -347,7 +347,7 @@ namespace ProtoTest.Specter
 
 
         //RUNTIME OPERATIONS
-        
+
         //Launch Browser Processes
         private void LaunchRemoteBrowser()
         {
@@ -379,6 +379,7 @@ namespace ProtoTest.Specter
             var remoteAddress = new Uri(String.Format("http://{0}:{1}/wd/hub", hostString, port));
             driver = new RemoteWebDriver(remoteAddress, capabilities);
         }
+
         private void LaunchLocalBrowser()
         {
             Log("Launching " + browserString);
@@ -405,22 +406,22 @@ namespace ProtoTest.Specter
                     break;
             }
         }
+
         private void LauncHBrowser(object sender, DoWorkEventArgs e)
         {
             if (hostString == "localhost")
                 LaunchLocalBrowser();
             else
                 LaunchRemoteBrowser();
-
         }
 
         //XPath Locator Generation Processes
-        void XpathsDropdown_TextChanged(object sender, EventArgs e)
+        private void XpathsDropdown_TextChanged(object sender, EventArgs e)
         {
-            this.currentXpath = XpathsDropdown.Text;
+            currentXpath = XpathsDropdown.Text;
             //  this.SelectedXpathTextBox.Text = this.currentXpath;
         }
-     
+
         //Logging Processes
         public void Log(string message)
         {
@@ -431,10 +432,11 @@ namespace ProtoTest.Specter
             }
             UpdateLog(message);
         }
+
         private void LogTextBox_TextChanged(object sender, EventArgs e)
         {
-
         }
+
         public void Error(string message)
         {
             int start = LogTextBox.TextLength;
@@ -446,6 +448,7 @@ namespace ProtoTest.Specter
             }
             LogTextBox.SelectionLength = 0;
         }
+
         private void UpdateLog(string message)
         {
             if (LogTextBox.Lines.Length >= 500)
@@ -456,7 +459,6 @@ namespace ProtoTest.Specter
             LogTextBox.AppendText(message + "\r\n");
             LogTextBox.ScrollToCaret();
         }
-
 
 
         private void HighlightElementButton_Click(object sender, EventArgs e)
@@ -474,15 +476,15 @@ namespace ProtoTest.Specter
         private void UpdateXpaths(List<string> xpaths)
         {
             XpathsDropdown.Items.Clear();
-            foreach (var xpath in xpaths)
+            foreach (string xpath in xpaths)
             {
                 XpathsDropdown.Items.Add(xpath);
             }
             if (XpathsDropdown.Items.Count > 0)
                 XpathsDropdown.SelectedIndex = 0;
         }
-      
-        void xpathGetter_DoWork(object sender, DoWorkEventArgs e)
+
+        private void xpathGetter_DoWork(object sender, DoWorkEventArgs e)
         {
             var creater = new XpathCreater(element);
             Log("Xpath Generation Complete, found " + creater.uniqueXpaths.Count + " unique xpath expressions");
@@ -496,52 +498,46 @@ namespace ProtoTest.Specter
 
         private void ExecuteAndLogCommand(string xpath)
         {
-
             try
             {
                 Log(WebDriverCommandDropdown.Text + " : " + xpath);
-                driver.FindElement(By.XPath(currentXpath)).ExecuteCommandByString(WebDriverCommandDropdown.Text, WebDriverCommandText.Text);
+                driver.FindElement(By.XPath(currentXpath))
+                    .ExecuteCommandByString(WebDriverCommandDropdown.Text, WebDriverCommandText.Text);
             }
             catch (Exception)
             {
                 Error("Could not execute command : " + WebDriverCommandDropdown.Text + " : " + xpath);
             }
         }
-        
-        void ExecuteCommand(object sender, DoWorkEventArgs e)
+
+        private void ExecuteCommand(object sender, DoWorkEventArgs e)
         {
             if (WebDriverCommandDropdown.InvokeRequired)
             {
-                WebDriverCommandDropdown.Invoke(new Action<string>(ExecuteAndLogCommand),currentXpath);
+                WebDriverCommandDropdown.Invoke(new Action<string>(ExecuteAndLogCommand), currentXpath);
                 return;
             }
             ExecuteAndLogCommand(currentXpath);
-
-           
-            
         }
-       
+
         private void ClickXpathButton_Click(object sender, EventArgs e)
         {
             try
             {
-                BackgroundWorker worker = new BackgroundWorker();
+                var worker = new BackgroundWorker();
                 worker.DoWork += ExecuteCommand;
                 worker.RunWorkerAsync();
-                
             }
             catch (Exception err)
             {
                 Error("Could not execute command on element element : " + currentXpath + " : " + err.Message);
             }
-           
         }
 
         private void XpathsDropdown_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            this.currentXpath = (string)XpathsDropdown.SelectedItem;
-           // this.SelectedXpathTextBox.Text = this.currentXpath;
+            currentXpath = (string) XpathsDropdown.SelectedItem;
+            // this.SelectedXpathTextBox.Text = this.currentXpath;
         }
 
         public string FormatHtml(string input)
@@ -555,7 +551,7 @@ namespace ProtoTest.Specter
                 var sb = new StringBuilder();
                 //input = input.Replace("<", "\r\n<").Trim();
                 string[] toks = input.Split('<');
-                string previous="";
+                string previous = "";
                 foreach (string tok in toks)
                 {
                     string output = "";
@@ -563,36 +559,33 @@ namespace ProtoTest.Specter
                     {
                         if (tok.StartsWith("/"))
                         {
-                           for (var i = 1; i < tabs; i++)
-                               output += "\t";
-                           output += "<" + tok;
-                                tabs--;
+                            for (int i = 1; i < tabs; i++)
+                                output += "\t";
+                            output += "<" + tok;
+                            tabs--;
                         }
                         else
                         {
-                            for (var i = 0; i < tabs; i++)
+                            for (int i = 0; i < tabs; i++)
                                 output += "\t";
                             output += "<" + tok;
                             tabs++;
                         }
-                            sb.AppendLine(output);
+                        sb.AppendLine(output);
                     }
                     previous = tok;
                 }
-                    return format.FormatCode(sb.ToString());
+                return format.FormatCode(sb.ToString());
             }
-            else
-                return "";
+            return "";
         }
 
         private void HtmlTextBox_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void panel6_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
         private void Specter_Load(object sender, EventArgs e)
@@ -606,32 +599,31 @@ namespace ProtoTest.Specter
             }
             if (Settings.Default.WindowLocation != null)
             {
-                this.Location = Settings.Default.WindowLocation;
+                Location = Settings.Default.WindowLocation;
             }
             if (Settings.Default.WindowSize != null)
             {
-                this.Size = Settings.Default.WindowSize;
+                Size = Settings.Default.WindowSize;
             }
             if (Settings.Default.DefaultUrl != null)
             {
-                this.urlString = Settings.Default.DefaultUrl;
-                this.DefaultUrl_tb.Text = Settings.Default.DefaultUrl;
-                UrlTextBox.Text = this.urlString;
+                urlString = Settings.Default.DefaultUrl;
+                DefaultUrl_tb.Text = Settings.Default.DefaultUrl;
+                UrlTextBox.Text = urlString;
             }
             //Size and Position settings are persisted with the FormClosing event handler function
         }
 
         private void panel5_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
-        void bw_DoWork(object sender, DoWorkEventArgs e)
+        private void bw_DoWork(object sender, DoWorkEventArgs e)
         {
             if (!urlString.Contains("http"))
                 urlString = "http://" + urlString;
             //need to check here first if the browser is started
-            while(driver == null)
+            while (driver == null)
             {
                 LauncHBrowser(sender, e);
             }
@@ -664,7 +656,7 @@ namespace ProtoTest.Specter
         //    int resultIndex = 0;
         //    int searchLength = SearchHtmlTextBox.Text.Length;
         //    Log("Looking for string " + SearchHtmlTextBox.Text);
-            
+
         //    if (SearchHtmlTextBox.Text.Length > 0)
         //    {
         //        resultIndex = FindMyText(SearchHtmlTextBox.Text.Trim(), startindex, HtmlTextBox.Text.Length);
@@ -704,24 +696,21 @@ namespace ProtoTest.Specter
                 else
                 {
                     Error("Element is null, has the page changed?");
-
                 }
             }
-            catch (Exception err )
+            catch (Exception err)
             {
                 Error("Could not get element, : " + err.Message);
             }
-
         }
 
         private void GetParentButton_Click(object sender, EventArgs e)
         {
-
             SelectElement(element.GetParent());
             string text = element.GetHtml();
             WebText.DocumentText = FormatHtml(text);
         }
-        
+
         public void SelectElement(IWebElement newElement)
         {
             driver.SetClickedElement(newElement);
@@ -742,7 +731,6 @@ namespace ProtoTest.Specter
             {
                 Error("Error executing js : " + err.Message);
             }
-            
         }
 
         private void GetElementButton_Click(object sender, EventArgs e)
@@ -753,18 +741,16 @@ namespace ProtoTest.Specter
                 string html = element.GetHtml();
                 WebText.DocumentText = FormatHtml(html);
                 element.Flash();
-
             }
             catch (Exception err)
             {
                 Error("Could not find element by xpath : " + currentXpath + err.Message);
             }
-           
         }
 
         private void SelectedXpathTextBox_TextChanged(object sender, EventArgs e)
         {
-        //    this.currentXpath = this.SelectedXpathTextBox.Text;
+            //    this.currentXpath = this.SelectedXpathTextBox.Text;
         }
 
         //private void button1_Click(object sender, EventArgs e)
@@ -791,14 +777,13 @@ namespace ProtoTest.Specter
 
         private void panel6_Paint_1(object sender, PaintEventArgs e)
         {
-
         }
 
         public void UpdateElement()
         {
             try
             {
-                var lastElement = element;
+                IWebElement lastElement = element;
                 element = driver.GetElementClicked();
 
                 if (element == null)
@@ -831,71 +816,54 @@ namespace ProtoTest.Specter
             }
             else
                 //ElementPanel.BackColor = Color.DimGray;
-            if (driver.IsWebDriverConnected())
-            {
-                //CommandPanel.BackColor = Color.DimGray;
-                //JavascriptPanel.BackColor = Color.DimGray;
-                //XpathPanel.BackColor = Color.DimGray;
-            }
-            else
-            {
-                //CommandPanel.BackColor = Color.Black;
-                //JavascriptPanel.BackColor = Color.Black;
-                //XpathPanel.BackColor = Color.Black;
-            }
-                
-                
+                if (driver.IsWebDriverConnected())
+                {
+                    //CommandPanel.BackColor = Color.DimGray;
+                    //JavascriptPanel.BackColor = Color.DimGray;
+                    //XpathPanel.BackColor = Color.DimGray;
+                }
         }
 
         private void label7_Click(object sender, EventArgs e)
         {
-
         }
 
         private void DisableOnClickButton_Click_1(object sender, EventArgs e)
         {
-
         }
 
         private void DisableMouseOverButton_Click_1(object sender, EventArgs e)
         {
-
         }
 
         private void label11_Click(object sender, EventArgs e)
         {
-
         }
 
         private void JavscriptTextBox_TextChanged_1(object sender, EventArgs e)
         {
-
         }
 
         private void HidePanelButton_Click_1(object sender, EventArgs e)
         {
-
         }
 
         private void LogTextBox_TextChanged_1(object sender, EventArgs e)
         {
-
         }
 
         private void CopyXPathToClipboard_Click(object sender, EventArgs e)
         {
-            string locator = XpathsDropdown.Text.ToString();
+            string locator = XpathsDropdown.Text;
             Clipboard.SetText(locator);
         }
 
         private void Help1Textbox1_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void VerifyXPathLocatorOnPage_Click(object sender, EventArgs e)
@@ -912,12 +880,10 @@ namespace ProtoTest.Specter
 
         private void LaunchBrowser_tooltip_Popup(object sender, PopupEventArgs e)
         {
-
         }
 
         private void RefreshTimeTextBox_TextChanged_1(object sender, EventArgs e)
         {
-
         }
 
         private void Specter_FormClosing(object sender, FormClosingEventArgs e)
@@ -927,24 +893,23 @@ namespace ProtoTest.Specter
             //This is essentially the exit function -- all settings will persist when the main form closes
             //Copy window location to app settings
 
-            Settings.Default.WindowLocation = this.Location;
+            Settings.Default.WindowLocation = Location;
             Settings.Default.DefaultBrowser = DefaultBrowser_cb.Text;
 
             //Copy Window size to app settings - check to make sure the window is not minimized 
-            if (this.WindowState == FormWindowState.Normal)
+            if (WindowState == FormWindowState.Normal)
             {
-                Settings.Default.WindowSize = this.Size;
+                Settings.Default.WindowSize = Size;
             }
-            //else forget those settings and put it back
+                //else forget those settings and put it back
             else
             {
-                Settings.Default.WindowSize = this.RestoreBounds.Size;
+                Settings.Default.WindowSize = RestoreBounds.Size;
             }
 
             Settings.Default.DefaultUrl = DefaultUrl_tb.Text;
 
             Settings.Default.Save();
-            
         }
 
         private void ColorPicker_Link_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -968,18 +933,32 @@ namespace ProtoTest.Specter
                     Program.elements.Add(new GolemElementBuilder());
                     Program.elements[Program.elements.Count - 1].ElementLocator = XpathsDropdown.Text;
                 }
-                ElementProperties_Popup getProperties = new ElementProperties_Popup();
+                var getProperties = new ElementProperties_Popup();
                 getProperties.ShowDialog();
             }
             else
             {
-                MessageBox.Show("There are no Xpaths generated or selected.", "Something's Wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("There are no Xpaths generated or selected.", "Something's Wrong", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
-            
         }
 
+<<<<<<< HEAD
         
         
+=======
+
+        private void MainTabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //This function gets called when the user changes tabs
+            Elements_rtb.Clear();
+            for (int x = 0; x < Program.elements.Count; x++)
+            {
+                Elements_rtb.AppendText(Program.elements[x].GetGolemElement());
+                Elements_rtb.AppendText("\n");
+            }
+        }
+>>>>>>> Resharper code cleanup
 
         private void CopyElementsToClipboard_button_Click(object sender, EventArgs e)
         {
@@ -988,9 +967,8 @@ namespace ProtoTest.Specter
 
         private void GetPageObjectButton_Click(object sender, EventArgs e)
         {
-            PageObjectProperties_Popup getProperties = new PageObjectProperties_Popup();
+            var getProperties = new PageObjectProperties_Popup();
             getProperties.ShowDialog();
-            
         }
 
         public void SetElementText(string text)
@@ -1001,13 +979,15 @@ namespace ProtoTest.Specter
 
         private void DefaultBrowser_cb_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
 
         private void DefaultUrl_tb_TextChanged(object sender, EventArgs e)
         {
-            
-        }   
+        }
 
+        private void ClearElements_button_Click(object sender, EventArgs e)
+        {
+            Elements_rtb.Clear();
+        }
     }
 }

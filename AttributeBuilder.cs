@@ -1,51 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Text.RegularExpressions;
 using Golem.Framework.Specter;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Internal;
-using ProtoTest.Specter;
 
 namespace ProtoTest.Specter
 {
-    class AttributeBuilder
+    internal class AttributeBuilder
     {
- 
-        public string textString
-        {
-            get
-            {
-                return Specter.useText ? "text()" : ".";
-
-            }
-        }
-
-        public IWebElement element;
         public List<Attribute> attributes;
+        public IWebElement element;
         public WebDriverExecutor executor;
-        public IWebDriver driver
-        {
-            get { return ((IWrapsDriver)element).WrappedDriver; }
-        }
+
         public AttributeBuilder(IWebElement element)
         {
             this.element = element;
             attributes = GetAllAttributes();
         }
 
+        public string textString
+        {
+            get { return Specter.useText ? "text()" : "."; }
+        }
+
+        public IWebDriver driver
+        {
+            get { return ((IWrapsDriver) element).WrappedDriver; }
+        }
+
         public List<Attribute> SplitAttribute(Attribute att)
         {
             var atts = new List<Attribute>();
-            var attValue = att.value.Trim(' ');
+            string attValue = att.value.Trim(' ');
 
-            foreach (var val in attValue.Split(' '))
+            foreach (string val in attValue.Split(' '))
             {
                 if ((val != "") && (val != " "))
                 {
-                    atts.Add(new Attribute(att.name,val));
+                    atts.Add(new Attribute(att.name, val));
                 }
             }
             return atts;
@@ -54,7 +47,7 @@ namespace ProtoTest.Specter
         public Attribute GetUniqueAttribute()
         {
             var results = new List<Attribute>();
-            foreach (var att in attributes)
+            foreach (Attribute att in attributes)
             {
                 string xpath = string.Format("//{0}[{1}=\"{2}\"]", element.TagName, att.name, att.value);
                 if (driver.FindElements(By.XPath(xpath)).Count == 1)
@@ -82,14 +75,13 @@ namespace ProtoTest.Specter
             attributes = new List<Attribute>();
             if (!Specter.skipAttributeString.Contains("text"))
             {
-               
-                    string text = TrimText(element.Text);
-                    if (text != ""&&text!=" ")
-                    {
-                        attributes.Add(new Attribute(textString, text));
-                    }
+                string text = TrimText(element.Text);
+                if (text != "" && text != " ")
+                {
+                    attributes.Add(new Attribute(textString, text));
+                }
             }
-            
+
             string html = element.GetHtml();
             string nodeHtml = html.Split('>')[0];
             string[] elementParts = nodeHtml.Split(' ');
@@ -98,34 +90,31 @@ namespace ProtoTest.Specter
             string[] atts = Regex.Split(nodeHtml, "\" ");
             if (atts[0].Contains("=\""))
             {
-                for (var i = 0; i < atts.Length; i++)
+                for (int i = 0; i < atts.Length; i++)
                 {
                     string key = Regex.Split(atts[i], "=\"")[0].Replace("\"", "").Trim();
                     string value = Regex.Split(atts[i], "=\"")[1].Replace("\"", "");
- 
-                    if (!key.Contains("style")&&!Specter.skipAttributeString.Contains(key))
+
+                    if (!key.Contains("style") && !Specter.skipAttributeString.Contains(key))
                     {
-                        if(key!=""&&value!="")
+                        if (key != "" && value != "")
                         {
-                             if (Specter.splitAttributes)
+                            if (Specter.splitAttributes)
                             {
-                                var splitatts = SplitAttribute(new Attribute("@" + key, TrimText(value)));
+                                List<Attribute> splitatts = SplitAttribute(new Attribute("@" + key, TrimText(value)));
                                 attributes.AddRange(splitatts);
                             }
                             else
                             {
                                 attributes.Add(new Attribute("@" + key, TrimText(value)));
-                            }   
+                            }
                         }
-                        
-                        
                     }
-
                 }
             }
-            var items = from att in attributes 
-                        orderby att.name.Length ascending
-                        select att;
+            IOrderedEnumerable<Attribute> items = from att in attributes
+                orderby att.name.Length ascending
+                select att;
 
             return items.ToList();
         }
@@ -133,7 +122,7 @@ namespace ProtoTest.Specter
         public List<Attribute> GetUniqueAttributes()
         {
             var results = new List<Attribute>();
-            foreach (var att in attributes)
+            foreach (Attribute att in attributes)
             {
                 string xpath = string.Format("//{0}[{1}=\"{2}\"]", element.TagName, att.name, att.value);
                 if (driver.FindElements(By.XPath(xpath)).Count == 1)
@@ -141,8 +130,6 @@ namespace ProtoTest.Specter
             }
 
             return results;
-
         }
-
     }
 }
