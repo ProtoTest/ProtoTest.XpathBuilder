@@ -997,8 +997,15 @@ namespace ProtoTest.Specter
 
         private void GetPageObjectButton_Click(object sender, EventArgs e)
         {
+            PageObjectProperties_Popup getProperties = new PageObjectProperties_Popup();
+            getProperties.ShowDialog();
+            
+        }
+
+        public void ShowElementText(string text)
+        {
             Elements_rtb.Clear();
-            Elements_rtb.Text = new PageObjectBuilder("NameOfClass","NameSpace",Program.elements).GetPageObjectCode();
+            Elements_rtb.Text = text;
         }
 
         private void DefaultBrowser_cb_SelectedIndexChanged(object sender, EventArgs e)

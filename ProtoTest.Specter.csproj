@@ -70,6 +70,12 @@
     </Compile>
     <Compile Include="GolemElementBuilder.cs" />
     <Compile Include="PageObjectBuilder.cs" />
+    <Compile Include="PageObjectProperties_Popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PageObjectProperties_Popup.Designer.cs">
+      <DependentUpon>PageObjectProperties_Popup.cs</DependentUpon>
+    </Compile>
     <Compile Include="SpecterSplash.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,9 @@
     <Compile Include="XpathCreater.cs" />
     <EmbeddedResource Include="ElementProperties_Popup.resx">
       <DependentUpon>ElementProperties_Popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PageObjectProperties_Popup.resx">
+      <DependentUpon>PageObjectProperties_Popup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Specter.resx">
       <DependentUpon>Specter.cs</DependentUpon>
