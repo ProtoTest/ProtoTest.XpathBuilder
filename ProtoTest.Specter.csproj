@@ -69,6 +69,7 @@
       <DependentUpon>ElementProperties_Popup.cs</DependentUpon>
     </Compile>
     <Compile Include="GolemElementBuilder.cs" />
+    <Compile Include="PageObjectBuilder.cs" />
     <Compile Include="SpecterSplash.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -963,6 +963,17 @@ namespace ProtoTest.Specter
             System.Windows.Forms.Clipboard.SetText(Elements_rtb.Text);
         }
 
+        private void GetPageObjectButton_Click(object sender, EventArgs e)
+        {
+            Elements_rtb.Clear();
+            Elements_rtb.Text = new PageObjectBuilder("NameOfClass","NameSpace",Program.elements).GetPageObjectCode();
+        }
+
+        private void DefaultBrowser_cb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
        
 
     }

@@ -126,6 +126,9 @@
   <data name="Help1Textbox1.Text" xml:space="preserve">
     <value>Firefox is the browser of choice for web automation.  In addition to its innate benefits, there are alternative plugins that could help streamline a potentially tedious process into a fun and creative endeavor.  Firebug, XPath Checker, and Selenium IDE are among most recommended.  First, Firebug allows for intelligent, efficient parsing through even the most complex HTML.  XPath Checker then provides a testing ground for creating XPath locators. Finally, the Selenium IDE allows the XPath locators to be packaged into automated tests, which can be run standalone or trialed before being inserted into a comprehensive testing tool.</value>
   </data>
+  <metadata name="UIToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>130, 17</value>
+  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>58</value>
   </metadata>
