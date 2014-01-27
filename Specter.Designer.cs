@@ -170,7 +170,7 @@ namespace ProtoTest.Specter
             this.WebDriverCommandDropdown.Location = new System.Drawing.Point(223, 69);
             this.WebDriverCommandDropdown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.WebDriverCommandDropdown.Name = "WebDriverCommandDropdown";
-            this.WebDriverCommandDropdown.Size = new System.Drawing.Size(245, 24);
+            this.WebDriverCommandDropdown.Size = new System.Drawing.Size(245, 21);
             this.WebDriverCommandDropdown.TabIndex = 19;
             this.WebDriverCommandDropdown.SelectedIndexChanged += new System.EventHandler(this.WebDriverCommandDropdown_SelectedIndexChanged);
             // 
@@ -180,7 +180,7 @@ namespace ProtoTest.Specter
             this.MinimumXpathsTextBox.Location = new System.Drawing.Point(165, 32);
             this.MinimumXpathsTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MinimumXpathsTextBox.Name = "MinimumXpathsTextBox";
-            this.MinimumXpathsTextBox.Size = new System.Drawing.Size(39, 22);
+            this.MinimumXpathsTextBox.Size = new System.Drawing.Size(39, 20);
             this.MinimumXpathsTextBox.TabIndex = 17;
             this.MinimumXpathsTextBox.Text = "3";
             this.MinimumXpathsTextBox.TextChanged += new System.EventHandler(this.MinimumXpathsTextBox_TextChanged);
@@ -190,7 +190,7 @@ namespace ProtoTest.Specter
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(12, 34);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(151, 17);
+            this.label8.Size = new System.Drawing.Size(114, 13);
             this.label8.TabIndex = 18;
             this.label8.Text = "Minimum # Generated:";
             // 
@@ -230,7 +230,7 @@ namespace ProtoTest.Specter
             this.XpathsDropdown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.XpathsDropdown.MaxDropDownItems = 20;
             this.XpathsDropdown.Name = "XpathsDropdown";
-            this.XpathsDropdown.Size = new System.Drawing.Size(432, 24);
+            this.XpathsDropdown.Size = new System.Drawing.Size(432, 21);
             this.XpathsDropdown.TabIndex = 0;
             this.XpathsDropdown.SelectedIndexChanged += new System.EventHandler(this.XpathsDropdown_SelectedIndexChanged);
             // 
@@ -238,7 +238,7 @@ namespace ProtoTest.Specter
             // 
             this.button2.AccessibleName = "FindChild_Button";
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button2.Location = new System.Drawing.Point(15, 199);
+            this.button2.Location = new System.Drawing.Point(15, 202);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(165, 30);
@@ -252,7 +252,7 @@ namespace ProtoTest.Specter
             // 
             this.button1.AccessibleName = "FindSibling_button";
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Location = new System.Drawing.Point(187, 199);
+            this.button1.Location = new System.Drawing.Point(187, 202);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(165, 30);
@@ -266,7 +266,7 @@ namespace ProtoTest.Specter
             // 
             this.GetParentButton.AccessibleName = "FindParent_button";
             this.GetParentButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.GetParentButton.Location = new System.Drawing.Point(359, 199);
+            this.GetParentButton.Location = new System.Drawing.Point(359, 202);
             this.GetParentButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.GetParentButton.Name = "GetParentButton";
             this.GetParentButton.Size = new System.Drawing.Size(165, 30);
@@ -281,7 +281,7 @@ namespace ProtoTest.Specter
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(12, 62);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(104, 17);
+            this.label13.Size = new System.Drawing.Size(81, 13);
             this.label13.TabIndex = 25;
             this.label13.Text = "Max # Attempts";
             // 
@@ -291,7 +291,7 @@ namespace ProtoTest.Specter
             this.XPathGeneratorMaxAttempts.Location = new System.Drawing.Point(165, 58);
             this.XPathGeneratorMaxAttempts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.XPathGeneratorMaxAttempts.Name = "XPathGeneratorMaxAttempts";
-            this.XPathGeneratorMaxAttempts.Size = new System.Drawing.Size(39, 22);
+            this.XPathGeneratorMaxAttempts.Size = new System.Drawing.Size(39, 20);
             this.XPathGeneratorMaxAttempts.TabIndex = 26;
             this.XPathGeneratorMaxAttempts.Text = "100";
             this.XPathGeneratorMaxAttempts.TextChanged += new System.EventHandler(this.XPathGeneratorMaxAttempts_TextChanged);
@@ -302,7 +302,7 @@ namespace ProtoTest.Specter
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(5, 10);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(203, 20);
+            this.label14.Size = new System.Drawing.Size(171, 17);
             this.label14.TabIndex = 27;
             this.label14.Text = "Step 4 - Use/Test Locator";
             // 
@@ -313,10 +313,10 @@ namespace ProtoTest.Specter
             this.CheckCousinsCheckbox.AutoSize = true;
             this.CheckCousinsCheckbox.Checked = true;
             this.CheckCousinsCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckCousinsCheckbox.Location = new System.Drawing.Point(890, 183);
+            this.CheckCousinsCheckbox.Location = new System.Drawing.Point(907, 187);
             this.CheckCousinsCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.CheckCousinsCheckbox.Name = "CheckCousinsCheckbox";
-            this.CheckCousinsCheckbox.Size = new System.Drawing.Size(80, 21);
+            this.CheckCousinsCheckbox.Size = new System.Drawing.Size(63, 17);
             this.CheckCousinsCheckbox.TabIndex = 37;
             this.CheckCousinsCheckbox.Text = "Cousins";
             this.CheckCousinsCheckbox.UseVisualStyleBackColor = true;
@@ -329,10 +329,10 @@ namespace ProtoTest.Specter
             this.CheckChildrenCheckbox.AutoSize = true;
             this.CheckChildrenCheckbox.Checked = true;
             this.CheckChildrenCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckChildrenCheckbox.Location = new System.Drawing.Point(807, 183);
+            this.CheckChildrenCheckbox.Location = new System.Drawing.Point(825, 187);
             this.CheckChildrenCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.CheckChildrenCheckbox.Name = "CheckChildrenCheckbox";
-            this.CheckChildrenCheckbox.Size = new System.Drawing.Size(82, 21);
+            this.CheckChildrenCheckbox.Size = new System.Drawing.Size(64, 17);
             this.CheckChildrenCheckbox.TabIndex = 23;
             this.CheckChildrenCheckbox.Text = "Children";
             this.CheckChildrenCheckbox.UseVisualStyleBackColor = true;
@@ -347,7 +347,7 @@ namespace ProtoTest.Specter
             this.UseQuotesCheckbox.Location = new System.Drawing.Point(235, 60);
             this.UseQuotesCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.UseQuotesCheckbox.Name = "UseQuotesCheckbox";
-            this.UseQuotesCheckbox.Size = new System.Drawing.Size(154, 21);
+            this.UseQuotesCheckbox.Size = new System.Drawing.Size(119, 17);
             this.UseQuotesCheckbox.TabIndex = 36;
             this.UseQuotesCheckbox.Text = "Use Double Quotes";
             this.UseQuotesCheckbox.UseVisualStyleBackColor = true;
@@ -360,10 +360,10 @@ namespace ProtoTest.Specter
             this.CheckSiblingsCheckbox.AutoSize = true;
             this.CheckSiblingsCheckbox.Checked = true;
             this.CheckSiblingsCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckSiblingsCheckbox.Location = new System.Drawing.Point(731, 183);
+            this.CheckSiblingsCheckbox.Location = new System.Drawing.Point(748, 187);
             this.CheckSiblingsCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.CheckSiblingsCheckbox.Name = "CheckSiblingsCheckbox";
-            this.CheckSiblingsCheckbox.Size = new System.Drawing.Size(79, 21);
+            this.CheckSiblingsCheckbox.Size = new System.Drawing.Size(62, 17);
             this.CheckSiblingsCheckbox.TabIndex = 22;
             this.CheckSiblingsCheckbox.Text = "Siblings";
             this.CheckSiblingsCheckbox.UseVisualStyleBackColor = true;
@@ -376,7 +376,7 @@ namespace ProtoTest.Specter
             this.UseTextCheckbox.Location = new System.Drawing.Point(235, 89);
             this.UseTextCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.UseTextCheckbox.Name = "UseTextCheckbox";
-            this.UseTextCheckbox.Size = new System.Drawing.Size(91, 21);
+            this.UseTextCheckbox.Size = new System.Drawing.Size(71, 17);
             this.UseTextCheckbox.TabIndex = 35;
             this.UseTextCheckbox.Text = "Use text()";
             this.UIToolTip.SetToolTip(this.UseTextCheckbox, "Determines whether or not to include text in the attribute list for the Locator.");
@@ -390,10 +390,10 @@ namespace ProtoTest.Specter
             this.CheckAncestorsCheckbox.AutoSize = true;
             this.CheckAncestorsCheckbox.Checked = true;
             this.CheckAncestorsCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckAncestorsCheckbox.Location = new System.Drawing.Point(631, 183);
+            this.CheckAncestorsCheckbox.Location = new System.Drawing.Point(651, 187);
             this.CheckAncestorsCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.CheckAncestorsCheckbox.Name = "CheckAncestorsCheckbox";
-            this.CheckAncestorsCheckbox.Size = new System.Drawing.Size(93, 21);
+            this.CheckAncestorsCheckbox.Size = new System.Drawing.Size(73, 17);
             this.CheckAncestorsCheckbox.TabIndex = 21;
             this.CheckAncestorsCheckbox.Text = "Ancestors";
             this.CheckAncestorsCheckbox.UseVisualStyleBackColor = true;
@@ -405,7 +405,7 @@ namespace ProtoTest.Specter
             this.label9.Location = new System.Drawing.Point(12, 89);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(120, 17);
+            this.label9.Size = new System.Drawing.Size(93, 13);
             this.label9.TabIndex = 34;
             this.label9.Text = "Max # characters:";
             // 
@@ -416,10 +416,10 @@ namespace ProtoTest.Specter
             this.CheckSelfCheckbox.AutoSize = true;
             this.CheckSelfCheckbox.Checked = true;
             this.CheckSelfCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckSelfCheckbox.Location = new System.Drawing.Point(569, 183);
+            this.CheckSelfCheckbox.Location = new System.Drawing.Point(579, 187);
             this.CheckSelfCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.CheckSelfCheckbox.Name = "CheckSelfCheckbox";
-            this.CheckSelfCheckbox.Size = new System.Drawing.Size(54, 21);
+            this.CheckSelfCheckbox.Size = new System.Drawing.Size(44, 17);
             this.CheckSelfCheckbox.TabIndex = 20;
             this.CheckSelfCheckbox.Text = "Self";
             this.CheckSelfCheckbox.UseVisualStyleBackColor = true;
@@ -431,7 +431,7 @@ namespace ProtoTest.Specter
             this.MaxAttLength.Location = new System.Drawing.Point(165, 86);
             this.MaxAttLength.Margin = new System.Windows.Forms.Padding(4);
             this.MaxAttLength.Name = "MaxAttLength";
-            this.MaxAttLength.Size = new System.Drawing.Size(39, 22);
+            this.MaxAttLength.Size = new System.Drawing.Size(39, 20);
             this.MaxAttLength.TabIndex = 20;
             this.MaxAttLength.Text = "50";
             this.MaxAttLength.TextChanged += new System.EventHandler(this.MaxAttLength_TextChanged);
@@ -445,7 +445,7 @@ namespace ProtoTest.Specter
             this.UseContainsCheckBox.Location = new System.Drawing.Point(235, 118);
             this.UseContainsCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.UseContainsCheckBox.Name = "UseContainsCheckBox";
-            this.UseContainsCheckBox.Size = new System.Drawing.Size(124, 21);
+            this.UseContainsCheckBox.Size = new System.Drawing.Size(95, 17);
             this.UseContainsCheckBox.TabIndex = 33;
             this.UseContainsCheckBox.Text = "Use Contains()";
             this.UseContainsCheckBox.UseVisualStyleBackColor = true;
@@ -457,7 +457,7 @@ namespace ProtoTest.Specter
             this.SkipAttLabel.Location = new System.Drawing.Point(429, 30);
             this.SkipAttLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.SkipAttLabel.Name = "SkipAttLabel";
-            this.SkipAttLabel.Size = new System.Drawing.Size(179, 17);
+            this.SkipAttLabel.Size = new System.Drawing.Size(136, 13);
             this.SkipAttLabel.TabIndex = 32;
             this.SkipAttLabel.Text = "Do not use HTML attribute:";
             // 
@@ -467,7 +467,7 @@ namespace ProtoTest.Specter
             this.SkipAttributeTextBox.Location = new System.Drawing.Point(608, 28);
             this.SkipAttributeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.SkipAttributeTextBox.Name = "SkipAttributeTextBox";
-            this.SkipAttributeTextBox.Size = new System.Drawing.Size(119, 22);
+            this.SkipAttributeTextBox.Size = new System.Drawing.Size(119, 20);
             this.SkipAttributeTextBox.TabIndex = 31;
             this.UIToolTip.SetToolTip(this.SkipAttributeTextBox, "The value entered into this field will be ignored when building xpaths.");
             this.SkipAttributeTextBox.TextChanged += new System.EventHandler(this.SkipAttributeTextBox_TextChanged);
@@ -481,7 +481,7 @@ namespace ProtoTest.Specter
             this.SplitAttributesCheckbox.Location = new System.Drawing.Point(235, 30);
             this.SplitAttributesCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.SplitAttributesCheckbox.Name = "SplitAttributesCheckbox";
-            this.SplitAttributesCheckbox.Size = new System.Drawing.Size(121, 21);
+            this.SplitAttributesCheckbox.Size = new System.Drawing.Size(93, 17);
             this.SplitAttributesCheckbox.TabIndex = 30;
             this.SplitAttributesCheckbox.Text = "Split Attributes";
             this.SplitAttributesCheckbox.UseVisualStyleBackColor = true;
@@ -520,7 +520,6 @@ namespace ProtoTest.Specter
             this.MainTabControl.Size = new System.Drawing.Size(1005, 709);
             this.MainTabControl.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.MainTabControl.TabIndex = 9;
-            this.MainTabControl.SelectedIndexChanged += new System.EventHandler(this.MainTabControl_SelectedIndexChanged);
             // 
             // XPathGenerator_tab
             // 
@@ -530,11 +529,11 @@ namespace ProtoTest.Specter
             this.XPathGenerator_tab.Controls.Add(this.XPathSectionLocatorUsePanel);
             this.XPathGenerator_tab.Controls.Add(this.XPathSectionXPathGeneratePanel);
             this.XPathGenerator_tab.Controls.Add(this.XPathSectionLoadElementPanel);
-            this.XPathGenerator_tab.Location = new System.Drawing.Point(4, 25);
+            this.XPathGenerator_tab.Location = new System.Drawing.Point(4, 22);
             this.XPathGenerator_tab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.XPathGenerator_tab.Name = "XPathGenerator_tab";
             this.XPathGenerator_tab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.XPathGenerator_tab.Size = new System.Drawing.Size(997, 680);
+            this.XPathGenerator_tab.Size = new System.Drawing.Size(997, 683);
             this.XPathGenerator_tab.TabIndex = 0;
             this.XPathGenerator_tab.Text = "XPath Generation";
             this.XPathGenerator_tab.ToolTipText = "Record a site element, then generate and test the XPath locators.";
@@ -566,7 +565,7 @@ namespace ProtoTest.Specter
             this.Step1_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Step1_Label.Location = new System.Drawing.Point(5, 5);
             this.Step1_Label.Name = "Step1_Label";
-            this.Step1_Label.Size = new System.Drawing.Size(177, 20);
+            this.Step1_Label.Size = new System.Drawing.Size(147, 17);
             this.Step1_Label.TabIndex = 39;
             this.Step1_Label.Text = "Step 1 - Start Browser";
             // 
@@ -575,7 +574,7 @@ namespace ProtoTest.Specter
             this.Browser_label.AutoSize = true;
             this.Browser_label.Location = new System.Drawing.Point(5, 30);
             this.Browser_label.Name = "Browser_label";
-            this.Browser_label.Size = new System.Drawing.Size(63, 17);
+            this.Browser_label.Size = new System.Drawing.Size(48, 13);
             this.Browser_label.TabIndex = 7;
             this.Browser_label.Text = "Browser:";
             // 
@@ -605,7 +604,7 @@ namespace ProtoTest.Specter
             this.BrowserDropdown.Location = new System.Drawing.Point(75, 26);
             this.BrowserDropdown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BrowserDropdown.Name = "BrowserDropdown";
-            this.BrowserDropdown.Size = new System.Drawing.Size(219, 24);
+            this.BrowserDropdown.Size = new System.Drawing.Size(219, 21);
             this.BrowserDropdown.TabIndex = 8;
             this.BrowserDropdown.SelectedIndexChanged += new System.EventHandler(this.BrowserDropdown_SelectedIndexChanged);
             // 
@@ -627,7 +626,7 @@ namespace ProtoTest.Specter
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(496, 30);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 17);
+            this.label3.Size = new System.Drawing.Size(45, 13);
             this.label3.TabIndex = 10;
             this.label3.Text = "Host IP:";
             // 
@@ -637,7 +636,7 @@ namespace ProtoTest.Specter
             this.UrlTextBox.Location = new System.Drawing.Point(76, 60);
             this.UrlTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UrlTextBox.Name = "UrlTextBox";
-            this.UrlTextBox.Size = new System.Drawing.Size(524, 22);
+            this.UrlTextBox.Size = new System.Drawing.Size(524, 20);
             this.UrlTextBox.TabIndex = 13;
             this.UrlTextBox.TextChanged += new System.EventHandler(this.UrlTextBox_TextChanged);
             // 
@@ -646,7 +645,7 @@ namespace ProtoTest.Specter
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(27, 64);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 17);
+            this.label6.Size = new System.Drawing.Size(32, 13);
             this.label6.TabIndex = 12;
             this.label6.Text = "URL:";
             // 
@@ -656,7 +655,7 @@ namespace ProtoTest.Specter
             this.HostTextBox.Location = new System.Drawing.Point(561, 26);
             this.HostTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.HostTextBox.Name = "HostTextBox";
-            this.HostTextBox.Size = new System.Drawing.Size(257, 22);
+            this.HostTextBox.Size = new System.Drawing.Size(257, 20);
             this.HostTextBox.TabIndex = 9;
             this.HostTextBox.Text = "localhost";
             this.UIToolTip.SetToolTip(this.HostTextBox, "localHost will target this computer. To Luanch on a remote system, enter the targ" +
@@ -676,7 +675,7 @@ namespace ProtoTest.Specter
             this.XPathSectionLocatorUsePanel.Controls.Add(this.WebDriverCommandText);
             this.XPathSectionLocatorUsePanel.Controls.Add(this.label14);
             this.XPathSectionLocatorUsePanel.Controls.Add(this.ExecuteCommandButton);
-            this.XPathSectionLocatorUsePanel.Location = new System.Drawing.Point(5, 566);
+            this.XPathSectionLocatorUsePanel.Location = new System.Drawing.Point(5, 569);
             this.XPathSectionLocatorUsePanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.XPathSectionLocatorUsePanel.Name = "XPathSectionLocatorUsePanel";
             this.XPathSectionLocatorUsePanel.Size = new System.Drawing.Size(981, 107);
@@ -712,7 +711,7 @@ namespace ProtoTest.Specter
             this.XPathLocatorExecuteWebdriver.AutoSize = true;
             this.XPathLocatorExecuteWebdriver.Location = new System.Drawing.Point(12, 73);
             this.XPathLocatorExecuteWebdriver.Name = "XPathLocatorExecuteWebdriver";
-            this.XPathLocatorExecuteWebdriver.Size = new System.Drawing.Size(194, 17);
+            this.XPathLocatorExecuteWebdriver.Size = new System.Drawing.Size(148, 13);
             this.XPathLocatorExecuteWebdriver.TabIndex = 28;
             this.XPathLocatorExecuteWebdriver.Text = "Execute Webdriver Command";
             // 
@@ -754,7 +753,7 @@ namespace ProtoTest.Specter
             this.XPathSectionXPathGeneratePanel.Controls.Add(this.label9);
             this.XPathSectionXPathGeneratePanel.Controls.Add(this.MaxAttLength);
             this.XPathSectionXPathGeneratePanel.Controls.Add(this.UseTextCheckbox);
-            this.XPathSectionXPathGeneratePanel.Location = new System.Drawing.Point(5, 342);
+            this.XPathSectionXPathGeneratePanel.Location = new System.Drawing.Point(5, 345);
             this.XPathSectionXPathGeneratePanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.XPathSectionXPathGeneratePanel.Name = "XPathSectionXPathGeneratePanel";
             this.XPathSectionXPathGeneratePanel.Size = new System.Drawing.Size(981, 219);
@@ -765,7 +764,7 @@ namespace ProtoTest.Specter
             this.XPathSectionLocatorChoose.AutoSize = true;
             this.XPathSectionLocatorChoose.Location = new System.Drawing.Point(11, 185);
             this.XPathSectionLocatorChoose.Name = "XPathSectionLocatorChoose";
-            this.XPathSectionLocatorChoose.Size = new System.Drawing.Size(107, 17);
+            this.XPathSectionLocatorChoose.Size = new System.Drawing.Size(81, 13);
             this.XPathSectionLocatorChoose.TabIndex = 38;
             this.XPathSectionLocatorChoose.Text = "Choose locator:";
             // 
@@ -776,7 +775,7 @@ namespace ProtoTest.Specter
             this.XPathSectionLocatorGeneration.Location = new System.Drawing.Point(5, 6);
             this.XPathSectionLocatorGeneration.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.XPathSectionLocatorGeneration.Name = "XPathSectionLocatorGeneration";
-            this.XPathSectionLocatorGeneration.Size = new System.Drawing.Size(263, 20);
+            this.XPathSectionLocatorGeneration.Size = new System.Drawing.Size(223, 17);
             this.XPathSectionLocatorGeneration.TabIndex = 29;
             this.XPathSectionLocatorGeneration.Text = "Step 3 - Generate XPath Locators";
             // 
@@ -799,7 +798,7 @@ namespace ProtoTest.Specter
             this.XPathSectionLoadElementPanel.Location = new System.Drawing.Point(5, 103);
             this.XPathSectionLoadElementPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.XPathSectionLoadElementPanel.Name = "XPathSectionLoadElementPanel";
-            this.XPathSectionLoadElementPanel.Size = new System.Drawing.Size(981, 234);
+            this.XPathSectionLoadElementPanel.Size = new System.Drawing.Size(981, 237);
             this.XPathSectionLoadElementPanel.TabIndex = 39;
             // 
             // label1
@@ -807,7 +806,7 @@ namespace ProtoTest.Specter
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 84);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(269, 17);
+            this.label1.Size = new System.Drawing.Size(200, 13);
             this.label1.TabIndex = 20;
             this.label1.Text = "Current Element (extracted from website):";
             // 
@@ -818,7 +817,7 @@ namespace ProtoTest.Specter
             this.XPathSectionLoadWebsiteElement.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.XPathSectionLoadWebsiteElement.Location = new System.Drawing.Point(5, 5);
             this.XPathSectionLoadWebsiteElement.Name = "XPathSectionLoadWebsiteElement";
-            this.XPathSectionLoadWebsiteElement.Size = new System.Drawing.Size(242, 20);
+            this.XPathSectionLoadWebsiteElement.Size = new System.Drawing.Size(204, 17);
             this.XPathSectionLoadWebsiteElement.TabIndex = 38;
             this.XPathSectionLoadWebsiteElement.Text = "Step 2 - Load Website Element";
             // 
@@ -852,7 +851,7 @@ namespace ProtoTest.Specter
             this.RefreshTimeTextBox.Location = new System.Drawing.Point(608, 48);
             this.RefreshTimeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.RefreshTimeTextBox.Name = "RefreshTimeTextBox";
-            this.RefreshTimeTextBox.Size = new System.Drawing.Size(41, 22);
+            this.RefreshTimeTextBox.Size = new System.Drawing.Size(41, 20);
             this.RefreshTimeTextBox.TabIndex = 23;
             this.RefreshTimeTextBox.Text = "2000";
             this.RefreshTimeTextBox.TextChanged += new System.EventHandler(this.RefreshTimeTextBox_TextChanged_1);
@@ -863,7 +862,7 @@ namespace ProtoTest.Specter
             this.label4.Location = new System.Drawing.Point(475, 49);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(129, 17);
+            this.label4.Size = new System.Drawing.Size(95, 13);
             this.label4.TabIndex = 24;
             this.label4.Text = "Refresh Time (ms):";
             // 
@@ -878,17 +877,17 @@ namespace ProtoTest.Specter
             this.WebText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.WebText.MinimumSize = new System.Drawing.Size(20, 20);
             this.WebText.Name = "WebText";
-            this.WebText.Size = new System.Drawing.Size(943, 91);
+            this.WebText.Size = new System.Drawing.Size(943, 94);
             this.WebText.TabIndex = 25;
             // 
             // Elements_tab
             // 
             this.Elements_tab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(117)))), ((int)(((byte)(255)))));
             this.Elements_tab.Controls.Add(this.panel1);
-            this.Elements_tab.Location = new System.Drawing.Point(4, 25);
+            this.Elements_tab.Location = new System.Drawing.Point(4, 22);
             this.Elements_tab.Margin = new System.Windows.Forms.Padding(4);
             this.Elements_tab.Name = "Elements_tab";
-            this.Elements_tab.Size = new System.Drawing.Size(997, 680);
+            this.Elements_tab.Size = new System.Drawing.Size(997, 683);
             this.Elements_tab.TabIndex = 6;
             this.Elements_tab.Text = "Elements";
             // 
@@ -907,15 +906,15 @@ namespace ProtoTest.Specter
             this.panel1.Location = new System.Drawing.Point(11, 12);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(973, 654);
+            this.panel1.Size = new System.Drawing.Size(973, 657);
             this.panel1.TabIndex = 0;
             // 
             // GetPageObjectButton
             // 
             this.GetPageObjectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.GetPageObjectButton.Location = new System.Drawing.Point(510, 407);
+            this.GetPageObjectButton.Location = new System.Drawing.Point(530, 407);
             this.GetPageObjectButton.Name = "GetPageObjectButton";
-            this.GetPageObjectButton.Size = new System.Drawing.Size(179, 23);
+            this.GetPageObjectButton.Size = new System.Drawing.Size(159, 28);
             this.GetPageObjectButton.TabIndex = 4;
             this.GetPageObjectButton.Text = "Create Page Object";
             this.GetPageObjectButton.UseVisualStyleBackColor = true;
@@ -924,7 +923,7 @@ namespace ProtoTest.Specter
             // CopyElementsToClipboard_button
             // 
             this.CopyElementsToClipboard_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CopyElementsToClipboard_button.Location = new System.Drawing.Point(696, 404);
+            this.CopyElementsToClipboard_button.Location = new System.Drawing.Point(696, 407);
             this.CopyElementsToClipboard_button.Margin = new System.Windows.Forms.Padding(4);
             this.CopyElementsToClipboard_button.Name = "CopyElementsToClipboard_button";
             this.CopyElementsToClipboard_button.Size = new System.Drawing.Size(148, 28);
@@ -936,7 +935,7 @@ namespace ProtoTest.Specter
             // ClearElements_button
             // 
             this.ClearElements_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ClearElements_button.Location = new System.Drawing.Point(852, 404);
+            this.ClearElements_button.Location = new System.Drawing.Point(852, 407);
             this.ClearElements_button.Margin = new System.Windows.Forms.Padding(4);
             this.ClearElements_button.Name = "ClearElements_button";
             this.ClearElements_button.Size = new System.Drawing.Size(100, 28);
@@ -951,7 +950,7 @@ namespace ProtoTest.Specter
             this.label2.Location = new System.Drawing.Point(15, 20);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(168, 25);
+            this.label2.Size = new System.Drawing.Size(137, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Elements Created";
             // 
@@ -963,7 +962,7 @@ namespace ProtoTest.Specter
             this.Elements_rtb.Location = new System.Drawing.Point(20, 48);
             this.Elements_rtb.Margin = new System.Windows.Forms.Padding(4);
             this.Elements_rtb.Name = "Elements_rtb";
-            this.Elements_rtb.Size = new System.Drawing.Size(931, 347);
+            this.Elements_rtb.Size = new System.Drawing.Size(931, 350);
             this.Elements_rtb.TabIndex = 0;
             this.Elements_rtb.Text = "";
             // 
@@ -973,11 +972,11 @@ namespace ProtoTest.Specter
             this.JavaScript_tab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(117)))), ((int)(((byte)(255)))));
             this.JavaScript_tab.Controls.Add(this.panel2);
             this.JavaScript_tab.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.JavaScript_tab.Location = new System.Drawing.Point(4, 25);
+            this.JavaScript_tab.Location = new System.Drawing.Point(4, 22);
             this.JavaScript_tab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.JavaScript_tab.Name = "JavaScript_tab";
             this.JavaScript_tab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.JavaScript_tab.Size = new System.Drawing.Size(997, 680);
+            this.JavaScript_tab.Size = new System.Drawing.Size(997, 683);
             this.JavaScript_tab.TabIndex = 2;
             this.JavaScript_tab.Text = "JavaScript";
             this.JavaScript_tab.ToolTipText = "Execute Javascript";
@@ -998,7 +997,7 @@ namespace ProtoTest.Specter
             this.panel2.Location = new System.Drawing.Point(5, 6);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(980, 662);
+            this.panel2.Size = new System.Drawing.Size(980, 665);
             this.panel2.TabIndex = 21;
             // 
             // label7
@@ -1006,7 +1005,7 @@ namespace ProtoTest.Specter
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(3, 14);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(183, 17);
+            this.label7.Size = new System.Drawing.Size(139, 13);
             this.label7.TabIndex = 15;
             this.label7.Text = "Enter Javascript to execute:";
             this.label7.Click += new System.EventHandler(this.label7_Click);
@@ -1016,7 +1015,7 @@ namespace ProtoTest.Specter
             this.JavscriptTextBox.Location = new System.Drawing.Point(5, 33);
             this.JavscriptTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.JavscriptTextBox.Name = "JavscriptTextBox";
-            this.JavscriptTextBox.Size = new System.Drawing.Size(569, 22);
+            this.JavscriptTextBox.Size = new System.Drawing.Size(569, 20);
             this.JavscriptTextBox.TabIndex = 16;
             this.JavscriptTextBox.TextChanged += new System.EventHandler(this.JavscriptTextBox_TextChanged_1);
             // 
@@ -1058,7 +1057,7 @@ namespace ProtoTest.Specter
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(3, 110);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(130, 17);
+            this.label11.Size = new System.Drawing.Size(97, 13);
             this.label11.TabIndex = 20;
             this.label11.Text = "Prebuilt Commands";
             this.label11.Click += new System.EventHandler(this.label11_Click);
@@ -1068,11 +1067,11 @@ namespace ProtoTest.Specter
             this.ErrorLog_tab.AccessibleName = "ErrorLog_tab";
             this.ErrorLog_tab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(117)))), ((int)(((byte)(255)))));
             this.ErrorLog_tab.Controls.Add(this.panel3);
-            this.ErrorLog_tab.Location = new System.Drawing.Point(4, 25);
+            this.ErrorLog_tab.Location = new System.Drawing.Point(4, 22);
             this.ErrorLog_tab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ErrorLog_tab.Name = "ErrorLog_tab";
             this.ErrorLog_tab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ErrorLog_tab.Size = new System.Drawing.Size(997, 680);
+            this.ErrorLog_tab.Size = new System.Drawing.Size(997, 683);
             this.ErrorLog_tab.TabIndex = 3;
             this.ErrorLog_tab.Text = "Error Log";
             this.ErrorLog_tab.ToolTipText = "Log of errors";
@@ -1089,7 +1088,7 @@ namespace ProtoTest.Specter
             this.panel3.Location = new System.Drawing.Point(5, 6);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(976, 662);
+            this.panel3.Size = new System.Drawing.Size(976, 665);
             this.panel3.TabIndex = 5;
             // 
             // label5
@@ -1097,7 +1096,7 @@ namespace ProtoTest.Specter
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(3, 15);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(32, 17);
+            this.label5.Size = new System.Drawing.Size(25, 13);
             this.label5.TabIndex = 1;
             this.label5.Text = "Log";
             // 
@@ -1127,11 +1126,11 @@ namespace ProtoTest.Specter
             this.Help_tab.AccessibleName = "Help_tab";
             this.Help_tab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(117)))), ((int)(((byte)(255)))));
             this.Help_tab.Controls.Add(this.panel4);
-            this.Help_tab.Location = new System.Drawing.Point(4, 25);
+            this.Help_tab.Location = new System.Drawing.Point(4, 22);
             this.Help_tab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Help_tab.Name = "Help_tab";
             this.Help_tab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Help_tab.Size = new System.Drawing.Size(997, 680);
+            this.Help_tab.Size = new System.Drawing.Size(997, 683);
             this.Help_tab.TabIndex = 4;
             this.Help_tab.Text = "Help";
             this.Help_tab.ToolTipText = "HELP!!!";
@@ -1147,7 +1146,7 @@ namespace ProtoTest.Specter
             this.panel4.Location = new System.Drawing.Point(5, 6);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(984, 668);
+            this.panel4.Size = new System.Drawing.Size(984, 671);
             this.panel4.TabIndex = 0;
             // 
             // Help1Textbox1
@@ -1166,7 +1165,7 @@ namespace ProtoTest.Specter
             this.HelpHeader1.AutoSize = true;
             this.HelpHeader1.Location = new System.Drawing.Point(4, 4);
             this.HelpHeader1.Name = "HelpHeader1";
-            this.HelpHeader1.Size = new System.Drawing.Size(217, 17);
+            this.HelpHeader1.Size = new System.Drawing.Size(163, 13);
             this.HelpHeader1.TabIndex = 0;
             this.HelpHeader1.Text = "XPath Basics - Plugins and Tools";
             // 
@@ -1176,11 +1175,11 @@ namespace ProtoTest.Specter
             this.Setting_tab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(117)))), ((int)(((byte)(255)))));
             this.Setting_tab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.Setting_tab.Controls.Add(this.Settings_Panel);
-            this.Setting_tab.Location = new System.Drawing.Point(4, 25);
+            this.Setting_tab.Location = new System.Drawing.Point(4, 22);
             this.Setting_tab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Setting_tab.Name = "Setting_tab";
             this.Setting_tab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Setting_tab.Size = new System.Drawing.Size(997, 680);
+            this.Setting_tab.Size = new System.Drawing.Size(997, 683);
             this.Setting_tab.TabIndex = 5;
             this.Setting_tab.Text = "Settings";
             this.Setting_tab.ToolTipText = "Specter internal settings";
@@ -1203,7 +1202,7 @@ namespace ProtoTest.Specter
             // 
             this.DefaultUrl_tb.Location = new System.Drawing.Point(140, 55);
             this.DefaultUrl_tb.Name = "DefaultUrl_tb";
-            this.DefaultUrl_tb.Size = new System.Drawing.Size(248, 22);
+            this.DefaultUrl_tb.Size = new System.Drawing.Size(248, 20);
             this.DefaultUrl_tb.TabIndex = 5;
             this.DefaultUrl_tb.TextChanged += new System.EventHandler(this.DefaultUrl_tb_TextChanged);
             // 
@@ -1212,7 +1211,7 @@ namespace ProtoTest.Specter
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(23, 55);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(75, 17);
+            this.label10.Size = new System.Drawing.Size(57, 13);
             this.label10.TabIndex = 4;
             this.label10.Text = "Default Url";
             // 
@@ -1222,7 +1221,7 @@ namespace ProtoTest.Specter
             this.ColorPicker_Link.Location = new System.Drawing.Point(531, 94);
             this.ColorPicker_Link.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ColorPicker_Link.Name = "ColorPicker_Link";
-            this.ColorPicker_Link.Size = new System.Drawing.Size(154, 17);
+            this.ColorPicker_Link.Size = new System.Drawing.Size(120, 13);
             this.ColorPicker_Link.TabIndex = 2;
             this.ColorPicker_Link.TabStop = true;
             this.ColorPicker_Link.Text = "What values do I want?";
@@ -1240,7 +1239,7 @@ namespace ProtoTest.Specter
             this.DefaultBrowser_cb.Location = new System.Drawing.Point(140, 10);
             this.DefaultBrowser_cb.Margin = new System.Windows.Forms.Padding(4);
             this.DefaultBrowser_cb.Name = "DefaultBrowser_cb";
-            this.DefaultBrowser_cb.Size = new System.Drawing.Size(160, 24);
+            this.DefaultBrowser_cb.Size = new System.Drawing.Size(160, 21);
             this.DefaultBrowser_cb.TabIndex = 1;
             this.DefaultBrowser_cb.SelectedIndexChanged += new System.EventHandler(this.DefaultBrowser_cb_SelectedIndexChanged);
             // 
@@ -1250,7 +1249,7 @@ namespace ProtoTest.Specter
             this.defaultBrowser_label.Location = new System.Drawing.Point(23, 13);
             this.defaultBrowser_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.defaultBrowser_label.Name = "defaultBrowser_label";
-            this.defaultBrowser_label.Size = new System.Drawing.Size(108, 17);
+            this.defaultBrowser_label.Size = new System.Drawing.Size(82, 13);
             this.defaultBrowser_label.TabIndex = 0;
             this.defaultBrowser_label.Text = "Default Browser";
             // 
@@ -1389,7 +1388,7 @@ namespace ProtoTest.Specter
         private LinkLabel ColorPicker_Link;
         private TabPage Elements_tab;
         private Panel panel1;
-        private RichTextBox Elements_rtb;
+        public RichTextBox Elements_rtb;
         private Button BuildElement_button;
         private Button ClearElements_button;
         private Label label2;

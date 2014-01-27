@@ -979,16 +979,7 @@ namespace ProtoTest.Specter
         }
 
         
-        private void MainTabControl_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //This function gets called when the user changes tabs
-            Elements_rtb.Clear();
-            for (int x = 0; x < Program.elements.Count; x++)
-            {
-                Elements_rtb.AppendText(Program.elements[x].GetGolemElement());
-                Elements_rtb.AppendText("\n");
-            }
-        }
+        
 
         private void CopyElementsToClipboard_button_Click(object sender, EventArgs e)
         {
@@ -1002,7 +993,7 @@ namespace ProtoTest.Specter
             
         }
 
-        public void ShowElementText(string text)
+        public void SetElementText(string text)
         {
             Elements_rtb.Clear();
             Elements_rtb.Text = text;

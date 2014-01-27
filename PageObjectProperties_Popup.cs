@@ -20,7 +20,7 @@ namespace ProtoTest.XpathBuilder
         private void Ok_button_Click(object sender, EventArgs e)
         {
             var pageObject = new PageObjectBuilder(PageName_tb.Text, Namespace_tb.Text, Program.elements);
-           Program.specter.ShowElementText(pageObject.GetPageObjectCode());
+           Program.specter.SetElementText(pageObject.GetPageObjectCode());
             this.Dispose();
         }
 
