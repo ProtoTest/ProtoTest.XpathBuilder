@@ -1,5 +1,3 @@
-C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\bin\Release\chromedriver.exe
-C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\bin\Release\IEDriverServer.exe
 C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\bin\Release\ProtoTest.XpathBuilder.exe.config
 C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\bin\Release\ProtoTest.XpathBuilder.exe
 C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\bin\Release\ProtoTest.XpathBuilder.pdb
@@ -38,3 +36,6 @@ C:\Users\SethUrban\Documents\GitHub\ProtoTest.XpathBuilder\obj\Release\ProtoTest
 C:\Users\SethUrban\Documents\GitHub\ProtoTest.XpathBuilder\obj\Release\ProtoTest.XpathBuilder.Properties.Resources.resources
 C:\Users\SethUrban\Documents\GitHub\ProtoTest.XpathBuilder\obj\Release\ProtoTest.XpathBuilder.SpecterSplash.resources
 C:\Users\SethUrban\Documents\GitHub\ProtoTest.XpathBuilder\obj\Release\ProtoTest.Specter.csproj.GenerateResource.Cache
+C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\obj\Release\ProtoTest.Specter.csprojResolveAssemblyReference.cache
+C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\obj\Release\ProtoTest.XpathBuilder.ElementProperties_Popup.resources
+C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\obj\Release\ProtoTest.XpathBuilder.PageObjectProperties_Popup.resources
