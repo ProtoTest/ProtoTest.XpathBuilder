@@ -118,27 +118,27 @@ namespace ProtoTest.Specter
             return false;
         }
 
-        //public bool CheckParent()
-        //{
-        //    var parent = element.GetParent();
-        //    List<string> parentXpaths = GetNonUniqueXpaths(parent);
-        //    for (var i = 0; i < parentXpaths.Count; i++)
-        //    {
-        //        for (var j = 0; j < elementDuplicateXpaths.Count; j++)
-        //        {
-        //            xpath = parentXpaths[i] + elementDuplicateXpaths[j];
-        //            CheckXpath();
-        //            if (HaveEnough()) return true;
-        //        }
-        //    }
-        //    Program.Log("Checked the parent, unique xpaths : " + uniqueXpaths.Count);
-        //    return false;
+        public bool CheckParent()
+        {
+            var parent = element.GetParent();
+            List<string> parentXpaths = GetNonUniqueXpaths(parent);
+            for (var i = 0; i < parentXpaths.Count; i++)
+            {
+                for (var j = 0; j < elementDuplicateXpaths.Count; j++)
+                {
+                    xpath = parentXpaths[i] + elementDuplicateXpaths[j];
+                    CheckXpath();
+                    if (HaveEnough()) return true;
+                }
+            }
+            Program.Log("Checked the parent, unique xpaths : " + uniqueXpaths.Count);
+            return false;
 
-        //}
+        }
 
         public bool CheckAncestors()
         {
-            IWebElement ancestor = element.GetParent();
+            IWebElement ancestor = element.GetParent().GetParent();
 
             for (int i = 0; i < searchDepth; i++)
             {
@@ -234,10 +234,14 @@ namespace ProtoTest.Specter
                 {
                     for (int i = 0; i < elementDuplicateXpaths.Count; i++)
                     {
-                        xpath = string.Format("//{0}[.{1}]{2}", ancestor.TagName, relativeXpaths[j],
+                        if (ancestor != null)
+                        {
+                            xpath = string.Format("//{0}[.{1}]{2}", ancestor.TagName, relativeXpaths[j],
                             elementDuplicateXpaths[i]);
-                        CheckXpath();
-                        if (HaveEnough()) return true;
+                            CheckXpath();
+                            if (HaveEnough()) return true;
+                        }
+                        
                     }
                 }
 
@@ -265,8 +269,11 @@ namespace ProtoTest.Specter
                 Program.specter.Log("Checking Self");
                 if (CheckSelf()) return;
             }
+
             if (Specter.checkAncestors)
             {
+                Program.specter.Log("Checking Parent");
+                if (CheckParent()) return;
                 Program.specter.Log("Checking Ancestors");
                 if (CheckAncestors()) return;
             }
