@@ -39,3 +39,5 @@ C:\Users\SethUrban\Documents\GitHub\ProtoTest.XpathBuilder\obj\Release\ProtoTest
 C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\obj\Release\ProtoTest.Specter.csprojResolveAssemblyReference.cache
 C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\obj\Release\ProtoTest.XpathBuilder.ElementProperties_Popup.resources
 C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\obj\Release\ProtoTest.XpathBuilder.PageObjectProperties_Popup.resources
+C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\bin\Release\chromedriver.exe
+C:\Users\Brian\Documents\GitHub\ProtoTest.XpathBuilder\bin\Release\IEDriverServer.exe

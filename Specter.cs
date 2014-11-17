@@ -122,7 +122,8 @@ namespace ProtoTest.Specter
         {
             try
             {
-                elementUpdater.RunWorkerAsync();
+                if (!elementUpdater.IsBusy)
+                    elementUpdater.RunWorkerAsync();
                 driver.RegisterRightClickEvent();
                 driver.RegisterHighlightOnMouseOver();
             }
@@ -136,6 +137,7 @@ namespace ProtoTest.Specter
         {
             try
             {
+                elementUpdater.CancelAsync();
                 elementUpdater.RunWorkerAsync();
                 driver.RegisterClickEvent();
                 driver.RegisterHighlightOnMouseOver();
@@ -792,13 +794,13 @@ namespace ProtoTest.Specter
                 {
                     WebText.DocumentText = "";
                 }
-                else if (lastElement == null || lastElement.Location != element.Location)
-                {
+               // else if (lastElement == null || lastElement.Location != element.Location)
+               // {
                     element.UnHighlight();
                     string html = element.GetHtml();
                     WebText.DocumentText = FormatHtml(html);
                     element.Flash();
-                }
+               // }
             }
             catch (Exception err)
             {
